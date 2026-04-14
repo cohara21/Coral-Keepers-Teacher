@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coral Keepers - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f8;
+      --text-dark: #2f3333;
+      --text-muted: #5b605f;
+      --blue: #0075de;
+      --green: #16a34a;
+      --card-border: rgba(0, 0, 0, 0.1);
+      --divider: rgba(0, 0, 0, 0.05);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --radius-card: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+    }
+
+    .top-nav {
+      position: fixed;
+      z-index: 30;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 64px;
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-nav-inner {
+      width: min(1328px, calc(100% - 48px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand {
+      width: 239px;
+      height: 36.716px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: stretch;
+      height: 48px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 16px;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .nav-link.switch {
+      gap: 8px;
+      margin-left: auto;
+      width: 190px;
+      justify-content: flex-end;
+      padding-right: 16px;
+    }
+
+    .nav-link.switch {
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: transparent;
+      padding-bottom: 0;
+    }
+
+    .switch-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      flex: none;
+    }
+
+    .nav-link.active {
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: var(--blue);
+      padding-bottom: 2px;
+    }
+
+    .nav-link.messages-tab {
+      width: 98px;
+      min-width: 98px;
+      max-width: 98px;
+      flex: 0 0 98px;
+      justify-content: center;
+    }
+
+    .nav-link.profile-tab {
+      width: 78px;
+      min-width: 78px;
+      max-width: 78px;
+      flex: 0 0 78px;
+      justify-content: center;
+    }
+
+    .page {
+      width: min(1328px, calc(100% - 48px));
+      margin: 0 auto;
+      padding-top: 88px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+
+    .welcome {
+      font-size: 48px;
+      line-height: 48px;
+      letter-spacing: -2.125px;
+      color: #424242;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .layout {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 32px;
+      row-gap: 32px;
+      align-items: start;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .tank-card {
+      height: 838px;
+      position: relative;
+      grid-row: 1 / span 2;
+    }
+
+    .tank-header {
+      height: 53px;
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px 17px;
+      background: #fff;
+    }
+
+    .tank-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .tank-title .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 12px;
+      background: #9f403d;
+    }
+
+    .tank-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 15px;
+    }
+
+    .capture {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tank-image-wrap {
+      height: 251px;
+      position: relative;
+      background: #1c1917;
+      overflow: hidden;
+    }
+
+    .tank-image-base {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      display: block;
+    }
+
+    .tank-image-overlay {
+      position: absolute;
+      left: -36px;
+      top: -107px;
+      width: 662px;
+      height: 439px;
+      object-fit: cover;
+    }
+
+    .tank-image-buttons {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .tank-image-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 13px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: rgba(250, 249, 248, 0.8);
+      backdrop-filter: blur(10px);
+      font-size: 9.6px;
+      text-transform: uppercase;
+      letter-spacing: 0.48px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 14.4px;
+    }
+
+    .health {
+      margin: 34px 21px 0;
+      display: grid;
+      grid-template-columns: 236px 1fr;
+      column-gap: 36px;
+      align-items: center;
+    }
+
+    .health-gauge {
+      position: relative;
+      width: 235.664px;
+      height: 186.199px;
+    }
+
+    .health-gauge > img:first-child {
+      width: 235.664px;
+      height: 186.199px;
+      display: block;
+    }
+
+    .health-cory {
+      position: absolute;
+      left: 77px;
+      top: 47px;
+      width: 73.735px;
+      height: 132.3px;
+      display: block;
+    }
+
+    .stat-main {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-main .pct {
+      font-size: 48px;
+      line-height: 48px;
+      color: #2ecc71;
+      font-weight: 700;
+    }
+
+    .delta {
+      margin-top: 9px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      color: #005eb4;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+    }
+
+    .stat-copy {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 19.5px;
+      color: var(--text-muted);
+      max-width: 249px;
+    }
+
+    .tank-status {
+      margin-top: 24px;
+      width: 226px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      line-height: 15px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .tank-status strong {
+      color: var(--green);
+    }
+
+    .core-vitals {
+      margin: 16px 24px 24px;
+    }
+
+    .core-vitals h3 {
+      margin: 0 0 12px;
+      font-size: 12px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.12px;
+      color: var(--text-muted);
+    }
+
+    .vitals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .vital {
+      height: 107px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .vital-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      line-height: 15px;
+      font-weight: 700;
+    }
+
+    .vital-top .trend {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      color: #005eb4;
+    }
+
+    .vital-title {
+      font-size: 10px;
+      line-height: 15px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .vital-value {
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: -0.45px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .assignments {
+      height: 520px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .assignment-list {
+      margin-top: 32px;
+      display: grid;
+      gap: 24px;
+      flex: 1;
+    }
+
+    .assignment {
+      display: grid;
+      grid-template-columns: 41px 1fr;
+      gap: 16px;
+    }
+
+    .assignment.bordered {
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .assignment-icon {
+      width: 40.667px;
+      height: 40.667px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .assignment-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .assignment-title {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .badge {
+      border-radius: 2px;
+      padding: 2px 8px;
+      font-size: 10px;
+      line-height: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge.warn {
+      background: #fff7ed;
+      color: #ea580c;
+    }
+
+    .badge.muted {
+      background: #edeeed;
+      color: var(--text-muted);
+    }
+
+    .assignment-copy {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--text-muted);
+    }
+
+    .primary-btn {
+      margin-top: 24px;
+      height: 44px;
+      border-radius: 4px;
+      border: none;
+      background: var(--blue);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      color: #f6f7ff;
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+    }
+
+    .team-score {
+      grid-column: 2;
+      grid-row: 2;
+      height: 285px;
+      padding: 24px;
+      position: relative;
+      margin-top: -12px;
+    }
+
+    .team-row {
+      margin-top: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .team-name {
+      margin: 0;
+      font-size: 39px;
+      line-height: 38px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .team-rank {
+      margin: 0;
+      font-size: 16.5px;
+      line-height: 22px;
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .progress {
+      margin-top: 16px;
+      background: #dfe3e2;
+      border-radius: 12px;
+      height: 13px;
+      overflow: hidden;
+    }
+
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 79.89%;
+      background: #ffa56d;
+    }
+
+    .points {
+      margin: 8px 0 0;
+      text-align: right;
+      font-size: 10px;
+      line-height: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .leaderboard {
+      margin-top: 34px;
+      font-size: 12px;
+      line-height: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .floating-ai {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 73px;
+      height: 73px;
+      border-radius: 46.063px;
+      border: 3px solid #0075de;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.11);
+      z-index: 40;
+    }
+
+    .floating-ai img {
+      width: 32.287px;
+      height: 48.156px;
+      display: block;
+    }
+
+    .cory-popup {
+      position: fixed;
+      right: 20px;
+      bottom: 108px;
+      width: 331px;
+      height: 310px;
+      background: #ffffff;
+      overflow: hidden;
+      z-index: 45;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .cory-popup[aria-hidden="true"] {
+      display: none;
+    }
+
+    .cory-header {
+      height: 65px;
+      background: #005eb4;
+      position: relative;
+    }
+
+    .cory-avatar {
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 38px;
+      height: 38px;
+      border: 1.562px solid #0075de;
+      border-radius: 23.978px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2.082px 2.082px rgba(0, 0, 0, 0.11);
+      padding: 1.562px;
+    }
+
+    .cory-avatar img {
+      width: 16.807px;
+      height: 25.068px;
+      display: block;
+    }
+
+    .cory-name {
+      position: absolute;
+      left: 66px;
+      top: 25px;
+      margin: 0;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: 700;
+    }
+
+    .cory-online {
+      position: absolute;
+      right: 16px;
+      top: 29px;
+      width: 8px;
+      height: 8px;
+      border-radius: 12px;
+      background: #4ade80;
+    }
+
+    .cory-body {
+      position: relative;
+      height: 192px;
+      background: #ffffff;
+    }
+
+    .cory-bubble {
+      position: absolute;
+      left: 57px;
+      top: 122px;
+      width: 254.403px;
+      height: 56.635px;
+      background: url("../assets/454e7403-cab5-45cc-8610-78726ea10732.svg") no-repeat center / contain;
+      display: flex;
+      align-items: center;
+      padding-left: 17px;
+    }
+
+    .cory-bubble p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 19.5px;
+      color: #000000;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .cory-input-row {
+      height: 53px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 12px 12px;
+      background: #ffffff;
+    }
+
+    .cory-input {
+      flex: 1;
+      height: 28px;
+      border: none;
+      border-radius: 2px;
+      background: #f3f4f2;
+      padding: 8px 12px 9px;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: #111827;
+      outline: none;
+    }
+
+    .cory-input::placeholder {
+      color: #6b7280;
+      opacity: 1;
+    }
+
+    .cory-send {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .cory-send img {
+      width: 14.25px;
+      height: 12px;
+      display: block;
+    }
+
+    @media (max-width: 1280px) {
+      .top-nav-inner {
+        width: 100%;
+        padding: 0 12px;
+      }
+
+      .page {
+        width: 100%;
+        padding: 88px 12px 24px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .team-score {
+        grid-column: auto;
+        grid-row: auto;
+        margin-top: 0;
+      }
+
+      .tank-card,
+      .assignments {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" />
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="learn.html">Learn</a>
+        <a class="nav-link" href="announcements.html">Announcements</a>
+        <a class="nav-link" href="calendar.html">Calendar</a>
+        <a class="nav-link messages-tab" href="messages.html">Messages</a>
+        <a class="nav-link profile-tab" href="profile.html">Profile</a>
+              <a class="nav-link switch" href="../Teacher/index.html">
+          <span>Student View</span>
+          <span class="switch-icon" aria-hidden="true">
+            <img src="../assets/teacher-switch-blue.svg" alt="" width="16" height="16" />
+          </span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1 class="welcome">Welcome Back, Sierra 👋</h1>
+
+    <section class="layout">
+      <article class="card tank-card">
+        <div class="tank-header">
+          <div class="tank-title">
+            <span class="dot"></span>
+            <span>Live Tank Feed: Tank 04</span>
+          </div>
+          <div class="tank-actions">
+            <span class="capture">
+              <img src="../assets/35ec9219-4f90-4b63-91ba-86bb9b9b50ba.svg" width="12" height="12" alt="" />
+              Capture
+            </span>
+            <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" width="11" height="11" alt="" />
+          </div>
+        </div>
+
+        <div class="tank-image-wrap">
+          <img class="tank-image-base" src="../assets/b9dbdfe2-3841-4b7d-a791-cb2df56c5ebf.png" alt="Live tank" />
+          <img class="tank-image-overlay" src="../assets/acf5ec69-e98a-487c-bc67-34c0790b4dbc.png" alt="" />
+          <div class="tank-image-buttons">
+            <div class="tank-image-btn">
+              <img src="../assets/ad32c547-025e-405a-9ac1-5672a14ca108.svg" width="9" height="9" alt="" />
+              Past Stats
+            </div>
+            <div class="tank-image-btn">
+              <img src="../assets/cca557b5-4782-493c-86d9-11ee18d44a70.svg" width="10" height="10" alt="" />
+              Time-Lapse
+            </div>
+          </div>
+        </div>
+
+        <div class="health">
+          <div class="health-gauge">
+            <img src="../assets/5f4cd70d-9575-4494-b354-18e91f4b5917.svg" alt="Health status" />
+            <img class="health-cory" src="../assets/fe7dcc3f-c503-47c4-a0dc-46af41071412.svg" alt="Cory" />
+          </div>
+
+          <div>
+            <div class="stat-main">
+              <div class="pct">94%</div>
+              <div class="delta">
+                <img src="../assets/68f6a793-6bcc-4fa5-aa67-e40858b91e12.svg" width="12" height="7" alt="" />
+                2.1%
+              </div>
+            </div>
+            <p class="stat-copy">Tank is stable. Automated calcium injection was successful. Bio-filters are working.</p>
+            <div class="tank-status">
+              <span>Tank Status</span>
+              <strong>Stable</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="core-vitals">
+          <h3>Core Vitals</h3>
+          <div class="vitals-grid">
+            <div class="vital">
+              <div class="vital-top">
+                <img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" width="8" height="15" alt="" />
+                <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />0.2°</span>
+              </div>
+              <div class="vital-title">Temperature</div>
+              <div class="vital-value">78.2°F</div>
+            </div>
+            <div class="vital">
+              <div class="vital-top">
+                <img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" width="14" height="14" alt="" />
+                <span class="trend" style="color:#5b605f;"><img src="../assets/852cb51c-7511-403d-93b0-1ecaf982bb4a.svg" width="8" height="4" alt="" />OK</span>
+              </div>
+              <div class="vital-title">pH Level</div>
+              <div class="vital-value">8.4</div>
+            </div>
+            <div class="vital">
+              <div class="vital-top">
+                <img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" width="12" height="15" alt="" />
+                <span class="trend"><img src="../assets/1dc7ac79-b1ec-4ac1-b6bc-1a53752fef14.svg" width="5" height="3" alt="" />1 ppt</span>
+              </div>
+              <div class="vital-title">Salinity</div>
+              <div class="vital-value">35 ppt</div>
+            </div>
+            <div class="vital">
+              <div class="vital-top">
+                <img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" width="12" height="15" alt="" />
+                <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />NOM</span>
+              </div>
+              <div class="vital-title">Redox</div>
+              <div class="vital-value">380 mV</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card assignments">
+        <h2 class="section-title">My Assignments</h2>
+
+        <div class="assignment-list">
+          <div class="assignment bordered">
+            <img class="assignment-icon" src="../assets/f7ba7cc3-164b-41cc-bdcc-3edcb59eebae.svg" alt="" />
+            <div>
+              <div class="assignment-head">
+                <h3 class="assignment-title">Coral Calcification Series</h3>
+                <span class="badge warn">Due Tomorrow</span>
+              </div>
+              <p class="assignment-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
+            </div>
+          </div>
+
+          <div class="assignment bordered">
+            <img class="assignment-icon" src="../assets/f4e4f7d4-9d75-4a8a-b2e0-9f1f454107e3.svg" alt="" />
+            <div>
+              <div class="assignment-head">
+                <h3 class="assignment-title">Symbiosis Reading Guide</h3>
+                <span class="badge muted">Due Friday</span>
+              </div>
+              <p class="assignment-copy">Read the PDF guide and highlight key symbiotic partners.</p>
+            </div>
+          </div>
+
+          <div class="assignment">
+            <img class="assignment-icon" src="../assets/96446637-a16b-416a-95b0-fb4c346dcc4a.svg" alt="" />
+            <div>
+              <div class="assignment-head">
+                <h3 class="assignment-title">Weekly Reef Knowledge Check</h3>
+                <span class="badge muted">Due Sunday</span>
+              </div>
+              <p class="assignment-copy">12 Questions covering this week's tank chemistry.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="primary-btn">View All Coursework</button>
+      </article>
+
+      <article class="card team-score">
+        <h2 class="section-title">Team Score</h2>
+
+        <div class="team-row">
+          <h3 class="team-name">Reef Guardians 🪸</h3>
+          <p class="team-rank">#1 Class Rank</p>
+        </div>
+
+        <div class="progress"><span></span></div>
+        <p class="points">920 Points Earned</p>
+        <div class="leaderboard">View Leaderboard</div>
+      </article>
+    </section>
+  </main>
+
+  <button class="floating-ai" aria-label="Cory AI">
+    <img src="../assets/e59ca79e-5989-44bd-ae7d-d21a7a8e0641.svg" alt="" />
+  </button>
+
+  <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
+    <div class="cory-header">
+      <div class="cory-avatar">
+        <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
+      </div>
+      <p class="cory-name">Cory</p>
+      <span class="cory-online"></span>
+    </div>
+    <div class="cory-body">
+      <div class="cory-bubble">
+        <p>Have my pH levels been consistent?</p>
+      </div>
+    </div>
+    <div class="cory-input-row">
+      <input class="cory-input" type="text" placeholder="Type a message..." />
+      <button class="cory-send" type="button" aria-label="Send">
+        <img src="../assets/bb543680-485a-4fa9-b5ed-481596dd53fd.svg" alt="" />
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const coryToggle = document.querySelector('.floating-ai');
+    const coryPopup = document.getElementById('coryPopup');
+
+    function setPopupOpen(open) {
+      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    coryToggle.addEventListener('click', () => {
+      const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
+      setPopupOpen(!isOpen);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (coryPopup.getAttribute('aria-hidden') === 'true') {
+        return;
+      }
+
+      if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
+        setPopupOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setPopupOpen(false);
+      }
+    });
+  </script>
+</body>
+</html>

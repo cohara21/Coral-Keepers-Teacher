@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 250.946 201.482" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Health Status">
+<path id="Ellipse 14" d="M221.455 193.84C235.212 174.561 243.305 150.962 243.305 125.473C243.305 60.3963 190.55 7.641 125.473 7.641C60.3963 7.641 7.641 60.3963 7.641 125.473C7.641 150.962 15.7342 174.561 29.491 193.84" stroke="url(#paint0_linear_0_185)" stroke-width="15.282" stroke-linecap="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_185" x1="7.64099" y1="100.74" x2="243.305" y2="100.74" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF5F5F"/>
+<stop offset="0.490385" stop-color="#FFDD00"/>
+<stop offset="1" stop-color="#2ECC71"/>
+</linearGradient>
+</defs>
+</svg>
