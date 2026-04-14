@@ -1,0 +1,18 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/Student/(.*)",
+      "destination": "/Student/$1"
+    },
+    {
+      "source": "/Teacher/(.*)",
+      "destination": "/Teacher/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/Teacher/index.html"
+    }
+  ]
+}
