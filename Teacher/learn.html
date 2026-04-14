@@ -197,6 +197,22 @@
       overflow: hidden;
       text-decoration: none;
       color: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    a.course-card {
+      cursor: pointer;
+    }
+
+    a.course-card:hover,
+    a.course-card:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.05);
+    }
+
+    a.course-card:active {
+      transform: translateY(0);
     }
 
     .course-card:nth-child(1) {
@@ -318,6 +334,18 @@
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.11);
       z-index: 40;
       cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .floating-ai:hover,
+    .floating-ai:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .floating-ai:active {
+      transform: translateY(0);
     }
 
     .floating-ai img {
@@ -459,6 +487,18 @@
       justify-content: center;
       padding: 8px;
       cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .cory-send:hover,
+    .cory-send:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .cory-send:active {
+      transform: translateY(0);
     }
 
     .cory-send img {
@@ -506,7 +546,7 @@
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      <img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" />
+      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link active" href="learn.html">Courses</a>

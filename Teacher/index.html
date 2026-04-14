@@ -486,6 +486,19 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
       font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .primary-btn:hover,
+    .primary-btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .primary-btn:active {
+      transform: translateY(0);
     }
 
     .team-score {
@@ -799,7 +812,7 @@
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      <img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" />
+      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link active" href="index.html">Home</a>
         <a class="nav-link" href="learn.html">Courses</a>
@@ -949,7 +962,7 @@
           </div>
         </div>
 
-        <button class="primary-btn">Assign New Task</button>
+        <button class="primary-btn" type="button" onclick="window.location.href='learn.html'">Assign New Task</button>
       </article>
 
       <article class="card team-score">
