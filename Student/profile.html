@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coral Keepers - Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f8;
+      --text-dark: #2f3333;
+      --text-muted: #5b605f;
+      --blue: #0075de;
+      --card-border: rgba(0, 0, 0, 0.1);
+      --divider: rgba(0, 0, 0, 0.05);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --radius-card: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+    }
+
+    .top-nav {
+      position: fixed;
+      z-index: 30;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 64px;
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-nav-inner {
+      width: min(1328px, calc(100% - 48px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand {
+      width: 239px;
+      height: 36.716px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: stretch;
+      height: 48px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 16px;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .nav-link.switch {
+      gap: 8px;
+      margin-left: auto;
+      width: 190px;
+      justify-content: flex-end;
+      padding-right: 16px;
+    }
+
+    .nav-link.switch {
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: transparent;
+      padding-bottom: 0;
+    }
+
+    .switch-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      flex: none;
+    }
+
+    .nav-link.active {
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: var(--blue);
+      padding-bottom: 2px;
+    }
+
+    .nav-link.messages-tab {
+      width: 98px;
+      min-width: 98px;
+      max-width: 98px;
+      flex: 0 0 98px;
+      justify-content: center;
+    }
+
+    .nav-link.profile-tab {
+      width: 78px;
+      min-width: 78px;
+      max-width: 78px;
+      flex: 0 0 78px;
+      justify-content: center;
+    }
+
+    .profile-page {
+      padding-top: 65px;
+      padding-bottom: 24px;
+    }
+
+    .hero {
+      height: 309px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero .banner {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero .avatar {
+      position: absolute;
+      left: 50%;
+      bottom: -100px;
+      transform: translateX(-50%);
+      width: 201px;
+      height: 201px;
+      border-radius: 50%;
+      display: block;
+      z-index: 3;
+    }
+
+    .name {
+      margin: 132px 0 44px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 20.106px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .content {
+      width: min(1217px, calc(100% - 60px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .grade-book {
+      height: 639px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .grade-list {
+      margin-top: 32px;
+      flex: 1;
+    }
+
+    .grade-row {
+      min-height: 81px;
+      border-bottom: 1px solid var(--divider);
+      display: grid;
+      grid-template-columns: 40.667px 1fr 56px;
+      gap: 16px;
+      align-items: center;
+      padding: 0;
+    }
+
+    .grade-icon {
+      width: 40.667px;
+      height: 40.667px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .grade-name {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: #2f3333;
+    }
+
+    .grade-copy {
+      margin: 0;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 16px;
+      color: #5b605f;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 327px;
+    }
+
+    .pill {
+      width: 56px;
+      height: 32px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      line-height: 15px;
+      font-weight: 700;
+    }
+
+    .pill.green { background: #dfffed; color: #2ecc71; }
+    .pill.yellow { background: #fff1c4; color: #dcbe00; }
+    .pill.red { background: rgba(255,95,95,0.18); color: #ff5f5f; }
+
+    .grade-btn {
+      margin-top: 24px;
+      width: 100%;
+      height: 44px;
+      border: none;
+      border-radius: 4px;
+      background: #0075de;
+      color: #f6f7ff;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .right-col {
+      display: grid;
+      grid-template-rows: 356px 286px;
+      gap: 24px;
+    }
+
+    .achievements {
+      padding: 27px 24px 22px;
+    }
+
+    .achieve-list { margin-top: 28px; }
+
+    .achieve-row {
+      min-height: 82px;
+      border-bottom: 1px solid var(--divider);
+      display: grid;
+      grid-template-columns: 42px 1fr 19px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .achieve-row .icon {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .achieve-name {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: #2f3333;
+    }
+
+    .achieve-copy {
+      margin: 0;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 16px;
+      color: #5b605f;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 300px;
+    }
+
+    .status-dot {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: #2ecc71;
+      display: block;
+    }
+
+    .view-all {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #0075de;
+    }
+
+    .team {
+      padding: 24px 24px 22px;
+    }
+
+    .team-head {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .small-label {
+      margin: 0;
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #5b605f;
+    }
+
+    .team-head .small-label:last-child {
+      margin-left: 32px;
+      text-align: left;
+    }
+
+    .team-main {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 6px;
+      align-items: start;
+    }
+
+    .team-name {
+      margin: 0;
+      font-size: 32px;
+      line-height: 32px;
+      font-weight: 600;
+      color: #000;
+      white-space: nowrap;
+    }
+
+    .rank-label {
+      margin: 24px 0 4px;
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #5b605f;
+    }
+
+    .rank {
+      margin: 0;
+      font-size: 71.296px;
+      line-height: 92px;
+      letter-spacing: 7.1296px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #ffa56d;
+    }
+
+    .members {
+      display: grid;
+      gap: 18px;
+      margin-top: 4px;
+      margin-left: 32px;
+    }
+
+    .member {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .member img {
+      width: 40px;
+      height: 40px;
+      border-radius: 47px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .member-name {
+      margin: 0;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: #2f3333;
+    }
+
+    .cory-trigger {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 73px;
+      height: 73px;
+      border-radius: 46.063px;
+      border: 3px solid #0075de;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 4px rgba(0,0,0,0.11);
+      z-index: 40;
+      cursor: pointer;
+    }
+
+    .cory-trigger img {
+      width: 32.287px;
+      height: 48.156px;
+      display: block;
+    }
+
+    .cory-popup {
+      position: fixed;
+      right: 20px;
+      bottom: 108px;
+      width: 331px;
+      height: 310px;
+      background: #fff;
+      overflow: hidden;
+      z-index: 45;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .cory-popup[aria-hidden="true"] { display: none; }
+    .cory-header { height: 65px; background: #005eb4; position: relative; }
+
+    .cory-avatar {
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 38px;
+      height: 38px;
+      border: 1.562px solid #0075de;
+      border-radius: 23.978px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2.082px 2.082px rgba(0,0,0,0.11);
+      padding: 1.562px;
+    }
+
+    .cory-avatar img { width: 16.807px; height: 25.068px; display: block; }
+    .cory-name { position: absolute; left: 66px; top: 25px; margin: 0; color: #fff; font-size: 13px; line-height: 16px; font-weight: 700; }
+    .cory-online { position: absolute; right: 16px; top: 29px; width: 8px; height: 8px; border-radius: 12px; background: #4ade80; }
+    .cory-body { position: relative; height: 192px; background: #fff; }
+
+    .cory-bubble {
+      position: absolute;
+      left: 57px;
+      top: 122px;
+      width: 254.403px;
+      height: 56.635px;
+      background: url("../assets/454e7403-cab5-45cc-8610-78726ea10732.svg") no-repeat center / contain;
+      display: flex;
+      align-items: center;
+      padding-left: 17px;
+    }
+
+    .cory-bubble p { margin: 0; font-size: 12px; line-height: 19.5px; color: #000; }
+
+    .cory-input-row {
+      height: 53px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 12px 12px;
+      background: #fff;
+    }
+
+    .cory-input {
+      flex: 1;
+      height: 28px;
+      border: none;
+      border-radius: 2px;
+      background: #f3f4f2;
+      padding: 8px 12px 9px;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      color: #111827;
+      outline: none;
+    }
+
+    .cory-input::placeholder { color: #6b7280; opacity: 1; }
+
+    .cory-send {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .cory-send img { width: 14.25px; height: 12px; display: block; }
+
+    @media (max-width: 1280px) {
+      .top-nav-inner { width: 100%; padding: 0 12px; }
+      .content { width: calc(100% - 24px); grid-template-columns: 1fr; }
+      .right-col { grid-template-rows: auto auto; }
+      .team-main { grid-template-columns: 1fr; gap: 14px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html" aria-label="Go to Home">
+        <img class="brand" src="../assets/f154e9a6-878d-403b-b8d8-86090246148d.svg" alt="Coral Keepers" />
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="learn.html">Learn</a>
+        <a class="nav-link" href="announcements.html">Announcements</a>
+        <a class="nav-link" href="calendar.html">Calendar</a>
+        <a class="nav-link messages-tab" href="messages.html">Messages</a>
+        <a class="nav-link profile-tab active" href="profile.html">Profile</a>
+        <a class="nav-link switch" href="../Teacher/index.html">
+          <span>Student View</span>
+          <span class="switch-icon" aria-hidden="true">
+            <img src="../assets/teacher-switch-blue.svg" alt="" width="16" height="16" />
+          </span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="profile-page">
+    <section class="hero">
+      <img class="banner" src="../assets/2c5c51ab-84f0-47b2-8e2b-b68eb9b87357.png" alt="Coral reef" />
+      <img class="avatar" src="../assets/7fd1e6cb-e235-4d64-bb35-ecf2e887ca3a.png" alt="Sierra Winters" />
+    </section>
+
+    <h1 class="name">Sierra Winters</h1>
+
+    <section class="content">
+      <article class="card grade-book">
+        <h2 class="section-title">Grade Book</h2>
+
+        <div class="grade-list">
+          <div class="grade-row">
+            <img class="grade-icon" src="../assets/ed8acb8f-ca50-4822-8dd8-0e2b78104a7b.svg" alt="" />
+            <div>
+              <p class="grade-name">Coral Calcification Series</p>
+              <p class="grade-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
+            </div>
+            <div class="pill green">95%</div>
+          </div>
+
+          <div class="grade-row">
+            <img class="grade-icon" src="../assets/e8eea9e0-86cb-4379-95e2-012ae86dffed.svg" alt="" />
+            <div>
+              <p class="grade-name">Symbiosis Reading Guide</p>
+              <p class="grade-copy">Read the PDF guide and highlight key symbiotic partners.</p>
+            </div>
+            <div class="pill green">90%</div>
+          </div>
+
+          <div class="grade-row">
+            <img class="grade-icon" src="../assets/2c285560-8872-49f3-aae4-d154afde5407.svg" alt="" />
+            <div>
+              <p class="grade-name">Weekly Reef Knowledge Check</p>
+              <p class="grade-copy">12 Questions covering this week's tank chemistry.</p>
+            </div>
+            <div class="pill yellow">80%</div>
+          </div>
+
+          <div class="grade-row">
+            <img class="grade-icon" src="../assets/e8eea9e0-86cb-4379-95e2-012ae86dffed.svg" alt="" />
+            <div>
+              <p class="grade-name">Bleaching Essay</p>
+              <p class="grade-copy">Write a 500-word essay on the causes of coral bleaching.</p>
+            </div>
+            <div class="pill red">40%</div>
+          </div>
+        </div>
+
+        <button class="grade-btn">View Grade Book</button>
+      </article>
+
+      <div class="right-col">
+        <article class="card achievements">
+          <h2 class="section-title">Achievements</h2>
+
+          <div class="achieve-list">
+            <div class="achieve-row">
+              <img class="icon" src="../assets/4189c7e8-8c4c-40e4-9a3e-bfb2bf6c0524.svg" alt="" />
+              <div>
+                <p class="achieve-name">Star Student</p>
+                <p class="achieve-copy">Your teacher selected you as this week’s star student!</p>
+              </div>
+              <span class="status-dot"></span>
+            </div>
+
+            <div class="achieve-row">
+              <img class="icon" src="../assets/126c1f8a-7ffd-4db5-93b7-3f307f469d88.svg" alt="" />
+              <div>
+                <p class="achieve-name">Coral Crusader</p>
+                <p class="achieve-copy">Your classroom’s coral tank flourished when you were in charge!</p>
+              </div>
+              <span class="status-dot"></span>
+            </div>
+
+            <div class="achieve-row" style="border-bottom:none;">
+              <img class="icon" src="../assets/c766e9e0-26f6-4603-982c-e10cdce1fc83.svg" alt="" />
+              <div>
+                <p class="achieve-name">Growth Genius</p>
+                <p class="achieve-copy">You’ve been tracking your coral’s growth for a whole month!</p>
+              </div>
+              <span class="status-dot"></span>
+            </div>
+          </div>
+
+          <div class="view-all">View All</div>
+        </article>
+
+        <article class="card team">
+          <div class="team-head">
+            <p class="small-label">Team Name</p>
+            <p class="small-label">Members</p>
+          </div>
+
+          <div class="team-main">
+            <div>
+              <p class="team-name">Reef Guardians 🪸</p>
+              <p class="rank-label">Rank</p>
+              <p class="rank">1🔥</p>
+            </div>
+            <div class="members">
+              <div class="member">
+                <img src="../assets/dbc4f08e-3a4f-4cd2-bdae-bcc4e54b3a9f.jpg" alt="Jessica Flores" />
+                <p class="member-name">Jessica Flores</p>
+              </div>
+              <div class="member">
+                <img src="../assets/06a7b4d6-4b69-4062-8523-931943765840.jpg" alt="Ian Breen" />
+                <p class="member-name">Ian Breen</p>
+              </div>
+              <div class="member">
+                <img src="../assets/c692489c-6658-467a-b3ad-177f352ef94c.jpg" alt="Emilio Hernandez" />
+                <p class="member-name">Emilio Hernandez</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <button class="cory-trigger" aria-label="Cory AI" type="button">
+    <img src="../assets/e59ca79e-5989-44bd-ae7d-d21a7a8e0641.svg" alt="" />
+  </button>
+
+  <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
+    <div class="cory-header">
+      <div class="cory-avatar">
+        <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
+      </div>
+      <p class="cory-name">Cory</p>
+      <span class="cory-online"></span>
+    </div>
+    <div class="cory-body">
+      <div class="cory-bubble">
+        <p>Have my pH levels been consistent?</p>
+      </div>
+    </div>
+    <div class="cory-input-row">
+      <input class="cory-input" type="text" placeholder="Type a message..." />
+      <button class="cory-send" type="button" aria-label="Send">
+        <img src="../assets/bb543680-485a-4fa9-b5ed-481596dd53fd.svg" alt="" />
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const coryToggle = document.querySelector('.cory-trigger');
+    const coryPopup = document.getElementById('coryPopup');
+
+    function setPopupOpen(open) {
+      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    coryToggle.addEventListener('click', () => {
+      const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
+      setPopupOpen(!isOpen);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (coryPopup.getAttribute('aria-hidden') === 'true') {
+        return;
+      }
+
+      if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
+        setPopupOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setPopupOpen(false);
+      }
+    });
+  </script>
+</body>
+</html>
