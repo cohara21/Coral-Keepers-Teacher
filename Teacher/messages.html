@@ -259,7 +259,7 @@
     }
 
     .board.is-compose {
-      min-height: 1124px;
+      min-height: clamp(620px, calc(100vh - 140px), 760px);
     }
 
     .board.is-compose .compose-panel {
@@ -298,7 +298,7 @@
     }
 
     .target-label {
-      font-size: 20px;
+      font-size: 14px;
       line-height: 20px;
       font-weight: 500;
       color: #2f3333;
@@ -375,7 +375,7 @@
     }
 
     .message-input {
-      min-height: 290px;
+      min-height: 170px;
       resize: none;
       color: #2f3333;
     }
@@ -519,6 +519,193 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .cory-popup {
+      position: fixed;
+      right: 20px;
+      bottom: 108px;
+      width: 331px;
+      height: 310px;
+      background: #ffffff;
+      overflow: visible;
+      z-index: 45;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .cory-popup[aria-hidden="true"] {
+      display: none;
+    }
+
+    .cory-header {
+      height: 65px;
+      background: #005eb4;
+      position: relative;
+    }
+
+    .cory-avatar {
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 38px;
+      height: 38px;
+      border: 1.562px solid #0075de;
+      border-radius: 23.978px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2.082px 2.082px rgba(0, 0, 0, 0.11);
+      padding: 1.562px;
+    }
+
+    .cory-avatar img {
+      width: 16.807px;
+      height: 25.068px;
+      display: block;
+    }
+
+    .cory-name {
+      position: absolute;
+      left: 66px;
+      top: 25px;
+      margin: 0;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: 700;
+    }
+
+    .cory-close {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .cory-pointer {
+      position: absolute;
+      right: 30px;
+      bottom: -7px;
+      width: 14px;
+      height: 14px;
+      background: #ffffff;
+      transform: rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cory-body {
+      position: relative;
+      height: 192px;
+      background: #ffffff;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .cory-bubble {
+      width: fit-content;
+      max-width: 254px;
+      min-height: auto;
+      border-radius: 10px;
+      background: #f3f6ff;
+      border: 1px solid #dbe7ff;
+      display: flex;
+      align-items: flex-start;
+      padding: 10px 14px;
+      align-self: flex-start;
+    }
+
+    .cory-bubble.user {
+      background: #0075de;
+      border-color: #0075de;
+      align-self: flex-end;
+    }
+
+    .cory-bubble.typing {
+      opacity: 0.85;
+    }
+
+    .cory-bubble p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 16px;
+      color: #000000;
+      font-weight: 400;
+      white-space: normal;
+    }
+
+    .cory-bubble.user p {
+      color: #ffffff;
+    }
+
+    .cory-input-row {
+      height: 53px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 12px 12px;
+      background: #ffffff;
+    }
+
+    .cory-input {
+      flex: 1;
+      height: 28px;
+      border: none;
+      border-radius: 2px;
+      background: #f3f4f2;
+      padding: 8px 12px 9px;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: #111827;
+      outline: none;
+    }
+
+    .cory-input::placeholder {
+      color: #6b7280;
+      opacity: 1;
+    }
+
+    .cory-send {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .cory-send img {
+      width: 14.25px;
+      height: 12px;
+      display: block;
+    }
+    }
   </style>
 </head>
 <body>
@@ -527,7 +714,7 @@
       <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="learn.html">Courses</a>
+        <a class="nav-link" href="course.html">Courses</a>
         <a class="nav-link" href="announcements.html">Announcements</a>
         <a class="nav-link" href="calendar.html">Calendar</a>
         <a class="nav-link active" href="messages.html">Messages</a>
@@ -635,138 +822,163 @@
     <img src="../assets/e59ca79e-5989-44bd-ae7d-d21a7a8e0641.svg" alt="" />
   </button>
 
+  <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
+    <div class="cory-pointer" aria-hidden="true"></div>
+    <button class="cory-close" type="button" aria-label="Close Cory chat">×</button>
+    <div class="cory-header">
+      <div class="cory-avatar">
+        <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
+      </div>
+      <p class="cory-name">Cory</p>
+    </div>
+    <div class="cory-body">
+    </div>
+    <div class="cory-input-row">
+      <input class="cory-input" type="text" placeholder="Type a message..." />
+      <button class="cory-send" type="button" aria-label="Send">
+        <img src="../assets/bb543680-485a-4fa9-b5ed-481596dd53fd.svg" alt="" />
+      </button>
+    </div>
+  </div>
+
   <script>
     const board = document.getElementById('board');
     const messageList = document.getElementById('messageList');
     const composePanel = document.getElementById('composePanel');
-    const composeClose = document.querySelector('.compose-close');
-    const composeForm = document.getElementById('composeForm');
-    const classSelect = document.getElementById('classSelect');
-    const studentSelect = document.getElementById('studentSelect');
-    const studentField = document.getElementById('studentField');
-    const messageInput = document.getElementById('messageInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const modeButtons = document.querySelectorAll('.segment-btn');
-    const newMessageTriggers = document.querySelectorAll('.new-message-trigger');
+    const coryToggle = document.querySelector('.floating-ai');
+    const coryPopup = document.getElementById('coryPopup');
+    const coryBody = coryPopup ? coryPopup.querySelector('.cory-body') : null;
+    const coryInput = coryPopup ? coryPopup.querySelector('.cory-input') : null;
+    const corySend = coryPopup ? coryPopup.querySelector('.cory-send') : null;
+    const coryClose = coryPopup ? coryPopup.querySelector('.cory-close') : null;
+    const isTeacherView = window.location.pathname.includes('/Teacher/');
 
-    const classStudents = {
-      'MAR BIO 101': [
-        'Jessica Flores',
-        'Michael Chen',
-        'Aisha Patel'
-      ],
-      'MAR BIO 201': [
-        'Ian Breen',
-        'Emilio Hernandez',
-        'Ariana Lopez'
-      ],
-      'MAR BIO 348': [
-        'Maya Torres',
-        'Noah Kim',
-        'Sofia Grant'
-      ]
-    };
-
-    let composeMode = 'class';
-    let sentTimer = null;
-
-    function setComposerOpen(open) {
-      board.classList.toggle('is-compose', open);
-      composePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
-      composePanel.classList.remove('is-sent');
-
-      if (open) {
-        messageInput.focus();
+    function scrollCoryToLatest() {
+      if (coryBody) {
+        coryBody.scrollTop = coryBody.scrollHeight;
       }
     }
 
-    function setMode(mode) {
-      composeMode = mode;
-      modeButtons.forEach((button) => {
-        const active = button.dataset.mode === mode;
-        button.classList.toggle('active', active);
-      });
-
-      studentField.style.display = mode === 'student' ? 'grid' : 'none';
-      studentSelect.required = mode === 'student';
-      if (mode !== 'student') {
-        studentSelect.value = '';
+    function appendCoryBubble(message, role = 'bot', isTyping = false) {
+      if (!coryBody) {
+        return null;
       }
-      updateSendState();
+
+      const bubble = document.createElement('div');
+      bubble.className = `cory-bubble${role === 'user' ? ' user' : ''}${isTyping ? ' typing' : ''}`;
+
+      const text = document.createElement('p');
+      text.textContent = message;
+      bubble.appendChild(text);
+
+      coryBody.appendChild(bubble);
+      scrollCoryToLatest();
+      return bubble;
     }
 
-    function populateStudents(classCode) {
-      const students = classStudents[classCode] || [];
-      studentSelect.innerHTML = '<option value="" disabled selected>Select a student</option>' + students.map((student) => `<option value="${student}">${student}</option>`).join('');
-    }
+    function getCoryReply(userMessage) {
+      const message = userMessage.toLowerCase();
 
-    function openCompose(classCode) {
-      setComposerOpen(true);
-      if (classCode) {
-        classSelect.value = classCode;
-        populateStudents(classCode);
+      if (/(hi|hello|hey)/.test(message)) {
+        return 'Hey! I am Cory. Ask me about coral health, tank care, or where to find tools in this app.';
       }
-      setMode('class');
-    }
 
-    function closeCompose() {
-      setComposerOpen(false);
-      composeForm.reset();
-      classSelect.value = '';
-      studentSelect.innerHTML = '<option value="" disabled selected>Select a student</option>';
-      studentField.style.display = 'grid';
-      setMode('class');
-      updateSendState();
-      if (sentTimer) {
-        clearTimeout(sentTimer);
-        sentTimer = null;
+      if (message.includes('ph')) {
+        return 'For most reef tanks, pH is healthiest around 8.1 to 8.4. Big swings are more stressful than small day-to-day changes.';
       }
+
+      if (message.includes('temperature') || message.includes('temp')) {
+        return 'Coral systems usually do best around 76 to 80 degrees F. Keep temperature steady and avoid fast spikes.';
+      }
+
+      if (message.includes('salinity')) {
+        return 'Target salinity near 35 ppt. Stability matters the most, so adjust slowly if you need to correct it.';
+      }
+
+      if (message.includes('message') || message.includes('chat')) {
+        return 'You can use Messages to communicate with your class team. I can also help summarize what to ask or post.';
+      }
+
+      if (message.includes('calendar')) {
+        return 'Use the Calendar to switch between Month and Day views, then click a date in Day view to jump directly to that day.';
+      }
+
+      if (message.includes('course') || message.includes('learn') || message.includes('assignment')) {
+        return isTeacherView ? 'In Teacher view, open Courses to manage lessons and due dates. Use Post Reading for reading prompts and follow-up tasks.' : 'In Student view, open Learn to check assignments and due dates, then track progress from your dashboard.';
+      }
+
+      return 'I can help with coral care or app navigation. Try asking about pH, salinity, temperature, Calendar, Messages, or Learn/Courses.';
     }
 
-    function updateSendState() {
-      const classChosen = classSelect.value.trim().length > 0;
-      const studentChosen = composeMode === 'student' ? studentSelect.value.trim().length > 0 : true;
-      const hasMessage = messageInput.value.trim().length > 0;
-      sendBtn.disabled = !(classChosen && studentChosen && hasMessage);
-    }
-
-    newMessageTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        openCompose(trigger.dataset.classCode);
-      });
-    });
-
-    composeClose.addEventListener('click', closeCompose);
-
-    modeButtons.forEach((button) => {
-      button.addEventListener('click', () => setMode(button.dataset.mode));
-    });
-
-    classSelect.addEventListener('change', () => {
-      populateStudents(classSelect.value);
-      updateSendState();
-    });
-
-    studentSelect.addEventListener('change', updateSendState);
-    messageInput.addEventListener('input', updateSendState);
-
-    composeForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      if (sendBtn.disabled) {
+    function handleCorySend() {
+      if (!coryInput) {
         return;
       }
 
-      composePanel.classList.add('is-sent');
-      sentTimer = setTimeout(() => {
-        closeCompose();
-      }, 2500);
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && composePanel.getAttribute('aria-hidden') === 'false') {
-        closeCompose();
+      const userMessage = coryInput.value.trim();
+      if (!userMessage) {
+        return;
       }
-    });
+
+      appendCoryBubble(userMessage, 'user');
+      coryInput.value = '';
+
+      const typingBubble = appendCoryBubble('Thinking...', 'bot', true);
+      window.setTimeout(() => {
+        if (typingBubble) {
+          typingBubble.remove();
+        }
+        appendCoryBubble(getCoryReply(userMessage), 'bot');
+      }, 350);
+    }
+
+    function setPopupOpen(open) {
+      if (!coryPopup) {
+        return;
+      }
+
+      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (open && coryInput) {
+        coryInput.focus();
+      }
+    }
+
+    if (coryToggle && coryPopup) {
+      coryToggle.addEventListener('click', () => {
+        const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
+        setPopupOpen(!isOpen);
+      });
+
+      coryClose.addEventListener('click', () => {
+        setPopupOpen(false);
+      });
+
+      document.addEventListener('click', (event) => {
+        if (coryPopup.getAttribute('aria-hidden') === 'true') {
+          return;
+        }
+
+        if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
+          setPopupOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setPopupOpen(false);
+        }
+      });
+    }
+
+    if (corySend && coryInput && coryBody) {
+      corySend.addEventListener('click', handleCorySend);
+      coryInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          handleCorySend();
+        }
+      });
+    }
   </script>
 </body>
 </html>

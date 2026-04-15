@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coral Keepers - Course Overview</title>
+  <title>Coral Keepers - Courses</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -13,14 +13,23 @@
       --text-dark: #2f3333;
       --text-muted: #5b605f;
       --blue: #0075de;
+      --green: #2ecc71;
+      --inactive: #989898;
       --card-border: rgba(0, 0, 0, 0.1);
-      --divider: rgba(0, 0, 0, 0.05);
       --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --radius-card: 8px;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text-dark);
+      font-family: "Inter", sans-serif;
     }
 
     html {
@@ -28,10 +37,7 @@
     }
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text-dark);
-      font-family: "Inter", sans-serif;
+      overflow-x: hidden;
     }
 
     .top-nav {
@@ -59,8 +65,8 @@
     .brand {
       width: 239px;
       height: 36.716px;
-      object-fit: contain;
       display: block;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -90,10 +96,10 @@
     }
 
     .nav-link.switch {
-      gap: 8px;
       margin-left: auto;
       width: 190px;
       justify-content: flex-end;
+      gap: 8px;
       padding-right: 16px;
     }
 
@@ -107,175 +113,213 @@
       flex: none;
     }
 
-    .page {
-      width: 100%;
-      padding-top: 65px;
-      padding-bottom: 24px;
-    }
-
-    .hero {
-      height: 309px;
+    .learn-page {
       position: relative;
-      overflow: visible;
+      padding-top: 65px;
+      min-height: 100vh;
     }
 
-    .hero img.banner {
+    .learn-shell {
+      position: relative;
+      width: 1280px;
+      height: 757.265px;
+      margin: 0 auto;
+    }
+
+    .hero-banner {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 200px;
+      min-height: 200px;
+      max-height: 200px;
+      overflow: hidden;
+    }
+
+    .hero-banner img {
       position: absolute;
       inset: 0;
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
       object-position: center;
       display: block;
     }
 
-    .hero img.banner.overlay {
-      z-index: 1;
-      pointer-events: none;
+    .hero-avatar {
+      position: absolute;
+      left: 539px;
+      top: 108px;
+      width: 170px;
+      height: 170px;
+      z-index: 2;
     }
 
-    .profile-avatar {
-      position: absolute;
-      left: 50%;
-      bottom: -100px;
-      transform: translateX(-50%);
-      width: 201px;
-      height: 201px;
-      border-radius: 50%;
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
       display: block;
-      z-index: 3;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .course-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 316px;
+      transform: translateY(-50%);
+      margin: 0;
       text-align: center;
-      margin: 131px 0 36px;
+      color: #000000;
       font-size: 24px;
       line-height: 20.106px;
       font-weight: 500;
-      color: #000;
+      white-space: nowrap;
     }
 
-    .content {
-      width: min(1210px, calc(100% - 68px));
-      margin: 0 auto;
+    .courses {
+      position: absolute;
+      left: 0;
+      top: 352px;
+      width: 1280px;
+      height: 276.265px;
     }
 
-    .grid-two {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 55px 27px;
-    }
-
-    .card {
-      height: 416px;
-      background: #fff;
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-card);
+    .course-card {
+      position: absolute;
+      width: 393.146px;
+      height: 276.265px;
+      background: #ffffff;
+      border: 0.664px solid var(--card-border);
+      border-radius: 5.313px;
       box-shadow: var(--shadow);
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .section-title {
-      margin: 0;
-      padding-bottom: 32px;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .lesson-list {
-      flex: 1;
-      display: grid;
-      gap: 12px;
-    }
-
-    .lesson-item {
-      display: grid;
-      grid-template-columns: 40.67px 1fr;
-      gap: 16px;
-      align-items: center;
-      padding-bottom: 13px;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .lesson-icon {
-      width: 40.67px;
-      height: 40.67px;
-      display: block;
-      object-fit: contain;
-    }
-
-    .lesson-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .lesson-name {
-      margin: 0;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: 700;
-      color: var(--text-dark);
-      white-space: nowrap;
-    }
-
-    .lesson-copy {
-      margin: 0;
-      font-size: 12px;
-      line-height: 16px;
-      color: var(--text-muted);
-      white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 280px;
-    }
-
-    .lesson-due {
-      font-size: 11px;
-      line-height: 20px;
-      color: rgba(0, 0, 0, 0.53);
-      white-space: nowrap;
-      margin-left: auto;
-    }
-
-    .card-btn {
-      margin-top: 24px;
-      height: 44px;
-      border: none;
-      border-radius: 4px;
-      color: #f6f7ff;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 16px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
       transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     }
 
-    .card-btn:hover,
-    .card-btn:focus-visible {
+    a.course-card {
+      cursor: pointer;
+    }
+
+    a.course-card:hover,
+    a.course-card:focus-visible {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
       filter: brightness(1.05);
     }
 
-    .card-btn:active {
+    a.course-card:active {
       transform: translateY(0);
     }
 
-    .btn-blue { background: #0075de; }
-    .btn-orange { background: #ff904c; }
-    .btn-purple { background: #a65fff; }
-    .btn-green { background: #2ecc71; }
+    .course-card:nth-child(1) {
+      left: 32px;
+    }
+
+    .course-card:nth-child(2) {
+      left: 443px;
+    }
+
+    .course-card:nth-child(3) {
+      left: 854px;
+    }
+
+    .course-card-header {
+      position: absolute;
+      left: 15.94px;
+      right: 15.94px;
+      top: 15.94px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .course-code {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 10.626px;
+      font-weight: 700;
+      letter-spacing: 0.7969px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .course-status {
+      font-size: 12px;
+      line-height: 10.626px;
+      font-weight: 700;
+      letter-spacing: 0.7969px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .course-status.active {
+      color: var(--green);
+    }
+
+    .course-status.inactive {
+      color: var(--inactive);
+    }
+
+    .course-image {
+      position: absolute;
+      left: -0.66px;
+      top: 37.34px;
+      width: 393px;
+      height: 168px;
+      overflow: hidden;
+    }
+
+    .course-image img {
+      position: absolute;
+      display: block;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    .course-card:nth-child(1) .course-image img {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .course-card:nth-child(2) .course-image img {
+      left: 0;
+      top: -42.02%;
+      width: 136.98%;
+      height: 213.73%;
+    }
+
+    .course-card:nth-child(3) .course-image {
+      background: #d9d9d9;
+    }
+
+    .course-card:nth-child(3) .course-image img {
+      left: 0;
+      top: -37.46%;
+      width: 100%;
+      height: 175.45%;
+    }
+
+    .course-name {
+      position: absolute;
+      left: 16.34px;
+      top: 242.34px;
+      transform: translateY(-50%);
+      margin: 0;
+      color: var(--text-dark);
+      font-size: 20px;
+      line-height: 13.282px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
 
     .floating-ai {
       position: fixed;
@@ -285,13 +329,25 @@
       height: 73px;
       border-radius: 46.063px;
       border: 3px solid #0075de;
-      background: #fff;
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.11);
       z-index: 40;
       cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    }
+
+    .floating-ai:hover,
+    .floating-ai:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.05);
+    }
+
+    .floating-ai:active {
+      transform: translateY(0);
     }
 
     .floating-ai img {
@@ -307,7 +363,7 @@
       width: 331px;
       height: 310px;
       background: #ffffff;
-      overflow: hidden;
+      overflow: visible;
       z-index: 45;
       border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -356,41 +412,86 @@
       font-weight: 700;
     }
 
-    .cory-online {
+    .cory-close {
       position: absolute;
-      right: 16px;
-      top: 29px;
-      width: 8px;
-      height: 8px;
-      border-radius: 12px;
-      background: #4ade80;
+      right: 10px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .cory-pointer {
+      position: absolute;
+      right: 30px;
+      bottom: -7px;
+      width: 14px;
+      height: 14px;
+      background: #ffffff;
+      transform: rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .cory-body {
       position: relative;
       height: 192px;
       background: #ffffff;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
     }
 
     .cory-bubble {
-      position: absolute;
-      left: 57px;
-      top: 122px;
-      width: 254.403px;
-      height: 56.635px;
-      background: url("../assets/454e7403-cab5-45cc-8610-78726ea10732.svg") no-repeat center / contain;
+      width: fit-content;
+      max-width: 254px;
+      min-height: auto;
+      border-radius: 10px;
+      background: #f3f6ff;
+      border: 1px solid #dbe7ff;
       display: flex;
-      align-items: center;
-      padding-left: 17px;
+      align-items: flex-start;
+      padding: 10px 14px;
+      align-self: flex-start;
+    }
+
+    .cory-bubble.user {
+      background: #0075de;
+      border-color: #0075de;
+      align-self: flex-end;
+    }
+
+    .cory-bubble.typing {
+      opacity: 0.85;
     }
 
     .cory-bubble p {
       margin: 0;
       font-size: 12px;
-      line-height: 19.5px;
+      line-height: 16px;
       color: #000000;
       font-weight: 400;
-      white-space: nowrap;
+      white-space: normal;
+    }
+
+    .cory-bubble.user p {
+      color: #ffffff;
     }
 
     .cory-input-row {
@@ -440,29 +541,40 @@
       height: 12px;
       display: block;
     }
+    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
-        width: 100%;
         padding: 0 12px;
-      }
-
-      .content {
-        width: 100%;
-        padding: 0 12px;
-      }
-
-      .grid-two {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .course-title {
-        font-size: 28px;
       }
 
       .nav-links {
         display: none;
+      }
+
+      .learn-shell {
+        width: 100%;
+        height: auto;
+        min-height: 900px;
+      }
+
+      .hero-banner {
+        width: 100%;
+      }
+
+      .courses {
+        position: relative;
+        top: 352px;
+        width: calc(100% - 24px);
+        margin: 0 12px;
+      }
+
+      .course-card {
+        position: relative;
+        left: auto !important;
+        top: auto;
+        width: 100%;
+        margin-bottom: 16px;
       }
     }
   </style>
@@ -473,7 +585,7 @@
       <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link active" href="learn.html">Courses</a>
+        <a class="nav-link active" href="course.html">Courses</a>
         <a class="nav-link" href="announcements.html">Announcements</a>
         <a class="nav-link" href="calendar.html">Calendar</a>
         <a class="nav-link" href="messages.html">Messages</a>
@@ -487,115 +599,52 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="hero">
-      <img class="banner" src="../assets/teacher-course-hero-base.png" alt="Coral reef" />
-      <img class="banner overlay" src="../assets/teacher-course-hero-overlay.png" alt="" />
-      <img class="profile-avatar" src="../assets/teacher-course-avatar.png" alt="Instructor" />
-    </section>
-
-    <h1 class="course-title">Introduction to Marine Biology</h1>
-
-    <section class="content">
-      <div class="grid-two">
-        <article class="card">
-          <h2 class="section-title">Reading</h2>
-          <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Coral 101</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A basic guide for taking care of coral</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">How to Identify Coral</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">Tips and tricks to help you identify different...</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Coral Anatomy</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">Learn the ins and outs of coral</p>
-              </div>
-            </div>
-          </div>
-          <a class="card-btn btn-blue" href="post-reading.html" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">Post New Reading</a>
-        </article>
-
-        <article class="card">
-          <h2 class="section-title">Videos</h2>
-          <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-video-main.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Is Coral an Animal?</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">Learn the truth about what coral really is</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-video-alt.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">What is Coral Bleaching?</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A basic guide for taking care of coral</p>
-              </div>
-            </div>
-          </div>
-          <button class="card-btn btn-orange">Post New Video</button>
-        </article>
-
-        <article class="card">
-          <h2 class="section-title">Quizzes</h2>
-          <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-quiz-main.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Coral 101 QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A quiz on the Coral 101 reading assignment</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-quiz-alt.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">How to Identify Coral QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A quiz on the Coral Identification reading...</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-quiz-alt.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">What is Coral Bleaching QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A quiz on the Coral Bleaching video</p>
-              </div>
-            </div>
-          </div>
-          <button class="card-btn btn-purple">Post New Quiz</button>
-        </article>
-
-        <article class="card">
-          <h2 class="section-title">Submissions</h2>
-          <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-submission.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Why I Care About Coral Essay</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">Write a 5 page essay about why you care about...</p>
-              </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/teacher-course-icon-submission.svg" alt="" />
-              <div>
-                <div class="lesson-row"><h3 class="lesson-name">Class Participation Submission</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">Please submit a reflection about what you...</p>
-              </div>
-            </div>
-          </div>
-          <button class="card-btn btn-green">Post New Assignment</button>
-        </article>
+  <main class="learn-page">
+    <section class="learn-shell">
+      <div class="hero-banner">
+        <img src="https://www.figma.com/api/mcp/asset/498c51dc-4280-4654-a2c1-692efdd39987" alt="Coral reef" />
       </div>
+
+      <div class="hero-avatar">
+        <img src="../assets/jeanneprofile.webp" alt="Professor Harran" />
+      </div>
+
+      <h1 class="course-title">Professor Harran's Courses</h1>
+
+      <section class="courses" aria-label="Courses">
+        <a class="course-card" href="course-details.html" aria-label="Introduction to Marine Biology">
+          <div class="course-card-header">
+            <span class="course-code">MAR BIO 101</span>
+            <span class="course-status active">ACTIVE</span>
+          </div>
+          <div class="course-image">
+            <img src="https://www.figma.com/api/mcp/asset/6752fed3-215b-49eb-91cb-38841e727be2" alt="Introduction to Marine Biology" />
+          </div>
+          <h2 class="course-name">Introduction to Marine Biology</h2>
+        </a>
+
+        <article class="course-card" aria-label="Exploring Marine Ecosystems">
+          <div class="course-card-header">
+            <span class="course-code">MAR BIO 201</span>
+            <span class="course-status active">ACTIVE</span>
+          </div>
+          <div class="course-image">
+            <img src="https://www.figma.com/api/mcp/asset/41efb633-5430-4520-9862-aafe7670bb26" alt="Exploring Marine Ecosystems" />
+          </div>
+          <h2 class="course-name">Exploring Marine Ecosystems</h2>
+        </article>
+
+        <article class="course-card" aria-label="Coral Science">
+          <div class="course-card-header">
+            <span class="course-code">MAR BIO 348</span>
+            <span class="course-status inactive">INACTIVE</span>
+          </div>
+          <div class="course-image">
+            <img src="https://www.figma.com/api/mcp/asset/0eddab46-40b3-4278-8f54-27bfe0491460" alt="Coral Science" />
+          </div>
+          <h2 class="course-name">Coral Science</h2>
+        </article>
+      </section>
     </section>
   </main>
 
@@ -604,17 +653,15 @@
   </button>
 
   <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
+    <div class="cory-pointer" aria-hidden="true"></div>
+    <button class="cory-close" type="button" aria-label="Close Cory chat">×</button>
     <div class="cory-header">
       <div class="cory-avatar">
         <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
       </div>
       <p class="cory-name">Cory</p>
-      <span class="cory-online"></span>
     </div>
     <div class="cory-body">
-      <div class="cory-bubble">
-        <p>Have my pH levels been consistent?</p>
-      </div>
     </div>
     <div class="cory-input-row">
       <input class="cory-input" type="text" placeholder="Type a message..." />
@@ -625,33 +672,74 @@
   </div>
 
   <script>
-    const coryToggle = document.querySelector('.floating-ai');
-    const coryPopup = document.getElementById('coryPopup');
-
-    function setPopupOpen(open) {
-      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+    function attachCoryChat() {
+      const coryToggle = document.querySelector('.floating-ai, .cory-trigger');
+      const coryPopup = document.getElementById('coryPopup');
+      if (!coryToggle || !coryPopup) return;
+      const coryBody = coryPopup.querySelector('.cory-body');
+      const coryInput = coryPopup.querySelector('.cory-input');
+      const corySend = coryPopup.querySelector('.cory-send');
+      const coryClose = coryPopup.querySelector('.cory-close');
+      const isTeacherView = window.location.pathname.includes('/Teacher/');
+      const scrollCoryToLatest = () => { if (coryBody) coryBody.scrollTop = coryBody.scrollHeight; };
+      const appendCoryBubble = (message, role = 'bot', isTyping = false) => {
+        if (!coryBody) return null;
+        const bubble = document.createElement('div');
+        bubble.className = `cory-bubble${role === 'user' ? ' user' : ''}${isTyping ? ' typing' : ''}`;
+        const text = document.createElement('p');
+        text.textContent = message;
+        bubble.appendChild(text);
+        coryBody.appendChild(bubble);
+        scrollCoryToLatest();
+        return bubble;
+      };
+      const getCoryReply = (userMessage) => {
+        const message = userMessage.toLowerCase();
+        if (/(hi|hello|hey)/.test(message)) return 'Hey! I am Cory. Ask me about coral health, tank care, or where to find tools in this app.';
+        if (message.includes('ph')) return 'For most reef tanks, pH is healthiest around 8.1 to 8.4. Big swings are more stressful than small day-to-day changes.';
+        if (message.includes('temperature') || message.includes('temp')) return 'Coral systems usually do best around 76 to 80 degrees F. Keep temperature steady and avoid fast spikes.';
+        if (message.includes('salinity')) return 'Target salinity near 35 ppt. Stability matters the most, so adjust slowly if you need to correct it.';
+        if (message.includes('course') || message.includes('learn') || message.includes('assignment')) return isTeacherView ? 'In Teacher view, open Courses to manage lessons and due dates. Use Post Reading for reading prompts and follow-up tasks.' : 'In Student view, open Learn to check assignments and due dates, then track progress from your dashboard.';
+        if (message.includes('calendar')) return 'Use the Calendar to switch between Month and Day views, then click a date in Day view to jump directly to that day.';
+        return 'I can help with coral care or app navigation. Try asking about pH, salinity, temperature, Calendar, Messages, or Learn/Courses.';
+      };
+      const handleCorySend = () => {
+        if (!coryInput) return;
+        const userMessage = coryInput.value.trim();
+        if (!userMessage) return;
+        appendCoryBubble(userMessage, 'user');
+        coryInput.value = '';
+        const typingBubble = appendCoryBubble('Thinking...', 'bot', true);
+        window.setTimeout(() => {
+          if (typingBubble) typingBubble.remove();
+          appendCoryBubble(getCoryReply(userMessage), 'bot');
+        }, 350);
+      };
+      const setPopupOpen = (open) => {
+        coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+        if (open && coryInput) coryInput.focus();
+      };
+      coryToggle.addEventListener('click', () => { const isOpen = coryPopup.getAttribute('aria-hidden') === 'false'; setPopupOpen(!isOpen); });
+      coryClose.addEventListener('click', () => {
+        setPopupOpen(false);
+      });
+      document.addEventListener('click', (event) => {
+        if (coryPopup.getAttribute('aria-hidden') === 'true') return;
+        if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) setPopupOpen(false);
+      });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setPopupOpen(false); });
+      if (corySend && coryInput && coryBody) {
+        corySend.addEventListener('click', handleCorySend);
+        coryInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            handleCorySend();
+          }
+        });
+      }
     }
 
-    coryToggle.addEventListener('click', () => {
-      const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
-      setPopupOpen(!isOpen);
-    });
-
-    document.addEventListener('click', (event) => {
-      if (coryPopup.getAttribute('aria-hidden') === 'true') {
-        return;
-      }
-
-      if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
-        setPopupOpen(false);
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        setPopupOpen(false);
-      }
-    });
+    attachCoryChat();
   </script>
 </body>
 </html>

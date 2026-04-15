@@ -28,8 +28,7 @@
       font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text-dark);
-      overflow-y: scroll;
-      scrollbar-gutter: stable;
+      min-height: 100vh;
     }
 
     .top-nav {
@@ -171,7 +170,7 @@
     }
 
     .board.is-compose {
-      height: 1124px;
+      height: clamp(620px, calc(100vh - 140px), 760px);
     }
 
     .section-title {
@@ -331,7 +330,7 @@
     }
 
     .to-label {
-      font-size: 20px;
+      font-size: 14px;
       line-height: 20px;
       font-weight: 500;
       color: #2f3333;
@@ -419,8 +418,8 @@
 
     .message-input {
       width: 100%;
-      height: 100%;
-      min-height: 290px;
+      height: auto;
+      min-height: 170px;
       border: 1px solid #d4d4d4;
       border-radius: 8px;
       background: #fff;
@@ -549,7 +548,7 @@
       width: 331px;
       height: 310px;
       background: #ffffff;
-      overflow: hidden;
+      overflow: visible;
       z-index: 45;
       border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -598,41 +597,86 @@
       font-weight: 700;
     }
 
-    .cory-online {
+    .cory-close {
       position: absolute;
-      right: 16px;
-      top: 29px;
-      width: 8px;
-      height: 8px;
-      border-radius: 12px;
-      background: #4ade80;
+      right: 10px;
+      top: 20px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .cory-pointer {
+      position: absolute;
+      right: 30px;
+      bottom: -7px;
+      width: 14px;
+      height: 14px;
+      background: #ffffff;
+      transform: rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .cory-body {
       position: relative;
       height: 192px;
       background: #ffffff;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
     }
 
     .cory-bubble {
-      position: absolute;
-      left: 57px;
-      top: 122px;
-      width: 254.403px;
-      height: 56.635px;
-      background: url("../assets/454e7403-cab5-45cc-8610-78726ea10732.svg") no-repeat center / contain;
+      width: fit-content;
+      max-width: 254px;
+      min-height: auto;
+      border-radius: 10px;
+      background: #f3f6ff;
+      border: 1px solid #dbe7ff;
       display: flex;
-      align-items: center;
-      padding-left: 17px;
+      align-items: flex-start;
+      padding: 10px 14px;
+      align-self: flex-start;
+    }
+
+    .cory-bubble.user {
+      background: #0075de;
+      border-color: #0075de;
+      align-self: flex-end;
+    }
+
+    .cory-bubble.typing {
+      opacity: 0.85;
     }
 
     .cory-bubble p {
       margin: 0;
       font-size: 12px;
-      line-height: 19.5px;
+      line-height: 16px;
       color: #000000;
       font-weight: 400;
-      white-space: nowrap;
+      white-space: normal;
+    }
+
+    .cory-bubble.user p {
+      color: #ffffff;
     }
 
     .cory-input-row {
@@ -682,6 +726,7 @@
       height: 12px;
       display: block;
     }
+    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -707,7 +752,7 @@
       .to-input,
       .message-input,
       .sent-text {
-        font-size: 20px;
+        font-size: 14px;
       }
 
       .nav-links {
@@ -815,17 +860,15 @@
   </button>
 
   <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
+    <div class="cory-pointer" aria-hidden="true"></div>
+    <button class="cory-close" type="button" aria-label="Close Cory chat">×</button>
     <div class="cory-header">
       <div class="cory-avatar">
         <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
       </div>
       <p class="cory-name">Cory</p>
-      <span class="cory-online"></span>
     </div>
     <div class="cory-body">
-      <div class="cory-bubble">
-        <p>Have my pH levels been consistent?</p>
-      </div>
     </div>
     <div class="cory-input-row">
       <input class="cory-input" type="text" placeholder="Type a message..." />
@@ -846,6 +889,7 @@
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
     const messageList = document.querySelector('.list');
+    const coryClose = document.querySelector('.cory-close');
 
     const recipients = [
       { name: 'Jessica Flores', role: 'Student', avatar: '../assets/dbc4f08e-3a4f-4cd2-bdae-bcc4e54b3a9f.jpg' },
@@ -1006,14 +1050,126 @@
 
     const coryToggle = document.querySelector('.cory-trigger');
     const coryPopup = document.getElementById('coryPopup');
+    const coryBody = document.querySelector('.cory-body');
+    const coryInput = document.querySelector('.cory-input');
+    const corySend = document.querySelector('.cory-send');
+    const isTeacherView = window.location.pathname.includes('/Teacher/');
+
+    function scrollCoryToLatest() {
+      if (coryBody) {
+        coryBody.scrollTop = coryBody.scrollHeight;
+      }
+    }
+
+    function appendCoryBubble(message, role = 'bot', isTyping = false) {
+      if (!coryBody) {
+        return null;
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = `cory-bubble${role === 'user' ? ' user' : ''}${isTyping ? ' typing' : ''}`;
+
+      const text = document.createElement('p');
+      text.textContent = message;
+      bubble.appendChild(text);
+
+      coryBody.appendChild(bubble);
+      scrollCoryToLatest();
+      return bubble;
+    }
+
+    function getCoryReply(userMessage) {
+      const message = userMessage.toLowerCase();
+
+      if (/(hi|hello|hey)/.test(message)) {
+        return 'Hey! I am Cory. Ask me about coral health, tank care, or where to find tools in this app.';
+      }
+
+      if (message.includes('ph')) {
+        return 'For most reef tanks, pH is healthiest around 8.1 to 8.4. Big swings are more stressful than small day-to-day changes.';
+      }
+
+      if (message.includes('temperature') || message.includes('temp')) {
+        return 'Coral systems usually do best around 76 to 80 degrees F. Keep temperature steady and avoid fast spikes.';
+      }
+
+      if (message.includes('salinity')) {
+        return 'Target salinity near 35 ppt. Stability matters the most, so adjust slowly if you need to correct it.';
+      }
+
+      if (message.includes('redox') || message.includes('orp')) {
+        return 'Redox (ORP) helps show overall water chemistry stability. Use it as a trend indicator, not a single-pass/fail number.';
+      }
+
+      if (message.includes('health') || message.includes('tank')) {
+        return 'A healthy tank usually means stable pH, temperature, salinity, and consistent maintenance. Small regular habits beat big corrections.';
+      }
+
+      if (message.includes('clean') || message.includes('maintenance')) {
+        return 'Try a routine: check vitals daily, clean glass as needed, and schedule water changes on a fixed cadence.';
+      }
+
+      if (message.includes('calendar')) {
+        return 'Use the Calendar to switch between Month and Day views, then click a date in Day view to jump directly to that day.';
+      }
+
+      if (message.includes('message') || message.includes('chat')) {
+        return 'You can use Messages to communicate with your class team. I can also help summarize what to ask or post.';
+      }
+
+      if (message.includes('course') || message.includes('learn') || message.includes('assignment')) {
+        return isTeacherView
+          ? 'In Teacher view, open Courses to manage lessons and due dates. Use Post Reading for reading prompts and follow-up tasks.'
+          : 'In Student view, open Learn to check assignments and due dates, then track progress from your dashboard.';
+      }
+
+      if (message.includes('profile')) {
+        return 'Open Profile to review your account and class details. You can update info from the edit control there.';
+      }
+
+      if (message.includes('help') || message.includes('what can you do')) {
+        return 'I can answer coral-care basics, explain tank metrics, and help you navigate pages like Calendar, Learn/Courses, Messages, and Profile.';
+      }
+
+      return 'I can help with coral care or app navigation. Try asking about pH, salinity, temperature, Calendar, Messages, or Learn/Courses.';
+    }
+
+    function handleCorySend() {
+      if (!coryInput) {
+        return;
+      }
+
+      const userMessage = coryInput.value.trim();
+      if (!userMessage) {
+        return;
+      }
+
+      appendCoryBubble(userMessage, 'user');
+      coryInput.value = '';
+
+      const typingBubble = appendCoryBubble('Thinking...', 'bot', true);
+      window.setTimeout(() => {
+        if (typingBubble) {
+          typingBubble.remove();
+        }
+        appendCoryBubble(getCoryReply(userMessage), 'bot');
+      }, 350);
+    }
 
     function setPopupOpen(open) {
       coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
+      if (open && coryInput) {
+        coryInput.focus();
+      }
     }
 
     coryToggle.addEventListener('click', () => {
       const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
       setPopupOpen(!isOpen);
+    });
+
+    coryClose.addEventListener('click', () => {
+      setPopupOpen(false);
     });
 
     document.addEventListener('click', (event) => {
@@ -1031,6 +1187,16 @@
         setPopupOpen(false);
       }
     });
+
+    if (corySend && coryInput && coryBody) {
+      corySend.addEventListener('click', handleCorySend);
+      coryInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          handleCorySend();
+        }
+      });
+    }
   </script>
 </body>
 </html>
