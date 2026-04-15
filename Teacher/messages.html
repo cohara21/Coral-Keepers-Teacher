@@ -845,6 +845,15 @@
     const board = document.getElementById('board');
     const messageList = document.getElementById('messageList');
     const composePanel = document.getElementById('composePanel');
+    const composeClose = document.querySelector('.compose-close');
+    const composeForm = document.getElementById('composeForm');
+    const classSelect = document.getElementById('classSelect');
+    const studentSelect = document.getElementById('studentSelect');
+    const studentField = document.getElementById('studentField');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const modeButtons = document.querySelectorAll('.segment-btn');
+    const newMessageTriggers = document.querySelectorAll('.new-message-trigger');
     const coryToggle = document.querySelector('.floating-ai');
     const coryPopup = document.getElementById('coryPopup');
     const coryBody = coryPopup ? coryPopup.querySelector('.cory-body') : null;
@@ -852,6 +861,125 @@
     const corySend = coryPopup ? coryPopup.querySelector('.cory-send') : null;
     const coryClose = coryPopup ? coryPopup.querySelector('.cory-close') : null;
     const isTeacherView = window.location.pathname.includes('/Teacher/');
+
+    const classStudents = {
+      'MAR BIO 101': [
+        'Jessica Flores',
+        'Michael Chen',
+        'Aisha Patel'
+      ],
+      'MAR BIO 201': [
+        'Ian Breen',
+        'Emilio Hernandez',
+        'Ariana Lopez'
+      ],
+      'MAR BIO 348': [
+        'Maya Torres',
+        'Noah Kim',
+        'Sofia Grant'
+      ]
+    };
+
+    let composeMode = 'class';
+    let sentTimer = null;
+
+    function setComposerOpen(open) {
+      board.classList.toggle('is-compose', open);
+      composePanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      composePanel.classList.remove('is-sent');
+
+      if (open) {
+        messageInput.focus();
+      }
+    }
+
+    function setMode(mode) {
+      composeMode = mode;
+      modeButtons.forEach((button) => {
+        const active = button.dataset.mode === mode;
+        button.classList.toggle('active', active);
+      });
+
+      studentField.style.display = mode === 'student' ? 'grid' : 'none';
+      studentSelect.required = mode === 'student';
+      if (mode !== 'student') {
+        studentSelect.value = '';
+      }
+      updateSendState();
+    }
+
+    function populateStudents(classCode) {
+      const students = classStudents[classCode] || [];
+      studentSelect.innerHTML = '<option value="" disabled selected>Select a student</option>' + students.map((student) => `<option value="${student}">${student}</option>`).join('');
+    }
+
+    function openCompose(classCode) {
+      setComposerOpen(true);
+      if (classCode) {
+        classSelect.value = classCode;
+        populateStudents(classCode);
+      }
+      setMode('class');
+    }
+
+    function closeCompose() {
+      setComposerOpen(false);
+      composeForm.reset();
+      classSelect.value = '';
+      studentSelect.innerHTML = '<option value="" disabled selected>Select a student</option>';
+      studentField.style.display = 'grid';
+      setMode('class');
+      updateSendState();
+      if (sentTimer) {
+        clearTimeout(sentTimer);
+        sentTimer = null;
+      }
+    }
+
+    function updateSendState() {
+      const classChosen = classSelect.value.trim().length > 0;
+      const studentChosen = composeMode === 'student' ? studentSelect.value.trim().length > 0 : true;
+      const hasMessage = messageInput.value.trim().length > 0;
+      sendBtn.disabled = !(classChosen && studentChosen && hasMessage);
+    }
+
+    newMessageTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        openCompose(trigger.dataset.classCode);
+      });
+    });
+
+    composeClose.addEventListener('click', closeCompose);
+
+    modeButtons.forEach((button) => {
+      button.addEventListener('click', () => setMode(button.dataset.mode));
+    });
+
+    classSelect.addEventListener('change', () => {
+      populateStudents(classSelect.value);
+      updateSendState();
+    });
+
+    studentSelect.addEventListener('change', updateSendState);
+    messageInput.addEventListener('input', updateSendState);
+
+    composeForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (sendBtn.disabled) {
+        return;
+      }
+
+      composePanel.classList.add('is-sent');
+      sentTimer = setTimeout(() => {
+        closeCompose();
+      }, 2500);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && composePanel.getAttribute('aria-hidden') === 'false') {
+        closeCompose();
+      }
+    });
 
     function scrollCoryToLatest() {
       if (coryBody) {
