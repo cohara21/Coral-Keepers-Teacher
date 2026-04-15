@@ -106,7 +106,7 @@
     .page {
       width: min(1280px, 100%);
       margin: 0 auto;
-      padding: 81px 48px 24px;
+      padding: 81px 48px 81px;
     }
 
     .board-shell {
@@ -130,7 +130,7 @@
     }
 
     .board {
-      min-height: 967px;
+      min-height: clamp(620px, calc(100vh - 220px), 740px);
       width: 100%;
       background: #fff;
       border: 1px solid var(--card-border);
@@ -160,13 +160,13 @@
       font: inherit;
       width: 100%;
       text-align: left;
-      min-height: 64px;
+      min-height: 62px;
       border-bottom: 1px solid var(--divider);
       display: grid;
       grid-template-columns: 42px minmax(0, 1fr) 150px;
       align-items: center;
       gap: 18px;
-      padding: 8px 0;
+      padding: 10px 0;
       text-decoration: none;
       border-radius: 0;
       background: transparent;
