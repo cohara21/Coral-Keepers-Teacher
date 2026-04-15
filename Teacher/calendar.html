@@ -31,6 +31,12 @@
       font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
     }
 
     .top-nav {
@@ -106,17 +112,19 @@
       padding-bottom: 2px;
     }
 
-    .calendar-page {
-      width: 100%;
-      padding-top: 81px;
+    .page {
+      width: min(1328px, calc(100% - 48px));
+      margin: 0 auto;
+      padding-top: 88px;
       padding-bottom: 24px;
+      position: relative;
+      overflow: hidden;
     }
 
     .calendar-shell {
-      width: min(1182px, calc(100% - 102px));
-      margin: 0 auto;
       padding-top: 9px;
       position: relative;
+      overflow: hidden;
     }
 
     .calendar-header {
@@ -802,7 +810,6 @@
       height: 12px;
       display: block;
     }
-    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -835,9 +842,7 @@
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      <a href="index.html" aria-label="Go to Home">
-        <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/3571dc52-20a5-4641-8bc4-a396c9a46185.svg" alt="Coral Keepers" /></a>
-      </a>
+      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/3571dc52-20a5-4641-8bc4-a396c9a46185.svg" alt="Coral Keepers" /></a>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="course.html">Courses</a>
@@ -854,7 +859,7 @@
     </div>
   </header>
 
-  <main class="calendar-page">
+  <main class="page">
     <section class="calendar-shell">
       <div class="calendar-header">
         <div class="month-nav calendar-header-month">

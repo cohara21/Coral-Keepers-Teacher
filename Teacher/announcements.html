@@ -22,12 +22,18 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text-dark);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .top-nav {

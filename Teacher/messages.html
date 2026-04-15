@@ -22,12 +22,18 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
     body {
       margin: 0;
       font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text-dark);
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .top-nav {
@@ -248,7 +254,7 @@
       position: absolute;
       left: 14px;
       right: 14px;
-      top: 318px;
+      top: 180px;
       bottom: 20px;
       border-radius: 0 0 8px 8px;
       background: #f8f8f8;
