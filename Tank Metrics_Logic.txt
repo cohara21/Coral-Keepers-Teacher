@@ -1,0 +1,178 @@
+# Uniform Metric Update Logic (Website Standard)
+
+This file documents the exact live metric-change logic used by the website for:
+- Health Score
+- Temperature
+- pH
+- Salinity
+- Redox
+
+Use this in the app so behavior is 1:1 with the web version.
+
+Source of truth:
+- Teacher home: Teacher/index.html
+- Student home: Student/index.html
+
+Both pages use the same engine.
+
+---
+
+## 1. Initial Metric Values
+
+Initialize metrics with:
+
+- health = 94
+- temp = 78.2
+- ph = 8.4
+- salinity = 35
+- redox = 380
+
+---
+
+## 2. Hard Bounds (Clamp Limits)
+
+Clamp each metric after every update:
+
+- health: min 70, max 100
+- temp: min 72, max 84
+- ph: min 7.8, max 8.8
+- salinity: min 30, max 40
+- redox: min 300, max 450
+
+Clamp formula:
+
+value = min(maxValue, max(minValue, value))
+
+---
+
+## 3. Per-Tick Change Model
+
+Each tick uses percentage jitter:
+
+- pct = random in [-2, +2]
+- newValue = oldValue * (1 + pct / 100)
+
+Exact behavior:
+
+- health: jittered and clamped
+- temp: jittered and clamped
+- ph: jittered and clamped
+- salinity: jittered and clamped
+- redox: jittered and clamped
+
+Important: this is multiplicative percent change, not additive.
+
+---
+
+## 4. Update Timing
+
+The engine does not use a fixed interval.
+
+It schedules the next tick with:
+
+- delayMs = 6000 + random(0..1000)
+
+So each update occurs every 6.0s to 7.0s.
+
+Flow:
+
+1. Render initial values (with zero deltas)
+2. Wait 6000-7000 ms
+3. Run tick (update metrics, render)
+4. Schedule next tick again at 6000-7000 ms
+
+---
+
+## 5. Display Formatting Rules
+
+Rendered values:
+
+- Health main: round(health) + "%"
+- Temperature main: temp.toFixed(1) + "°F"
+- pH main: ph.toFixed(2)
+- Salinity main: round(salinity) + " ppt"
+- Redox main: round(redox) + " mV"
+
+Trend/delta display:
+
+- Health delta text: abs(healthPct).toFixed(1) + "%"
+- Temp delta text: abs(tempPct).toFixed(1) + "°"
+- Salinity delta text: abs(salinityPct).toFixed(1) + " ppt"
+
+Arrow logic (for health/temp/salinity):
+
+- up arrow "↑" if changePct > 0.05
+- down arrow "↓" if changePct < -0.05
+- flat arrow "→" otherwise
+
+Note: arrow threshold is +/-0.05 percent, not +/-0.5.
+
+---
+
+## 6. Reference Pseudocode
+
+const metrics = {
+  health: 94,
+  temp: 78.2,
+  ph: 8.4,
+  salinity: 35,
+  redox: 380
+};
+
+const bounds = {
+  health: [70, 100],
+  temp: [72, 84],
+  ph: [7.8, 8.8],
+  salinity: [30, 40],
+  redox: [300, 450]
+};
+
+function clamp(v, min, max) {
+  return Math.min(max, Math.max(min, v));
+}
+
+function jitterByPercent(value) {
+  const pct = (Math.random() * 4) - 2;
+  return { value: value * (1 + pct / 100), pct };
+}
+
+function tick() {
+  const healthUpdate = jitterByPercent(metrics.health);
+  metrics.health = clamp(healthUpdate.value, 70, 100);
+
+  const tempUpdate = jitterByPercent(metrics.temp);
+  metrics.temp = clamp(tempUpdate.value, 72, 84);
+
+  metrics.ph = clamp(jitterByPercent(metrics.ph).value, 7.8, 8.8);
+
+  const salinityUpdate = jitterByPercent(metrics.salinity);
+  metrics.salinity = clamp(salinityUpdate.value, 30, 40);
+
+  metrics.redox = clamp(jitterByPercent(metrics.redox).value, 300, 450);
+
+  render({
+    health: healthUpdate.pct,
+    temp: tempUpdate.pct,
+    salinity: salinityUpdate.pct
+  });
+
+  setTimeout(tick, 6000 + (Math.random() * 1000));
+}
+
+render({ health: 0, temp: 0, salinity: 0 });
+setTimeout(tick, 6000 + (Math.random() * 1000));
+
+---
+
+## 7. Uniformity Requirement
+
+For app parity, keep these exactly the same:
+
+- Initial metric values
+- Jitter range (-2% to +2%)
+- Clamp bounds
+- Tick cadence (6s to 7s randomized)
+- Arrow threshold (+/-0.05)
+- Number formatting/rounding shown above
+
+If any of these differ, users will notice a mismatch between app and website.
