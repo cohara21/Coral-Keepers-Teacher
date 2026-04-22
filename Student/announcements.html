@@ -150,14 +150,71 @@
 
     .page-tools {
       position: absolute;
-      top: 0;
+      top: -6px;
       right: 0;
-      width: 48px;
-      height: 20px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      color: #5b605f;
+      gap: 14px;
+      color: #727272;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 0 12px;
+      height: 36px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 117, 222, 0.12);
+    }
+
+    .search-icon {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    .search-input {
+      border: none;
+      background: transparent;
+      height: 100%;
+      padding: 0 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      color: var(--text-dark);
+      outline: none;
+      width: 200px;
+    }
+
+    .search-input::placeholder {
+      color: #6b7280;
+    }
+
+    .tool-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tool-btn:hover {
+      background: #f8f9f7;
+      border-color: rgba(0,0,0,0.1);
     }
 
     .board-header {
@@ -188,14 +245,6 @@
       letter-spacing: 1.2px;
       font-weight: 700;
       color: var(--text-muted);
-    }
-
-    .page-tools img {
-      width: 48px;
-      height: 20px;
-      display: block;
-      opacity: 0.88;
-      object-fit: contain;
     }
 
     .list {
@@ -261,19 +310,19 @@
       width: 73px;
       height: 73px;
       border-radius: 46.063px;
-      border: 3px solid #0075de;
-      background: #fff;
+      border: none;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.11);
+      box-shadow: none;
       z-index: 40;
       cursor: pointer;
     }
 
     .cory-trigger img {
-      width: 32.287px;
-      height: 48.156px;
+      width: 100%;
+      height: 100%;
       display: block;
     }
 
@@ -519,8 +568,16 @@
 
   <main class="announcements-page">
     <div class="board-shell">
-      <div class="page-tools" aria-hidden="true">
-        <img src="../assets/3a5fbfee-b6e9-4937-8832-22f8104b9504.svg" alt="" />
+      <div class="page-tools">
+        <div class="search-bar">
+          <img class="search-icon" src="../assets/Search.svg" alt="" />
+          <input class="search-input" type="search" placeholder="Search announcements..." aria-label="Search announcements" />
+        </div>
+        <button class="tool-btn filter-btn" type="button" aria-label="Filter announcements">
+          <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
+          </svg>
+        </button>
       </div>
 
       <section class="board">
@@ -533,46 +590,28 @@
         <div class="row">
           <div class="dot"></div>
           <div>
-            <p class="announcement-title">Extra Credit Opportunity</p>
-            <p class="announcement-copy">Hello all, extra credit will be given to those who participate in my extra help session today at 4:30.</p>
+            <p class="announcement-title">Project Guidelines</p>
+            <p class="announcement-copy">The rubric for our end of unit coral reef project has been uploaded to the portal.</p>
           </div>
-          <div class="date">4/6/2026, 3:05 PM</div>
+          <div class="date">4/15/2026, 9:00 AM</div>
         </div>
 
         <div class="row">
           <div class="dot"></div>
           <div>
-            <p class="announcement-title">Don’t forget!</p>
-            <p class="announcement-copy">Hello all. Please do not forget about our upcoming quiz this Friday</p>
+            <p class="announcement-title">Guest Speaker Tomorrow</p>
+            <p class="announcement-copy">A marine biologist will be joining our class tomorrow. Please prepare questions!</p>
           </div>
-          <div class="date">3/12/2026, 10:22 AM</div>
-        </div>
-
-        <div class="row">
-          <div class="dot empty"></div>
-          <div>
-            <p class="announcement-title">Volunteer Opportunity</p>
-            <p class="announcement-copy">Hello students. I hope you had a fun weekend. This week, I am offering extra credit for anyone who volunteers...</p>
-          </div>
-          <div class="date">3/6/2026, 5:00 PM</div>
-        </div>
-
-        <div class="row">
-          <div class="dot empty"></div>
-          <div>
-            <p class="announcement-title">Don’t forget!</p>
-            <p class="announcement-copy">Hello all. Please do not forget about our upcoming quiz this Friday</p>
-          </div>
-          <div class="date">3/1/2026, 4:12 PM</div>
+          <div class="date">4/10/2026, 1:15 PM</div>
         </div>
 
         <div class="row">
           <div class="dot empty"></div>
           <div>
             <p class="announcement-title">Extra Credit Opportunity</p>
-            <p class="announcement-copy">Hello all, extra credit will be given to those who participate in my extra help session today at 4:30.</p>
+            <p class="announcement-copy">Hello all, extra credit will be given to those who participate in my extra help...</p>
           </div>
-          <div class="date">2/27/2026, 1:14 PM</div>
+          <div class="date">4/6/2026, 3:05 PM</div>
         </div>
 
         <div class="row">
@@ -581,16 +620,7 @@
             <p class="announcement-title">Don’t forget!</p>
             <p class="announcement-copy">Hello all. Please do not forget about our upcoming quiz this Friday</p>
           </div>
-          <div class="date">2/20/2026, 3:00 PM</div>
-        </div>
-
-        <div class="row">
-          <div class="dot empty"></div>
-          <div>
-            <p class="announcement-title">Don’t forget!</p>
-            <p class="announcement-copy">Hello all. Please do not forget about our upcoming quiz this Friday</p>
-          </div>
-          <div class="date">2/16/2026, 12:14 PM</div>
+          <div class="date">3/12/2026, 10:22 AM</div>
         </div>
       </div>
       </section>
@@ -598,7 +628,7 @@
   </main>
 
   <button class="cory-trigger" aria-label="Cory AI" type="button">
-    <img src="../assets/d2079863-19e2-4f3b-bdd9-e8ddd18e2c0f.svg" alt="" />
+    <img src="../assets/corychaticon.svg" alt="" />
   </button>
 
   <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
@@ -697,6 +727,23 @@
     }
 
     attachCoryChat();
+
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('.row');
+        rows.forEach(row => {
+          const title = row.querySelector('.announcement-title').textContent.toLowerCase();
+          const copy = row.querySelector('.announcement-copy').textContent.toLowerCase();
+          if (title.includes(query) || copy.includes(query)) {
+            row.style.display = 'grid';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    }
   </script>
 </body>
 </html>
