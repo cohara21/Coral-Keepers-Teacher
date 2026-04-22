@@ -200,19 +200,11 @@
       overflow: hidden;
     }
 
-    .tank-image-base {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.9;
-      display: block;
-    }
-
     .tank-image-overlay {
       position: absolute;
       left: -36px;
       top: -107px;
-      width: 662px;
+      width: calc(100% + 36px);
       height: 439px;
       object-fit: cover;
     }
@@ -243,7 +235,7 @@
     }
 
     .health {
-      margin: 0 21px 0;
+      margin: 34px 21px 0;
       display: grid;
       grid-template-columns: 236px 1fr;
       column-gap: 36px;
@@ -945,8 +937,7 @@
         display: none;
       }
     }
-    .health-title { margin: 0 0 16px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
-    .health-title { margin: 0 0 16px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
+    .health-title { margin: 0 0 4px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
   </style>
 </head>
 <body>
@@ -989,8 +980,7 @@
         </div>
 
         <div class="tank-image-wrap">
-          <img class="tank-image-base" src="../assets/b9dbdfe2-3841-4b7d-a791-cb2df56c5ebf.png" alt="Live tank" />
-          <img class="tank-image-overlay" src="../assets/acf5ec69-e98a-487c-bc67-34c0790b4dbc.png" alt="" />
+          <img class="tank-image-overlay" src="../assets/acf5ec69-e98a-487c-bc67-34c0790b4dbc.png" alt="Live tank" />
           <div class="tank-image-buttons">
             <div class="tank-image-btn">
               <img src="../assets/ad32c547-025e-405a-9ac1-5672a14ca108.svg" width="9" height="9" alt="" />
@@ -1003,14 +993,14 @@
           </div>
         </div>
 
-        <h3 class="health-title">AI Health Score</h3>
         <div class="health">
           <div class="health-gauge">
             <img src="../assets/5f4cd70d-9575-4494-b354-18e91f4b5917.svg" alt="Health status" />
             <img class="health-cory" src="../assets/fe7dcc3f-c503-47c4-a0dc-46af41071412.svg" alt="Cory" />
           </div>
 
-          <div>
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <h3 class="health-title">AI Health Score</h3>
             <div class="stat-main">
               <div class="pct">94%</div>
               <div class="delta">

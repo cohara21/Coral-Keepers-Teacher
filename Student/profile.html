@@ -308,7 +308,7 @@
 
     .right-col {
       display: grid;
-      grid-template-rows: 356px 286px;
+      grid-template-rows: 356px 259px;
       gap: 24px;
     }
 
@@ -405,33 +405,71 @@
       align-items: start;
     }
 
-    .team-name {
-      margin: 0;
-      font-size: 32px;
-      line-height: 32px;
-      font-weight: 600;
+    .leaderboard {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-height: 178px;
+      overflow-y: auto;
+      padding-right: 16px;
+    }
+
+    .leaderboard::-webkit-scrollbar {
+      width: 4px;
+    }
+    .leaderboard::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .leaderboard::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    .leaderboard-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lb-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .lb-name {
+      font-size: 20px;
+      font-weight: 700;
       color: #000;
-      white-space: nowrap;
+      line-height: 24px;
     }
 
-    .rank-label {
-      margin: 24px 0 4px;
-      font-size: 12px;
-      line-height: 15px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .lb-rank {
+      font-size: 13px;
       font-weight: 700;
-      color: #5b605f;
+      color: #0075de;
     }
 
-    .rank {
+    .lb-track {
+      height: 12px;
+      border-radius: 6px;
+      background: #e0e5e6;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .lb-fill {
+      height: 100%;
+      background: #ffa56d;
+      border-radius: 6px;
+    }
+
+    .lb-points {
       margin: 0;
-      font-size: 71.296px;
-      line-height: 92px;
-      letter-spacing: 7.1296px;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #ffa56d;
+      font-size: 12px;
+      color: #727272;
+      text-align: right;
     }
 
     .members {
@@ -672,7 +710,6 @@
       height: 12px;
       display: block;
     }
-    }
 
     .cory-pointer {
       position: absolute;
@@ -723,7 +760,7 @@
   <main class="profile-page">
     <section class="hero">
       <img class="banner" src="../assets/2c5c51ab-84f0-47b2-8e2b-b68eb9b87357.png" alt="Coral reef" />
-      <img class="avatar" src="../assets/7fd1e6cb-e235-4d64-bb35-ecf2e887ca3a.png" alt="Sierra Winters" />
+      <img class="avatar" src="../assets/Pink%20Guy%20Icon.png" alt="Sierra Winters" />
       <button class="edit-profile-btn" type="button" aria-label="Edit profile">
         <img src="../assets/pencil.svg" alt="" aria-hidden="true" />
       </button>
@@ -814,27 +851,78 @@
 
         <article class="card team">
           <div class="team-head">
-            <p class="small-label">Team Name</p>
-            <p class="small-label">Members</p>
+            <p class="small-label">Leaderboard</p>
+            <p class="small-label">Reef Guardians Members</p>
           </div>
 
           <div class="team-main">
-            <div>
-              <p class="team-name">Reef Guardians 🪸</p>
-              <p class="rank-label">Rank</p>
-              <p class="rank">1🔥</p>
+            <div class="leaderboard">
+              <div class="leaderboard-item active">
+                <div class="lb-header">
+                  <span class="lb-name">Reef Guardians 🪸</span>
+                  <span class="lb-rank">#1 Class Rank</span>
+                </div>
+                <div class="lb-track">
+                  <div class="lb-fill" style="width: 82%;"></div>
+                </div>
+                <p class="lb-points">920 Points Earned</p>
+              </div>
+
+              <div class="leaderboard-item">
+                <div class="lb-header">
+                  <span class="lb-name">Salty Saviors</span>
+                  <span class="lb-rank">#2 Class Rank</span>
+                </div>
+                <div class="lb-track">
+                  <div class="lb-fill" style="width: 65%;"></div>
+                </div>
+                <p class="lb-points">723 Points Earned</p>
+              </div>
+
+              <div class="leaderboard-item">
+                <div class="lb-header">
+                  <span class="lb-name">Polyp Posse</span>
+                  <span class="lb-rank">#3 Class Rank</span>
+                </div>
+                <div class="lb-track">
+                  <div class="lb-fill" style="width: 45%;"></div>
+                </div>
+                <p class="lb-points">512 Points Earned</p>
+              </div>
+
+              <div class="leaderboard-item">
+                <div class="lb-header">
+                  <span class="lb-name">The Barnacles</span>
+                  <span class="lb-rank">#4 Class Rank</span>
+                </div>
+                <div class="lb-track">
+                  <div class="lb-fill" style="width: 35%;"></div>
+                </div>
+                <p class="lb-points">420 Points Earned</p>
+              </div>
+
+              <div class="leaderboard-item">
+                <div class="lb-header">
+                  <span class="lb-name">Kelp Kids</span>
+                  <span class="lb-rank">#5 Class Rank</span>
+                </div>
+                <div class="lb-track">
+                  <div class="lb-fill" style="width: 20%;"></div>
+                </div>
+                <p class="lb-points">280 Points Earned</p>
+              </div>
             </div>
             <div class="members">
               <div class="member">
-                <img src="../assets/dbc4f08e-3a4f-4cd2-bdae-bcc4e54b3a9f.jpg" alt="Jessica Flores" />
+                <img src="../assets/Red%20Guy%20Icon.png" alt="Jessica Flores" />
                 <p class="member-name">Jessica Flores</p>
               </div>
               <div class="member">
-                <img src="../assets/06a7b4d6-4b69-4062-8523-931943765840.jpg" alt="Ian Breen" />
+                <img src="../assets/Yellow%20Guy%20Icon.png" alt="Ian Breen" />
                 <p class="member-name">Ian Breen</p>
               </div>
               <div class="member">
-                <img src="../assets/c692489c-6658-467a-b3ad-177f352ef94c.jpg" alt="Emilio Hernandez" />
+                <img src="../assets/Blue%20Guy%20Icon.png" alt="Emilio Hernandez" />
                 <p class="member-name">Emilio Hernandez</p>
               </div>
             </div>
@@ -941,6 +1029,40 @@
     }
 
     attachCoryChat();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const leaderboard = document.querySelector('.leaderboard');
+      const items = document.querySelectorAll('.leaderboard-item');
+      
+      if (!leaderboard) return;
+
+      function updateOpacities() {
+        const containerRect = leaderboard.getBoundingClientRect();
+        const H = containerRect.height;
+        
+        let targetY = 30 + leaderboard.scrollTop;
+        if (targetY > H / 2) {
+          targetY = H / 2;
+        }
+        
+        items.forEach(item => {
+          const rect = item.getBoundingClientRect();
+          const itemY = rect.top + rect.height / 2 - containerRect.top;
+          
+          const dist = Math.abs(itemY - targetY);
+          
+          let opacity = 1 - (dist / (H / 1.5));
+          opacity = Math.max(0.15, Math.min(1, opacity));
+          
+          item.style.opacity = opacity;
+        });
+      }
+
+      leaderboard.addEventListener('scroll', updateOpacities);
+      window.addEventListener('resize', updateOpacities);
+      updateOpacities();
+    });
   </script>
 </body>
 </html>

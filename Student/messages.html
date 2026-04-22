@@ -137,26 +137,74 @@
       width: min(1183px, calc(100% - 48px));
       margin: 0 auto;
       position: relative;
-      padding-top: 32px;
     }
 
     .page-tools {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 57px;
-      height: 20px;
       display: flex;
-      align-items: center;
       justify-content: flex-end;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+      color: #727272;
     }
 
-    .page-tools img {
-      width: 57px;
-      height: 20px;
-      object-fit: contain;
-      display: block;
-      opacity: 0.88;
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 0 12px;
+      height: 36px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .search-bar:focus-within {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0, 117, 222, 0.12);
+    }
+
+    .search-icon {
+      width: 14px;
+      height: 14px;
+      opacity: 0.6;
+    }
+
+    .search-input {
+      border: none;
+      background: transparent;
+      height: 100%;
+      padding: 0 8px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      color: var(--text-dark);
+      outline: none;
+      width: 200px;
+    }
+
+    .search-input::placeholder {
+      color: #6b7280;
+    }
+
+    .tool-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tool-btn:hover {
+      background: #f8f9f7;
+      border-color: rgba(0, 0, 0, 0.1);
     }
 
     .board {
@@ -726,7 +774,6 @@
       height: 12px;
       display: block;
     }
-    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -786,8 +833,16 @@
 
   <main class="messages-page">
     <div class="board-shell">
-      <div class="page-tools" aria-hidden="true">
-        <img src="../assets/1d7cd1d6-caff-46b9-aa10-55553fe7209d.svg" alt="" />
+      <div class="page-tools">
+        <div class="search-bar">
+          <img class="search-icon" src="../assets/Search.svg" alt="" />
+          <input class="search-input" type="search" placeholder="Search messages..." aria-label="Search messages" />
+        </div>
+        <button class="tool-btn filter-btn" type="button" aria-label="Filter messages">
+          <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
+          </svg>
+        </button>
       </div>
 
       <section class="board">
