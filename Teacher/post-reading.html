@@ -305,8 +305,7 @@
       background: #f0fdf4;
       border-color: #bbf7d0;
       color: var(--green);
-      cursor: default;
-      pointer-events: none;
+      cursor: pointer;
     }
 
     .assign-icon {
@@ -348,6 +347,15 @@
     .assign-dropdown button:hover {
       background: #f4faff;
       color: #0075de;
+    }
+
+    .assign-dropdown button.destructive {
+      color: #d93025;
+    }
+
+    .assign-dropdown button.destructive:hover {
+      background: #fdf2f2;
+      color: #d93025;
     }
 
     .floating-ai {
@@ -908,6 +916,64 @@
       const btn = container.querySelector('.topic-action-btn');
       const dropdown = container.querySelector('.assign-dropdown');
 
+      const renderUnassigned = () => {
+        dropdown.innerHTML = `
+          <button class="dropdown-item" data-action="quick">Quick Assign</button>
+          <button class="dropdown-item" data-action="date">Add Due Date...</button>
+          <button class="dropdown-item" data-action="visibility">Schedule Visibility...</button>
+        `;
+        attachItemEvents();
+      };
+
+      const renderAssigned = () => {
+        dropdown.innerHTML = `
+          <button class="dropdown-item" data-action="edit-date">Edit Due Date...</button>
+          <button class="dropdown-item" data-action="edit-visibility">Edit Visibility...</button>
+          <button class="dropdown-item destructive" data-action="unassign">Unassign</button>
+        `;
+        attachItemEvents();
+      };
+
+      const attachItemEvents = () => {
+        const items = dropdown.querySelectorAll('.dropdown-item');
+        items.forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const action = item.dataset.action;
+            dropdown.classList.remove('show');
+
+            if (action === 'quick') {
+              setAssigned("Assigned");
+            } else if (action === 'date') {
+              const d = prompt("Enter Due Date (e.g. April 20, 2026):", "April 20, 2026");
+              if (d) setAssigned(`Due ${d}`);
+            } else if (action === 'visibility') {
+              const d = prompt("Schedule for when? (e.g. Tomorrow 8AM):", "Tomorrow 8AM");
+              if (d) setAssigned(`Scheduled ${d}`);
+            } else if (action === 'unassign') {
+              setUnassigned();
+            } else if (action === 'edit-date' || action === 'edit-visibility') {
+              const d = prompt("Update setting:", "");
+              if (d) setAssigned(action === 'edit-date' ? `Due ${d}` : `Scheduled ${d}`);
+            }
+          });
+        });
+      };
+
+      const setAssigned = (label) => {
+        btn.classList.add('assigned');
+        btn.classList.remove('unassigned');
+        btn.innerHTML = `<svg class="assign-icon check" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>${label}</span>`;
+        renderAssigned();
+      };
+
+      const setUnassigned = () => {
+        btn.classList.remove('assigned');
+        btn.classList.add('unassigned');
+        btn.innerHTML = `<span>Assign</span><svg class="assign-icon chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>`;
+        renderUnassigned();
+      };
+
       if (btn && dropdown) {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -917,16 +983,12 @@
           dropdown.classList.toggle('show');
         });
 
-        const items = dropdown.querySelectorAll('.dropdown-item');
-        items.forEach(item => {
-          item.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdown.classList.remove('show');
-            btn.classList.add('assigned');
-            btn.classList.remove('unassigned');
-            btn.innerHTML = `<svg class="assign-icon check" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg><span>Assigned</span>`;
-          });
-        });
+        // Initial render
+        if (btn.classList.contains('assigned')) {
+          renderAssigned();
+        } else {
+          renderUnassigned();
+        }
       }
     });
 
