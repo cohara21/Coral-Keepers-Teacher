@@ -1149,21 +1149,41 @@
                 </div>
               </div>
             </div>
-            <div class="vital">
-              <div class="vital-top">
-                <img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" width="12" height="15" alt="" />
-                <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">1 ppt</span></span>
+            <div class="vital vital-flip">
+              <div class="vital-flip-inner">
+                <div class="vital-face front">
+                  <div class="vital-top">
+                    <img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" width="12" height="15" alt="" />
+                    <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">1 ppt</span></span>
+                  </div>
+                  <div class="vital-title">Salinity</div>
+                  <div class="vital-value">35 ppt</div>
+                </div>
+                <div class="vital-face back">
+                  <div class="vital-back-content">
+                    <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
+                    <p class="vital-back-copy">Your salinity is currently 35 ppt. Stability is key for a thriving reef, and you're nailing it!</p>
+                  </div>
+                </div>
               </div>
-              <div class="vital-title">Salinity</div>
-              <div class="vital-value">35 ppt</div>
             </div>
-            <div class="vital">
-              <div class="vital-top">
-                <img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" width="12" height="15" alt="" />
-                <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />NOM</span>
+            <div class="vital vital-flip">
+              <div class="vital-flip-inner">
+                <div class="vital-face front">
+                  <div class="vital-top">
+                    <img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" width="12" height="15" alt="" />
+                    <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />NOM</span>
+                  </div>
+                  <div class="vital-title">Redox</div>
+                  <div class="vital-value">380 mV</div>
+                </div>
+                <div class="vital-face back">
+                  <div class="vital-back-content">
+                    <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
+                    <p class="vital-back-copy">Redox is looking great at 380 mV. High oxygen levels mean your corals are breathing easy!</p>
+                  </div>
+                </div>
               </div>
-              <div class="vital-title">Redox</div>
-              <div class="vital-value">380 mV</div>
             </div>
           </div>
         </div>
@@ -1408,6 +1428,7 @@
     const salTrendArrowEl = document.querySelector('.sal-trend .trend-arrow');
     const salTrendValueEl = document.querySelector('.sal-trend .trend-value');
     const vitalValueEls = document.querySelectorAll('.vital .vital-value');
+    const vitalBackCopyEls = document.querySelectorAll('.vital .vital-back-copy');
 
     if (healthEl && deltaArrowEl && deltaValueEl && tempTrendArrowEl && tempTrendValueEl && salTrendArrowEl && salTrendValueEl && vitalValueEls.length >= 4) {
       const metrics = {
@@ -1463,6 +1484,11 @@
         vitalValueEls[1].textContent = metrics.ph.toFixed(2);
         vitalValueEls[2].textContent = `${Math.round(metrics.salinity)} ppt`;
         vitalValueEls[3].textContent = `${Math.round(metrics.redox)} mV`;
+
+        if (vitalBackCopyEls.length >= 4) {
+          vitalBackCopyEls[2].textContent = `Your salinity is currently ${Math.round(metrics.salinity)} ppt. Stability is key for a thriving reef, and you're nailing it!`;
+          vitalBackCopyEls[3].textContent = `Redox is looking great at ${Math.round(metrics.redox)} mV. High oxygen levels mean your corals are breathing easy!`;
+        }
       }
 
       function tick() {
