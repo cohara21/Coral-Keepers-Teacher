@@ -549,10 +549,6 @@
         padding: 0 12px;
       }
 
-      .nav-links {
-        display: none;
-      }
-
       .learn-shell {
         width: 100%;
         height: auto;
@@ -578,12 +574,85 @@
         margin-bottom: 16px;
       }
     }
+
+  
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 40;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 1000px) {
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-links {
+        display: flex;
+        position: fixed;
+        top: 64px;
+        right: 0;
+        width: 280px;
+        height: calc(100vh - 64px);
+        background: #ffffff;
+        flex-direction: column;
+        padding: 16px 24px;
+        box-shadow: -10px 0 20px rgba(0,0,0,0.05);
+        border-left: 1px solid rgba(0,0,0,0.08);
+        gap: 0;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-link {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--divider);
+        height: auto;
+      }
+      .nav-link.active {
+        border-bottom-color: var(--blue);
+      }
+      .nav-link.switch {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+        padding-right: 0;
+        margin-top: auto;
+        padding-bottom: 32px;
+      }
+      .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle.open span:nth-child(2) { opacity: 0; }
+      .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
   </style>
 </head>
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
       <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
+      
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link active" href="course.html">Courses</a>
