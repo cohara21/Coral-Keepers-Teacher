@@ -916,12 +916,6 @@
             <div class="target-row">
               <div class="target-label">To:</div>
               <div class="target-content">
-                <div class="segmented" role="tablist" aria-label="Message target type">
-                  <button class="segment-btn active" id="entireClassBtn" type="button" data-mode="class">Entire
-                    Class</button>
-                  <button class="segment-btn" id="oneStudentBtn" type="button" data-mode="student">One Student</button>
-                </div>
-
                 <div class="target-grid">
                   <div class="field">
                     <label class="field-label" for="classSelect">Class</label>
@@ -935,7 +929,7 @@
 
                   <div class="field" id="studentField">
                     <label class="field-label" for="studentSelect">Student</label>
-                    <select class="target-select" id="studentSelect">
+                    <select class="target-select" id="studentSelect" required>
                       <option value="" disabled selected>Select a student</option>
                     </select>
                   </div>
@@ -996,7 +990,6 @@
     const studentField = document.getElementById('studentField');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
-    const modeButtons = document.querySelectorAll('.segment-btn');
     const newMessageTriggers = document.querySelectorAll('.new-message-trigger');
     const coryToggle = document.querySelector('.floating-ai');
     const coryPopup = document.getElementById('coryPopup');
@@ -1024,7 +1017,6 @@
       ]
     };
 
-    let composeMode = 'class';
     let sentTimer = null;
 
     function setComposerOpen(open) {
@@ -1037,19 +1029,8 @@
       }
     }
 
-    function setMode(mode) {
-      composeMode = mode;
-      modeButtons.forEach((button) => {
-        const active = button.dataset.mode === mode;
-        button.classList.toggle('active', active);
-      });
-
-      studentField.style.display = mode === 'student' ? 'grid' : 'none';
-      studentSelect.required = mode === 'student';
-      if (mode !== 'student') {
-        studentSelect.value = '';
-      }
-      updateSendState();
+    function setMode() {
+      // Logic removed as only student mode exists
     }
 
     function populateStudents(classCode) {
@@ -1063,7 +1044,6 @@
         classSelect.value = classCode;
         populateStudents(classCode);
       }
-      setMode('class');
     }
 
     function closeCompose() {
@@ -1071,8 +1051,6 @@
       composeForm.reset();
       classSelect.value = '';
       studentSelect.innerHTML = '<option value="" disabled selected>Select a student</option>';
-      studentField.style.display = 'grid';
-      setMode('class');
       updateSendState();
       if (sentTimer) {
         clearTimeout(sentTimer);
@@ -1082,7 +1060,7 @@
 
     function updateSendState() {
       const classChosen = classSelect.value.trim().length > 0;
-      const studentChosen = composeMode === 'student' ? studentSelect.value.trim().length > 0 : true;
+      const studentChosen = studentSelect.value.trim().length > 0;
       const hasMessage = messageInput.value.trim().length > 0;
       sendBtn.disabled = !(classChosen && studentChosen && hasMessage);
     }
@@ -1095,9 +1073,6 @@
 
     composeClose.addEventListener('click', closeCompose);
 
-    modeButtons.forEach((button) => {
-      button.addEventListener('click', () => setMode(button.dataset.mode));
-    });
 
     classSelect.addEventListener('change', () => {
       populateStudents(classSelect.value);
