@@ -469,8 +469,8 @@
 
     .vitals-history-close {
       position: absolute;
-      right: 14px;
-      top: 10px;
+      right: 29px;
+      top: 37px;
       border: 0;
       background: transparent;
       font-size: 28px;
@@ -531,6 +531,7 @@
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      margin-right: 20px;
     }
 
     .vh-range span {
@@ -565,12 +566,13 @@
       letter-spacing: -0.8px;
       color: #000;
       padding-left: 2px;
+      margin-bottom: 29px;
     }
 
     .vh-bars-wrap {
-      height: 200px;
+      height: 178px;
       position: relative;
-      padding: 14px 2px 12px;
+      padding: 14px 2px 0;
     }
 
     .vh-bars {
@@ -585,27 +587,40 @@
       border-radius: 10px 10px 0 0;
       background: rgba(255, 165, 109, 0.24);
       min-height: 48px;
+      position: relative;
+      transition: background-color 0.2s ease;
+      cursor: pointer;
     }
 
-    .vh-bar.hot {
+    .vh-bar:hover {
       background: #ffa56d;
     }
 
     .vh-bar-label {
       position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 6px;
       font-size: 11px;
       line-height: 12px;
       font-weight: 700;
       color: #2693ff;
       transform: translateX(-50%);
       white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .vh-bar:hover .vh-bar-label {
+      opacity: 1;
     }
 
     .vh-baseline {
       width: 100%;
       height: 5px;
       display: block;
-      margin-top: 8px;
+      margin-top: 0;
     }
 
     .vh-x {
@@ -1687,25 +1702,25 @@
           <div>
             <div class="vh-bars-wrap">
               <div class="vh-bars">
-                <span class="vh-bar" style="height:87px"></span><span class="vh-bar" style="height:93px"></span>
-                <span class="vh-bar" style="height:92px"></span><span class="vh-bar" style="height:96px"></span>
-                <span class="vh-bar" style="height:98px"></span><span class="vh-bar" style="height:103px"></span>
-                <span class="vh-bar" style="height:118px"></span><span class="vh-bar hot" style="height:124px"></span>
-                <span class="vh-bar hot" style="height:123px"></span><span class="vh-bar hot" style="height:134px"></span>
-                <span class="vh-bar" style="height:96px"></span><span class="vh-bar" style="height:100px"></span>
-                <span class="vh-bar" style="height:87px"></span><span class="vh-bar" style="height:92px"></span>
-                <span class="vh-bar" style="height:84px"></span><span class="vh-bar" style="height:89px"></span>
-                <span class="vh-bar" style="height:85px"></span><span class="vh-bar" style="height:91px"></span>
+                <span class="vh-bar" style="height:87px"><span class="vh-bar-label">75.9º</span></span>
+                <span class="vh-bar" style="height:90px"><span class="vh-bar-label">76.5º</span></span>
+                <span class="vh-bar" style="height:90px"><span class="vh-bar-label">76.5º</span></span>
+                <span class="vh-bar" style="height:94px"><span class="vh-bar-label">77.2º</span></span>
+                <span class="vh-bar" style="height:96px"><span class="vh-bar-label">77.6º</span></span>
+                <span class="vh-bar" style="height:101px"><span class="vh-bar-label">78.5º</span></span>
+                <span class="vh-bar" style="height:115px"><span class="vh-bar-label">81.0º</span></span>
+                <span class="vh-bar" style="height:121px"><span class="vh-bar-label">82.1º</span></span>
+                <span class="vh-bar" style="height:123px"><span class="vh-bar-label">82.5º</span></span>
+                <span class="vh-bar" style="height:128px"><span class="vh-bar-label">83.4º</span></span>
+                <span class="vh-bar" style="height:93px"><span class="vh-bar-label">77.0º</span></span>
+                <span class="vh-bar" style="height:98px"><span class="vh-bar-label">77.9º</span></span>
+                <span class="vh-bar" style="height:85px"><span class="vh-bar-label">75.5º</span></span>
+                <span class="vh-bar" style="height:90px"><span class="vh-bar-label">76.5º</span></span>
+                <span class="vh-bar" style="height:82px"><span class="vh-bar-label">75.0º</span></span>
+                <span class="vh-bar" style="height:86px"><span class="vh-bar-label">75.7º</span></span>
+                <span class="vh-bar" style="height:85px"><span class="vh-bar-label">75.5º</span></span>
+                <span class="vh-bar" style="height:88px"><span class="vh-bar-label">76.1º</span></span>
               </div>
-              <span class="vh-bar-label" style="left:5.5%;top:auto;bottom:109px;">76.5º</span>
-              <span class="vh-bar-label" style="left:16.5%;top:auto;bottom:112px;">77.2º</span>
-              <span class="vh-bar-label" style="left:27.5%;top:auto;bottom:119px;">78.4º</span>
-              <span class="vh-bar-label" style="left:38.5%;top:auto;bottom:140px;">82.1º</span>
-              <span class="vh-bar-label" style="left:49.5%;top:auto;bottom:150px;">83.5º</span>
-              <span class="vh-bar-label" style="left:60.5%;top:auto;bottom:116px;">77.9º</span>
-              <span class="vh-bar-label" style="left:71.5%;top:auto;bottom:108px;">76.4º</span>
-              <span class="vh-bar-label" style="left:82.5%;top:auto;bottom:105px;">75.8º</span>
-              <span class="vh-bar-label" style="left:93.5%;top:auto;bottom:107px;">76.1º</span>
             </div>
             <img class="vh-baseline" src="../assets/vital-history-eb2d9e5867c65d7a580e3a369a38cdc79aeedeeb.svg" alt="" />
             <div class="vh-x"><span>Mon 4/20</span><span>Tues 4/21</span><span>Wed 4/22</span><span>Thurs 4/23</span><span>Fri 4/24</span><span>Sat 4/25</span><span>Sun 4/26</span><span>Mon 4/27</span><span>Tues 4/28</span></div>
