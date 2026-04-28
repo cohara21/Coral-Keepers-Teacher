@@ -287,16 +287,52 @@
       bottom: 16px;
       width: 36px;
       height: 36px;
+      min-width: 36px;
+      min-height: 36px;
       background: #fff;
       border-radius: 50%;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: transform 0.2s;
       z-index: 5;
+      flex: 0 0 auto;
+    }
+
+    .sim-enlarge {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      background: #fff;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+      z-index: 10;
+      flex: 0 0 auto;
+    }
+
+    .sim-enlarge:hover {
+      transform: scale(1.1);
+    }
+
+    .sim-enlarge img {
+      width: 16px;
+      height: 16px;
+      display: block;
     }
 
     .tank-enlarge:hover {
@@ -334,6 +370,144 @@
       right: 32px;
       width: 48px;
       height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      border-radius: 50%;
+      padding: 0;
+      line-height: 1;
+      transition: background 0.2s;
+    }
+
+    .tank-modal-close svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .tank-modal-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .sim-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      padding: 40px 20px;
+    }
+
+    .sim-modal.active {
+      display: flex;
+    }
+
+    .sim-modal-content {
+      width: 100%;
+      max-width: 1400px;
+      height: auto;
+      max-height: 85vh;
+      background: #fff;
+      border-radius: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      cursor: default;
+      overflow: hidden;
+    }
+
+    .sim-modal-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .sim-modal-header .sim-score-label {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-weight: 700;
+      color: #5b605f;
+    }
+
+    .sim-modal-header .sim-score {
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .sim-modal-header .sim-score-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sim-modal-image {
+      grid-column: 1;
+      grid-row: 2;
+      background: #111;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sim-modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sim-modal-metrics {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      overflow-y: auto;
+      padding-right: 12px;
+    }
+
+    .sim-modal-metrics::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .sim-modal-metrics::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+
+    .sim-modal-metrics::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+
+    .sim-modal-close {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
       color: #fff;
       font-size: 40px;
       font-family: sans-serif;
@@ -342,6 +516,20 @@
       justify-content: center;
       cursor: pointer;
       z-index: 1001;
+      border-radius: 50%;
+      transition: background 0.2s;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .sim-modal-close svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .sim-modal-close:hover {
+      background: rgba(255,255,255,0.2);
     }
 
     .tank-image-overlay {
@@ -1044,7 +1232,7 @@
     .assignments {
       grid-column: 2;
       grid-row: 1;
-      min-height: 520px;
+      min-height: 360px; /* reduced to allow larger simulation card while keeping gap */
       height: auto;
       padding: 25px;
       display: flex;
@@ -1160,11 +1348,64 @@
     .team-score {
       grid-column: 2;
       grid-row: 2;
-      min-height: 285px;
+      min-height: 460px;
       height: auto;
-      padding: 24px;
+      padding: 0; /* let the inner sim-card control padding so it fills the article */
       position: relative;
       margin-top: -12px;
+    }
+
+    /* Simulation card placed in the Team Score slot for Student view */
+    .sim-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr; /* header then content; let content fill */
+      gap: 18px;
+      align-items: stretch;
+      padding: 25px; /* match `assignments` padding */
+      height: 100%;
+      min-height: 460px; /* keep it taller to match request */
+      background: transparent; /* remove inner white box so it fills the outer card */
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
+      align-content: start; /* ensure header sits at the top */
+    }
+
+    .sim-header-row {
+      grid-column: 1 / -1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:12px; /* more breathing room under header */
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      margin-top: 0;
+    }
+
+    .sim-title { font-size:12px; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; color:#5b605f; }
+    .sim-score-label { font-size:12px; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; color:#5b605f; }
+    .sim-score { color:#16a34a; font-weight:700; font-size:14px; }
+    .sim-score-group { display:flex; align-items:center; gap:10px; }
+
+    .sim-left { background:#111; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center; grid-row:2 / span 1; position:relative; }
+    .sim-left > img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    .sim-right { display:flex; flex-direction:column; justify-content:flex-start; gap:24px; padding-right:6px; }
+
+    .sim-metric { display:flex; flex-direction:column; }
+
+    .metric-row { display:flex; align-items:center; gap:12px; padding:8px 0; }
+    .metric-label { color:#2f3333; font-weight:700; font-size:13px; margin-bottom:8px; line-height:1.4; }
+    .metric-value { color:#0075de; font-weight:700; flex:0 0 64px; text-align:right; }
+
+    .metric-track { position:relative; flex:1 1 auto; height:8px; background:#eef2f3; border-radius:999px; margin:0 12px 0 0; cursor:pointer; }
+    .metric-thumb { position:absolute; top:50%; transform:translateY(-50%); width:14px; height:14px; background:#16a34a; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.12); cursor:grab; }
+    .metric-thumb:active { cursor:grabbing; }
+
+    @media (max-width:1000px) {
+      .sim-card { grid-template-columns: 1fr; }
+      .sim-header-row { padding-bottom:12px; }
     }
 
     .team-row {
@@ -1721,16 +1962,56 @@
       </article>
 
       <article class="card team-score">
-        <h2 class="section-title">Team Score</h2>
+        <div class="sim-card" role="region" aria-label="Coral Simulation">
+          <div class="sim-header-row">
+            <div class="sim-title">Coral Simulation</div>
+            <div class="sim-score-group">
+              <div class="sim-score">92%</div>
+              <div class="sim-score-label">AI Health Score</div>
+            </div>
+          </div>
 
-        <div class="team-row">
-          <h3 class="team-name">Reef Guardians 🪸</h3>
-          <p class="team-rank">#1 Class Rank</p>
+          <div class="sim-left">
+            <img src="../assets/Inside tank view.webp" alt="Simulation preview" />
+            <button class="sim-enlarge" aria-label="Enlarge simulation" onclick="document.getElementById('simModal').classList.add('active')">
+              <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="sim-right">
+            <div class="sim-metric">
+              <div class="metric-label">Temperature</div>
+              <div class="metric-row">
+                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:60%"></div></div>
+                <div class="metric-value">78° F</div>
+              </div>
+            </div>
+
+            <div class="sim-metric">
+              <div class="metric-label">Salinity</div>
+              <div class="metric-row">
+                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:86%"></div></div>
+                <div class="metric-value">43 PPT</div>
+              </div>
+            </div>
+
+            <div class="sim-metric">
+              <div class="metric-label">pH Level</div>
+              <div class="metric-row">
+                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:46%"></div></div>
+                <div class="metric-value">8.20</div>
+              </div>
+            </div>
+
+            <div class="sim-metric">
+              <div class="metric-label">Redox</div>
+              <div class="metric-row">
+                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:55%"></div></div>
+                <div class="metric-value">380 mV</div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div class="progress"><span></span></div>
-        <p class="points">920 Points Earned</p>
-        <div class="leaderboard">View Leaderboard</div>
       </article>
     </section>
   </main>
@@ -1858,8 +2139,69 @@
     </div>
   </div>
 
+  
+
+  <div class="sim-modal" id="simModal" onclick="if(event.target === this) this.classList.remove('active')">
+    <button class="sim-modal-close" aria-label="Close simulation" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+    </button>
+    <div class="sim-modal-content">
+      <div class="sim-modal-header">
+        <div class="sim-title">Coral Simulation</div>
+        <div class="sim-score-group">
+          <div class="sim-score">92%</div>
+          <div class="sim-score-label">AI Health Score</div>
+        </div>
+      </div>
+
+      <div class="sim-modal-image">
+        <img src="../assets/Inside tank view.webp" alt="Simulation preview fullscreen" />
+      </div>
+
+      <div class="sim-modal-metrics">
+        <div class="sim-metric">
+          <div class="metric-label">Temperature</div>
+          <div class="metric-row">
+            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:60%"></div></div>
+            <div class="metric-value">78° F</div>
+          </div>
+        </div>
+
+        <div class="sim-metric">
+          <div class="metric-label">Salinity</div>
+          <div class="metric-row">
+            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:86%"></div></div>
+            <div class="metric-value">43 PPT</div>
+          </div>
+        </div>
+
+        <div class="sim-metric">
+          <div class="metric-label">pH Level</div>
+          <div class="metric-row">
+            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:46%"></div></div>
+            <div class="metric-value">8.20</div>
+          </div>
+        </div>
+
+        <div class="sim-metric">
+          <div class="metric-label">Redox</div>
+          <div class="metric-row">
+            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:55%"></div></div>
+            <div class="metric-value">380 mV</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="tank-modal" id="tankModal" onclick="if(event.target === this || event.target.classList.contains('tank-modal-close')) this.classList.remove('active')">
-    <div class="tank-modal-close">&times;</div>
+    <button class="tank-modal-close" aria-label="Close tank view" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+    </button>
     <img src="../assets/Inside tank view.webp" alt="Full screen tank view" onclick="event.stopPropagation()" />
   </div>
 
@@ -2147,7 +2489,92 @@
       if (e.key === 'Escape') {
         const tm = document.getElementById('tankModal');
         if (tm) tm.classList.remove('active');
+        const sm = document.getElementById('simModal');
+        if (sm) sm.classList.remove('active');
       }
+    });
+
+    // Handle sim modal open/close
+    const simModalEl = document.getElementById('simModal');
+    const simEnlargeBtn = document.querySelector('.sim-enlarge');
+    const simModalCloseBtn = document.querySelector('.sim-modal-close');
+
+    if (simEnlargeBtn && simModalEl) {
+      simEnlargeBtn.addEventListener('click', () => simModalEl.classList.add('active'));
+    }
+
+    if (simModalCloseBtn && simModalEl) {
+      simModalCloseBtn.addEventListener('click', () => simModalEl.classList.remove('active'));
+    }
+
+    if (simModalEl) {
+      simModalEl.addEventListener('click', (e) => {
+        if (e.target === simModalEl) simModalEl.classList.remove('active');
+      });
+    }
+
+    // Make simulation sliders interactive
+    const metricTracks = document.querySelectorAll('.metric-track');
+    const metricValues = document.querySelectorAll('.metric-value');
+    const metricLabels = document.querySelectorAll('.metric-label');
+
+    metricTracks.forEach((track, index) => {
+      const thumb = track.querySelector('.metric-thumb');
+      const valueEl = metricValues[index];
+      const labelEl = metricLabels[index];
+      if (!thumb || !valueEl) return;
+
+      let isDragging = false;
+
+      function updatePosition(e) {
+        if (!isDragging && e.type !== 'click') return;
+
+        const rect = track.getBoundingClientRect();
+        let x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        x = x - rect.left;
+        x = Math.max(0, Math.min(x, rect.width));
+
+        const pct = (x / rect.width) * 100;
+        thumb.style.left = pct + '%';
+
+        // Update value based on metric type
+        const label = labelEl.textContent.trim();
+        let newValue;
+        if (label === 'Temperature') {
+          newValue = Math.round(72 + (pct / 100) * 12) + '° F';
+        } else if (label === 'Salinity') {
+          newValue = Math.round(30 + (pct / 100) * 13) + ' PPT';
+        } else if (label === 'pH Level') {
+          newValue = (7.8 + (pct / 100) * 1.0).toFixed(2);
+        } else if (label === 'Redox') {
+          newValue = Math.round(300 + (pct / 100) * 150) + ' mV';
+        }
+        if (newValue) valueEl.textContent = newValue;
+
+        // Sync with corresponding slider in other location (card or modal)
+        const allTracks = document.querySelectorAll('.metric-track');
+        const allLabels = document.querySelectorAll('.metric-label');
+        allTracks.forEach((otherTrack, otherIndex) => {
+          if (otherTrack !== track && allLabels[otherIndex].textContent.trim() === label) {
+            const otherThumb = otherTrack.querySelector('.metric-thumb');
+            const otherValue = metricValues[otherIndex];
+            if (otherThumb) otherThumb.style.left = pct + '%';
+            if (otherValue) otherValue.textContent = newValue;
+          }
+        });
+      }
+
+      track.addEventListener('mousedown', () => { isDragging = true; });
+      track.addEventListener('click', updatePosition);
+      thumb.addEventListener('mousedown', () => { isDragging = true; });
+      document.addEventListener('mousemove', updatePosition);
+      document.addEventListener('mouseup', () => { isDragging = false; });
+
+      // Touch support
+      track.addEventListener('touchstart', () => { isDragging = true; });
+      thumb.addEventListener('touchstart', () => { isDragging = true; });
+      document.addEventListener('touchmove', updatePosition);
+      document.addEventListener('touchend', () => { isDragging = false; });
     });
   </script>
 </body>
