@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -133,7 +134,7 @@
       top: 0;
       transform: translateX(-50%);
       width: 100vw;
-      height: 150px;
+      height: 200px;
       overflow: hidden;
     }
 
@@ -141,7 +142,7 @@
       position: absolute;
       inset: 0;
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
       object-position: center;
       display: block;
@@ -540,7 +541,6 @@
       height: 12px;
       display: block;
     }
-    
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -573,7 +573,7 @@
       }
     }
 
-  
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -584,6 +584,7 @@
       padding: 8px;
       z-index: 40;
     }
+
     .menu-toggle span {
       display: block;
       width: 22px;
@@ -597,6 +598,7 @@
       .menu-toggle {
         display: flex;
       }
+
       .nav-links {
         display: flex;
         position: fixed;
@@ -607,25 +609,29 @@
         background: #ffffff;
         flex-direction: column;
         padding: 16px 24px;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.05);
-        border-left: 1px solid rgba(0,0,0,0.08);
+        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+        border-left: 1px solid rgba(0, 0, 0, 0.08);
         gap: 0;
         z-index: 100;
         transform: translateX(100%);
         transition: transform 0.3s ease;
       }
+
       .nav-links.open {
         transform: translateX(0);
       }
+
       .nav-link {
         width: 100%;
         padding: 16px 0;
         border-bottom: 1px solid var(--divider);
         height: auto;
       }
+
       .nav-link.active {
         border-bottom-color: var(--blue);
       }
+
       .nav-link.switch {
         margin-left: 0;
         width: 100%;
@@ -634,19 +640,30 @@
         margin-top: auto;
         padding-bottom: 32px;
       }
-      .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .menu-toggle.open span:nth-child(2) { opacity: 0; }
-      .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    }
 
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
   </style>
 </head>
+
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
-      
-      <button class="menu-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand"
+          src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
+
+      <button class="menu-toggle" aria-label="Toggle menu"
+        onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
         <span></span>
         <span></span>
         <span></span>
@@ -670,7 +687,8 @@
   <main class="learn-page">
     <section class="learn-shell">
       <div class="hero-banner">
-        <img src="https://www.figma.com/api/mcp/asset/498c51dc-4280-4654-a2c1-692efdd39987" alt="Coral reef" />
+        <img src="../assets/teacher-course-hero-base.png" alt="Coral reef" />
+        <img src="../assets/teacher-course-hero-overlay.png" alt="" style="z-index: 1; pointer-events: none;" />
       </div>
 
       <div class="hero-avatar">
@@ -686,7 +704,8 @@
             <span class="course-status active">ACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/6752fed3-215b-49eb-91cb-38841e727be2" alt="Introduction to Marine Biology" />
+            <img src="../assets/teacher-message-thumb-101.jpg"
+              alt="Introduction to Marine Biology" />
           </div>
           <h2 class="course-name">Introduction to Marine Biology</h2>
         </a>
@@ -697,7 +716,8 @@
             <span class="course-status active">ACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/41efb633-5430-4520-9862-aafe7670bb26" alt="Exploring Marine Ecosystems" />
+            <img src="../assets/teacher-message-thumb-201.jpg"
+              alt="Exploring Marine Ecosystems" />
           </div>
           <h2 class="course-name">Exploring Marine Ecosystems</h2>
         </article>
@@ -708,7 +728,7 @@
             <span class="course-status inactive">INACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/0eddab46-40b3-4278-8f54-27bfe0491460" alt="Coral Science" />
+            <img src="../assets/teacher-message-thumb-348.jpg" alt="Coral Science" />
           </div>
           <h2 class="course-name">Coral Science</h2>
         </article>
@@ -793,7 +813,8 @@
         setPopupOpen(false);
       });
 
-      document.addEventListener('click', (event) => {        if (coryPopup.getAttribute('aria-hidden') === 'true') return;
+      document.addEventListener('click', (event) => {
+        if (coryPopup.getAttribute('aria-hidden') === 'true') return;
         if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) setPopupOpen(false);
       });
       document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setPopupOpen(false); });
@@ -811,4 +832,5 @@
     attachCoryChat();
   </script>
 </body>
+
 </html>

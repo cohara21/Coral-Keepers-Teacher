@@ -177,9 +177,8 @@
       text-align: center;
       color: #000000;
       font-size: 24px;
-      line-height: 20.106px;
+      line-height: 1.2;
       font-weight: 500;
-      white-space: nowrap;
     }
 
     .courses {
@@ -318,9 +317,8 @@
       margin: 0;
       color: var(--text-dark);
       font-size: 20px;
-      line-height: 13.282px;
+      line-height: 1.2;
       font-weight: 500;
-      white-space: nowrap;
     }
 
     .floating-ai {
@@ -553,7 +551,7 @@
       .learn-shell {
         width: 100%;
         height: auto;
-        min-height: 900px;
+        min-height: 800px;
       }
 
       .hero-banner {
@@ -563,8 +561,12 @@
       .courses {
         position: relative;
         top: 352px;
-        width: calc(100% - 24px);
-        margin: 0 12px;
+        width: calc(100% - 48px);
+        margin: 0 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        height: auto;
       }
 
       .course-card {
@@ -572,7 +574,21 @@
         left: auto !important;
         top: auto;
         width: 100%;
-        margin-bottom: 16px;
+      }
+
+      .course-image {
+        width: 100%;
+      }
+
+      .course-image img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-avatar {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 108px;
       }
     }
 
@@ -655,6 +671,27 @@
       .menu-toggle.open span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
       }
+
+      .hero-avatar {
+        top: 80px;
+        width: 140px;
+        height: 140px;
+      }
+
+      .course-title {
+        top: 260px;
+        font-size: 20px;
+        padding: 0 20px;
+      }
+
+      .courses {
+        grid-template-columns: 1fr;
+        top: 280px;
+      }
+      
+      .learn-shell {
+        min-height: 1200px;
+      }
     }
   </style>
 </head>
@@ -690,7 +727,8 @@
   <main class="learn-page">
     <section class="learn-shell">
       <div class="hero-banner">
-        <img src="https://www.figma.com/api/mcp/asset/498c51dc-4280-4654-a2c1-692efdd39987" alt="Coral reef" />
+        <img src="../assets/teacher-course-hero-base.png" alt="Coral reef" />
+        <img src="../assets/teacher-course-hero-overlay.png" alt="" style="z-index: 1; pointer-events: none;" />
       </div>
 
       <div class="hero-avatar">
@@ -706,7 +744,7 @@
             <span class="course-status active">ACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/6752fed3-215b-49eb-91cb-38841e727be2"
+            <img src="../assets/teacher-message-thumb-101.jpg"
               alt="Introduction to Marine Biology" />
           </div>
           <h2 class="course-name">Introduction to Marine Biology</h2>
@@ -718,7 +756,7 @@
             <span class="course-status active">ACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/41efb633-5430-4520-9862-aafe7670bb26"
+            <img src="../assets/teacher-message-thumb-201.jpg"
               alt="Exploring Marine Ecosystems" />
           </div>
           <h2 class="course-name">Exploring Marine Ecosystems</h2>
@@ -730,7 +768,7 @@
             <span class="course-status inactive">INACTIVE</span>
           </div>
           <div class="course-image">
-            <img src="https://www.figma.com/api/mcp/asset/0eddab46-40b3-4278-8f54-27bfe0491460" alt="Coral Science" />
+            <img src="../assets/teacher-message-thumb-348.jpg" alt="Coral Science" />
           </div>
           <h2 class="course-name">Coral Science</h2>
         </article>

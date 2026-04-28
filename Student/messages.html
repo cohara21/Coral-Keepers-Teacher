@@ -208,13 +208,16 @@
     }
 
     .board {
-      height: 464px;
+      min-height: 464px;
+      height: auto;
       background: #fff;
       border: 1px solid var(--card-border);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow);
-      padding: 24px 24px 0;
+      padding: 24px 24px 32px;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .board.is-compose {
@@ -236,13 +239,14 @@
     }
 
     .row {
-      height: 64px;
+      min-height: 64px;
+      height: auto;
       border-bottom: 1px solid var(--divider);
       display: grid;
-      grid-template-columns: 210px 170px minmax(0, 1fr);
+      grid-template-columns: minmax(150px, 210px) minmax(100px, 170px) minmax(0, 1fr);
       align-items: center;
       gap: 10px;
-      padding: 0;
+      padding: 12px 0;
     }
 
     .contact {
@@ -294,7 +298,7 @@
       font-size: 14px;
       line-height: 20px;
       color: var(--text-dark);
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .preview {
@@ -308,10 +312,9 @@
     }
 
     .new-btn {
-      position: absolute;
-      left: 26px;
-      right: 31px;
-      bottom: 32px;
+      position: relative;
+      margin-top: 32px;
+      width: 100%;
       height: 44px;
       border: none;
       border-radius: 4px;
@@ -323,6 +326,7 @@
       text-transform: uppercase;
       font-weight: 700;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      flex: none;
     }
 
     .new-btn[hidden] {
@@ -793,6 +797,10 @@
 
       .new-btn {
         margin-top: 24px;
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
       }
 
       .to-label,

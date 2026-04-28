@@ -140,13 +140,14 @@
       border: 1px solid var(--card-border);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow);
-      overflow: hidden;
     }
 
     .tank-card {
-      height: 838px;
+      min-height: 838px;
+      height: auto;
       position: relative;
       grid-row: 1 / span 2;
+      padding-bottom: 32px;
     }
 
     .tank-header {
@@ -237,8 +238,8 @@
     .health {
       margin: 34px 21px 0;
       display: grid;
-      grid-template-columns: 236px 1fr;
-      column-gap: 36px;
+      grid-template-columns: minmax(180px, 236px) 1fr;
+      column-gap: 24px;
       align-items: center;
     }
 
@@ -308,12 +309,13 @@
       font-size: 12px;
       line-height: 19.5px;
       color: var(--text-muted);
-      max-width: 249px;
+      max-width: none;
     }
 
     .tank-status {
       margin-top: 6px;
-      width: 226px;
+      width: 100%;
+      max-width: 249px;
       display: flex;
       justify-content: space-between;
       font-size: 10px;
@@ -1353,21 +1355,6 @@
         padding: 88px 12px 24px;
       }
 
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .team-score {
-        grid-column: auto;
-        grid-row: auto;
-        margin-top: 0;
-      }
-
-      .tank-card,
-      .assignments {
-        grid-column: auto;
-        grid-row: auto;
-      }
     }
     .health-title { margin: 0 0 4px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
 
@@ -1435,6 +1422,18 @@
       .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
       .menu-toggle.open span:nth-child(2) { opacity: 0; }
       .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .tank-card,
+      .assignments,
+      .team-score {
+        grid-column: auto;
+        grid-row: auto;
+        margin-top: 0;
+      }
     }
 
   </style>
