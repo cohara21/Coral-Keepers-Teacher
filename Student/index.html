@@ -2116,6 +2116,7 @@
             ph: metrics.ph,
             healthScore: metrics.health
           };
+          console.log("Broadcasting to Cory:", liveTankData);
           coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
         }
 
@@ -2224,7 +2225,7 @@
       document.addEventListener('touchend', () => { isDragging = false; });
     });
   </script>
-  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app"
+  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
     style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
 </body>
 </html>
