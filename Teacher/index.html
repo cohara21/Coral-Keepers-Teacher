@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,6 +59,7 @@
       justify-content: space-between;
       height: 100%;
     }
+
     .brand {
       width: 239px;
       height: 36.716px;
@@ -247,7 +249,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.2s;
       z-index: 5;
     }
@@ -277,7 +279,7 @@
       max-height: 85%;
       object-fit: contain;
       border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       cursor: default;
     }
 
@@ -320,7 +322,7 @@
       height: 186.199px;
     }
 
-    .health-gauge > img:first-child {
+    .health-gauge>img:first-child {
       width: 235.664px;
       height: 186.199px;
       display: block;
@@ -747,12 +749,12 @@
     }
 
     .vh-readiness-strip {
-          width: 100%;
+      width: 100%;
       display: block;
       margin-top: 4px;
-          aspect-ratio: 1129.48 / 102.871;
+      aspect-ratio: 1129.48 / 102.871;
       height: auto;
-          max-width: 100%;
+      max-width: 100%;
       object-fit: contain;
     }
 
@@ -1175,7 +1177,7 @@
       overflow: hidden;
     }
 
-    .progress > span {
+    .progress>span {
       display: block;
       height: 100%;
       width: 79.89%;
@@ -1200,213 +1202,6 @@
       font-weight: 700;
     }
 
-    .floating-ai {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 73px;
-      height: 73px;
-      border-radius: 46.063px;
-      border: none;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: none;
-      z-index: 40;
-    }
-
-    .floating-ai img {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .cory-popup {
-      position: fixed;
-      right: 20px;
-      bottom: 108px;
-      width: 331px;
-      height: 310px;
-      background: #ffffff;
-      overflow: visible;
-      z-index: 45;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .cory-popup[aria-hidden="true"] {
-      display: none;
-    }
-
-    .cory-header {
-      height: 65px;
-      background: #005eb4;
-      position: relative;
-    }
-
-    .cory-avatar {
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      width: 38px;
-      height: 38px;
-      border: 1.562px solid #0075de;
-      border-radius: 23.978px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2.082px 2.082px rgba(0, 0, 0, 0.11);
-      padding: 1.562px;
-    }
-
-    .cory-avatar img {
-      width: 16.807px;
-      height: 25.068px;
-      display: block;
-    }
-
-    .cory-name {
-      position: absolute;
-      left: 66px;
-      top: 25px;
-      margin: 0;
-      color: #ffffff;
-      font-size: 13px;
-      line-height: 16px;
-      font-weight: 700;
-    }
-
-    .cory-close {
-      position: absolute;
-      right: 10px;
-      top: 20px;
-      width: 24px;
-      height: 24px;
-      border: none;
-      background: transparent;
-      color: #ffffff;
-      font-family: "Inter", sans-serif;
-      font-size: 24px;
-      line-height: 1;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .cory-pointer {
-      position: absolute;
-      right: 30px;
-      bottom: -7px;
-      width: 14px;
-      height: 14px;
-      background: #ffffff;
-      transform: rotate(45deg);
-      border-right: 1px solid rgba(0, 0, 0, 0.08);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .cory-body {
-      position: relative;
-      height: 192px;
-      background: #ffffff;
-      padding: 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      overflow-y: auto;
-    }
-
-    .cory-bubble {
-      width: fit-content;
-      max-width: 254px;
-      min-height: auto;
-      border-radius: 10px;
-      background: #f3f6ff;
-      border: 1px solid #dbe7ff;
-      display: flex;
-      align-items: flex-start;
-      padding: 10px 14px;
-      align-self: flex-start;
-    }
-
-    .cory-bubble.user {
-      background: #0075de;
-      border-color: #0075de;
-      align-self: flex-end;
-    }
-
-    .cory-bubble.typing {
-      opacity: 0.85;
-    }
-
-    .cory-bubble p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 16px;
-      color: #000000;
-      font-weight: 400;
-      white-space: normal;
-    }
-
-    .cory-bubble.user p {
-      color: #ffffff;
-    }
-
-    .cory-input-row {
-      height: 53px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 12px 12px;
-      background: #ffffff;
-    }
-
-    .cory-input {
-      flex: 1;
-      height: 28px;
-      border: none;
-      border-radius: 2px;
-      background: #f3f4f2;
-      padding: 8px 12px 9px;
-      font-family: "Inter", sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: #111827;
-      outline: none;
-    }
-
-    .cory-input::placeholder {
-      color: #6b7280;
-      opacity: 1;
-    }
-
-    .cory-send {
-      width: 30px;
-      height: 30px;
-      border: none;
-      border-radius: 2px;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .cory-send img {
-      width: 14.25px;
-      height: 12px;
-      display: block;
-    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -1420,9 +1215,15 @@
       }
 
     }
-    .health-title { margin: 0 0 4px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
 
-  
+    .health-title {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -1433,6 +1234,7 @@
       padding: 8px;
       z-index: 40;
     }
+
     .menu-toggle span {
       display: block;
       width: 22px;
@@ -1446,6 +1248,7 @@
       .menu-toggle {
         display: flex;
       }
+
       .nav-links {
         display: flex;
         position: fixed;
@@ -1456,25 +1259,29 @@
         background: #ffffff;
         flex-direction: column;
         padding: 16px 24px;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.05);
-        border-left: 1px solid rgba(0,0,0,0.08);
+        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+        border-left: 1px solid rgba(0, 0, 0, 0.08);
         gap: 0;
         z-index: 100;
         transform: translateX(100%);
         transition: transform 0.3s ease;
       }
+
       .nav-links.open {
         transform: translateX(0);
       }
+
       .nav-link {
         width: 100%;
         padding: 16px 0;
         border-bottom: 1px solid var(--divider);
         height: auto;
       }
+
       .nav-link.active {
         border-bottom-color: var(--blue);
       }
+
       .nav-link.switch {
         margin-left: 0;
         width: 100%;
@@ -1483,14 +1290,23 @@
         margin-top: auto;
         padding-bottom: 32px;
       }
-      .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .menu-toggle.open span:nth-child(2) { opacity: 0; }
-      .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
 
       .layout {
         grid-template-columns: 1fr;
       }
-      
+
       .tank-card,
       .assignments,
       .team-score {
@@ -1499,15 +1315,17 @@
         margin-top: 0;
       }
     }
-
   </style>
 </head>
+
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
-      
-      <button class="menu-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <a class="brand-link" href="index.html" aria-label="Go to teacher home"><img class="brand"
+          src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" /></a>
+
+      <button class="menu-toggle" aria-label="Toggle menu"
+        onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
         <span></span>
         <span></span>
         <span></span>
@@ -1544,7 +1362,8 @@
 
         <div class="tank-image-wrap">
           <img class="tank-image-overlay" src="../assets/Inside tank view.webp" alt="Live tank" />
-          <button class="tank-enlarge" aria-label="Enlarge tank view" onclick="document.getElementById('tankModal').classList.add('active')">
+          <button class="tank-enlarge" aria-label="Enlarge tank view"
+            onclick="document.getElementById('tankModal').classList.add('active')">
             <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" width="16" height="16" alt="" />
           </button>
         </div>
@@ -1564,7 +1383,8 @@
                 <span class="delta-value">2.1%</span>
               </div>
             </div>
-            <p class="stat-copy">PH levels stabilized after yesterday's automated calcium injection cycle. Bio-filters performing optimally.</p>
+            <p class="stat-copy">PH levels stabilized after yesterday's automated calcium injection cycle. Bio-filters
+              performing optimally.</p>
             <div class="tank-status">
               <span>Tank Status</span>
               <strong>Stable</strong>
@@ -1583,7 +1403,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" width="8" height="15" alt="" />
-                    <span class="trend temp-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">0.2°</span></span>
+                    <span class="trend temp-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span
+                        class="trend-value">0.2°</span></span>
                   </div>
                   <div class="vital-title">Temperature</div>
                   <div class="vital-value">78.2°F</div>
@@ -1591,7 +1412,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your tank is at an optimal temperature! It is up 0.2° from 78°, which is nothing to worry about.</p>
+                    <p class="vital-back-copy">Your tank is at an optimal temperature! It is up 0.2° from 78°, which is
+                      nothing to worry about.</p>
                   </div>
                 </div>
               </div>
@@ -1601,7 +1423,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" width="14" height="14" alt="" />
-                    <span class="trend" style="color:#5b605f;"><img src="../assets/852cb51c-7511-403d-93b0-1ecaf982bb4a.svg" width="8" height="4" alt="" />OK</span>
+                    <span class="trend" style="color:#5b605f;"><img
+                        src="../assets/852cb51c-7511-403d-93b0-1ecaf982bb4a.svg" width="8" height="4" alt="" />OK</span>
                   </div>
                   <div class="vital-title">pH Level</div>
                   <div class="vital-value">8.4</div>
@@ -1609,7 +1432,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your tank has an optimal pH level of 8.4! Great job keeping my family healthy.</p>
+                    <p class="vital-back-copy">Your tank has an optimal pH level of 8.4! Great job keeping my family
+                      healthy.</p>
                   </div>
                 </div>
               </div>
@@ -1619,7 +1443,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" width="12" height="15" alt="" />
-                    <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">1 ppt</span></span>
+                    <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span
+                        class="trend-value">1 ppt</span></span>
                   </div>
                   <div class="vital-title">Salinity</div>
                   <div class="vital-value">35 ppt</div>
@@ -1627,7 +1452,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your salinity is currently 35 ppt. Stability is key for a thriving reef, and you're nailing it!</p>
+                    <p class="vital-back-copy">Your salinity is currently 35 ppt. Stability is key for a thriving reef,
+                      and you're nailing it!</p>
                   </div>
                 </div>
               </div>
@@ -1637,7 +1463,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" width="12" height="15" alt="" />
-                    <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />NOM</span>
+                    <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8"
+                        height="5" alt="" />NOM</span>
                   </div>
                   <div class="vital-title">Redox</div>
                   <div class="vital-value">380 mV</div>
@@ -1645,7 +1472,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Redox is looking great at 380 mV. High oxygen levels mean your corals are breathing easy!</p>
+                    <p class="vital-back-copy">Redox is looking great at 380 mV. High oxygen levels mean your corals are
+                      breathing easy!</p>
                   </div>
                 </div>
               </div>
@@ -1662,7 +1490,8 @@
             <img class="assignment-icon" src="../assets/teacher-assignment-video.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 101:</span> <span class="assignment-name">Coral Calcification Series</span></h3>
+                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 101:</span> <span
+                    class="assignment-name">Coral Calcification Series</span></h3>
                 <span class="badge warn">Due Tomorrow</span>
               </div>
               <p class="assignment-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
@@ -1673,7 +1502,8 @@
             <img class="assignment-icon" src="../assets/teacher-assignment-bio201.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 201:</span> <span class="assignment-name">Symbiosis Reading Guide</span></h3>
+                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 201:</span> <span
+                    class="assignment-name">Symbiosis Reading Guide</span></h3>
                 <span class="badge muted">Due Friday</span>
               </div>
               <p class="assignment-copy">Read the PDF guide and highlight key symbiotic partners.</p>
@@ -1684,7 +1514,8 @@
             <img class="assignment-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 348:</span> <span class="assignment-name">Weekly Reef Knowledge Check</span></h3>
+                <h3 class="assignment-title"><span class="assignment-code">MAR BIO 348:</span> <span
+                    class="assignment-name">Weekly Reef Knowledge Check</span></h3>
                 <span class="badge muted">Due Sunday</span>
               </div>
               <p class="assignment-copy">12 Questions covering this week's tank chemistry.</p>
@@ -1692,7 +1523,8 @@
           </div>
         </div>
 
-        <button class="primary-btn" type="button" onclick="window.location.href='course.html'">Create New Assignment</button>
+        <button class="primary-btn" type="button" onclick="window.location.href='course.html'">Create New
+          Assignment</button>
       </article>
 
       <article class="card team-score">
@@ -1718,9 +1550,6 @@
     </section>
   </main>
 
-  <button class="floating-ai" aria-label="Cory AI">
-    <img src="../assets/corychaticon.svg" alt="" />
-  </button>
 
   <div class="vitals-history-modal" id="vitalHistoryModal" aria-hidden="true">
     <div class="vitals-history-dialog" role="dialog" aria-label="Vital history details">
@@ -1728,7 +1557,8 @@
 
       <section class="vh-card">
         <div class="vh-head">
-          <p class="vh-title">Tank Overview: <span class="accent">Temperature</span><img class="caret" src="../assets/vital-history-b1eda2542cd4acc28315a4d4c41ebcb6e73d677b.svg" alt="" /></p>
+          <p class="vh-title">Tank Overview: <span class="accent">Temperature</span><img class="caret"
+              src="../assets/vital-history-b1eda2542cd4acc28315a4d4c41ebcb6e73d677b.svg" alt="" /></p>
           <div class="vh-range"><span class="active">Week</span><span>Month</span><span>All Time</span></div>
         </div>
         <div class="vh-chart">
@@ -1756,8 +1586,11 @@
                 <span class="vh-bar" style="height:88px"><span class="vh-bar-label">76.1º</span></span>
               </div>
             </div>
-            <img class="vh-baseline" src="../assets/vital-history-eb2d9e5867c65d7a580e3a369a38cdc79aeedeeb.svg" alt="" />
-            <div class="vh-x"><span>Mon 4/20</span><span>Tues 4/21</span><span>Wed 4/22</span><span>Thurs 4/23</span><span>Fri 4/24</span><span>Sat 4/25</span><span>Sun 4/26</span><span>Mon 4/27</span><span>Tues 4/28</span></div>
+            <img class="vh-baseline" src="../assets/vital-history-eb2d9e5867c65d7a580e3a369a38cdc79aeedeeb.svg"
+              alt="" />
+            <div class="vh-x"><span>Mon 4/20</span><span>Tues 4/21</span><span>Wed 4/22</span><span>Thurs
+                4/23</span><span>Fri 4/24</span><span>Sat 4/25</span><span>Sun 4/26</span><span>Mon
+                4/27</span><span>Tues 4/28</span></div>
           </div>
         </div>
       </section>
@@ -1803,10 +1636,12 @@
 
       <section class="vh-readiness">
         <h3 class="vh-h3">Coral Readiness Meter</h3>
-        <img class="vh-readiness-strip" src="../assets/vital-history-6a9df19e881abb09e656fdcd60cbaf2fc8d9412c.svg" alt="Coral readiness stages" />
+        <img class="vh-readiness-strip" src="../assets/vital-history-6a9df19e881abb09e656fdcd60cbaf2fc8d9412c.svg"
+          alt="Coral readiness stages" />
         <div class="vh-status">
           <div>
-            <p class="vh-status-label"><img src="../assets/vital-history-8176ea54be1274f68a8d668fd3e38fe072edc1d6.svg" alt="" />Current Status</p>
+            <p class="vh-status-label"><img src="../assets/vital-history-8176ea54be1274f68a8d668fd3e38fe072edc1d6.svg"
+                alt="" />Current Status</p>
             <h4 style="color:#2f3333;font-size:30px;line-height:32px;">Attachment Stage</h4>
             <p class="vh-status-copy">keep monitoring! Stable conditions will ensure your coral thrives!</p>
           </div>
@@ -1822,149 +1657,17 @@
     </div>
   </div>
 
-  <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
-    <div class="cory-pointer" aria-hidden="true"></div>
-    <button class="cory-close" type="button" aria-label="Close Cory chat">×</button>
-    <div class="cory-header">
-      <div class="cory-avatar">
-        <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
-      </div>
-      <p class="cory-name">Cory</p>
-    </div>
-    <div class="cory-body">
-    </div>
-    <div class="cory-input-row">
-      <input class="cory-input" type="text" placeholder="Type a message..." />
-      <button class="cory-send" type="button" aria-label="Send">
-        <img src="../assets/bb543680-485a-4fa9-b5ed-481596dd53fd.svg" alt="" />
-      </button>
-    </div>
-  </div>
 
-  <div class="tank-modal" id="tankModal" onclick="if(event.target === this || event.target.classList.contains('tank-modal-close')) this.classList.remove('active')">
+  <div class="tank-modal" id="tankModal"
+    onclick="if(event.target === this || event.target.classList.contains('tank-modal-close')) this.classList.remove('active')">
     <div class="tank-modal-close">&times;</div>
     <img src="../assets/Inside tank view.webp" alt="Full screen tank view" onclick="event.stopPropagation()" />
   </div>
 
   <script>
-    const coryToggle = document.querySelector('.floating-ai');
-    const coryPopup = document.getElementById('coryPopup');
     const vitalHistoryTrigger = document.querySelector('.vitals-history');
     const vitalHistoryModal = document.getElementById('vitalHistoryModal');
     const vitalHistoryClose = document.querySelector('.vitals-history-close');
-    const coryBody = document.querySelector('.cory-body');
-    const coryInput = document.querySelector('.cory-input');
-    const corySend = document.querySelector('.cory-send');
-    const coryClose = document.querySelector('.cory-close');
-    const isTeacherView = window.location.pathname.includes('/Teacher/');
-
-    function scrollCoryToLatest() {
-      if (coryBody) {
-        coryBody.scrollTop = coryBody.scrollHeight;
-      }
-    }
-
-    function appendCoryBubble(message, role = 'bot', isTyping = false) {
-      if (!coryBody) {
-        return null;
-      }
-
-      const bubble = document.createElement('div');
-      bubble.className = `cory-bubble${role === 'user' ? ' user' : ''}${isTyping ? ' typing' : ''}`;
-
-      const text = document.createElement('p');
-      text.textContent = message;
-      bubble.appendChild(text);
-
-      coryBody.appendChild(bubble);
-      scrollCoryToLatest();
-      return bubble;
-    }
-
-    function getCoryReply(userMessage) {
-      const message = userMessage.toLowerCase();
-
-      if (/(hi|hello|hey)/.test(message)) {
-        return 'Hey! I am Cory. Ask me about coral health, tank care, or where to find tools in this app.';
-      }
-
-      if (message.includes('ph')) {
-        return 'For most reef tanks, pH is healthiest around 8.1 to 8.4. Big swings are more stressful than small day-to-day changes.';
-      }
-
-      if (message.includes('temperature') || message.includes('temp')) {
-        return 'Coral systems usually do best around 76 to 80 degrees F. Keep temperature steady and avoid fast spikes.';
-      }
-
-      if (message.includes('salinity')) {
-        return 'Target salinity near 35 ppt. Stability matters the most, so adjust slowly if you need to correct it.';
-      }
-
-      if (message.includes('redox') || message.includes('orp')) {
-        return 'Redox (ORP) helps show overall water chemistry stability. Use it as a trend indicator, not a single-pass/fail number.';
-      }
-
-      if (message.includes('health') || message.includes('tank')) {
-        return 'A healthy tank usually means stable pH, temperature, salinity, and consistent maintenance. Small regular habits beat big corrections.';
-      }
-
-      if (message.includes('clean') || message.includes('maintenance')) {
-        return 'Try a routine: check vitals daily, clean glass as needed, and schedule water changes on a fixed cadence.';
-      }
-
-      if (message.includes('calendar')) {
-        return 'Use the Calendar to switch between Month and Day views, then click a date in Day view to jump directly to that day.';
-      }
-
-      if (message.includes('message') || message.includes('chat')) {
-        return 'You can use Messages to communicate with your class team. I can also help summarize what to ask or post.';
-      }
-
-      if (message.includes('course') || message.includes('learn') || message.includes('assignment')) {
-        return isTeacherView
-          ? 'In Teacher view, open Courses to manage lessons and due dates. Use Post Reading for reading prompts and follow-up tasks.'
-          : 'In Student view, open Learn to check assignments and due dates, then track progress from your dashboard.';
-      }
-
-      if (message.includes('profile')) {
-        return 'Open Profile to review your account and class details. You can update info from the edit control there.';
-      }
-
-      if (message.includes('help') || message.includes('what can you do')) {
-        return 'I can answer coral-care basics, explain tank metrics, and help you navigate pages like Calendar, Learn/Courses, Messages, and Profile.';
-      }
-
-      return 'I can help with coral care or app navigation. Try asking about pH, salinity, temperature, Calendar, Messages, or Learn/Courses.';
-    }
-
-    function handleCorySend() {
-      if (!coryInput) {
-        return;
-      }
-
-      const userMessage = coryInput.value.trim();
-      if (!userMessage) {
-        return;
-      }
-
-      appendCoryBubble(userMessage, 'user');
-      coryInput.value = '';
-
-      const typingBubble = appendCoryBubble('Thinking...', 'bot', true);
-      window.setTimeout(() => {
-        if (typingBubble) {
-          typingBubble.remove();
-        }
-        appendCoryBubble(getCoryReply(userMessage), 'bot');
-      }, 350);
-    }
-
-    function setPopupOpen(open) {
-      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
-      if (open && coryInput) {
-        coryInput.focus();
-      }
-    }
 
     function setVitalHistoryOpen(open) {
       if (!vitalHistoryModal) {
@@ -1973,15 +1676,6 @@
       vitalHistoryModal.setAttribute('aria-hidden', open ? 'false' : 'true');
       document.body.style.overflow = open ? 'hidden' : '';
     }
-
-    coryToggle.addEventListener('click', () => {
-      const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
-      setPopupOpen(!isOpen);
-    });
-
-    coryClose.addEventListener('click', () => {
-      setPopupOpen(false);
-    });
 
     if (vitalHistoryTrigger && vitalHistoryClose && vitalHistoryModal) {
       vitalHistoryTrigger.addEventListener('click', () => {
@@ -1999,32 +1693,11 @@
       });
     }
 
-    document.addEventListener('click', (event) => {      if (coryPopup.getAttribute('aria-hidden') === 'true') {
-        return;
-      }
-
-      if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
-        setPopupOpen(false);
-      }
-    });
-
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         setVitalHistoryOpen(false);
-        setPopupOpen(false);
       }
     });
-
-    if (corySend && coryInput && coryBody) {
-      corySend.addEventListener('click', handleCorySend);
-      coryInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          handleCorySend();
-        }
-      });
-      scrollCoryToLatest();
-    }
 
     const healthEl = document.querySelector('.pct');
     const deltaArrowEl = document.querySelector('.delta-arrow');
@@ -2113,6 +1786,20 @@
           temp: tempUpdate.pct,
           salinity: salinityUpdate.pct
         });
+        // Grab the Cory AI iframe
+        var coryIframe = document.getElementById('cory-iframe');
+
+        // If the iframe is loaded, send it the live metrics
+        if (coryIframe && coryIframe.contentWindow) {
+          var liveTankData = {
+            temperature: metrics.temp,
+            salinity: metrics.salinity,
+            ph: metrics.ph,
+            healthScore: metrics.health
+          };
+          coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
+        }
+
         window.setTimeout(tick, 6000 + (Math.random() * 1000));
       }
 
@@ -2123,15 +1810,18 @@
       });
       window.setTimeout(tick, 6000 + (Math.random() * 1000));
     }
-    
-    
+
+
     // Also handle Escape key globally
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         const tm = document.getElementById('tankModal');
         if (tm) tm.classList.remove('active');
       }
     });
   </script>
+  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app"
+    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
 </body>
+
 </html>

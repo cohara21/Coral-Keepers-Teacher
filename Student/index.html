@@ -1464,213 +1464,6 @@
       font-weight: 700;
     }
 
-    .floating-ai {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 73px;
-      height: 73px;
-      border-radius: 46.063px;
-      border: none;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: none;
-      z-index: 40;
-    }
-
-    .floating-ai img {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .cory-popup {
-      position: fixed;
-      right: 20px;
-      bottom: 108px;
-      width: 331px;
-      height: 310px;
-      background: #ffffff;
-      overflow: visible;
-      z-index: 45;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .cory-popup[aria-hidden="true"] {
-      display: none;
-    }
-
-    .cory-header {
-      height: 65px;
-      background: #005eb4;
-      position: relative;
-    }
-
-    .cory-avatar {
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      width: 38px;
-      height: 38px;
-      border: 1.562px solid #0075de;
-      border-radius: 23.978px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2.082px 2.082px rgba(0, 0, 0, 0.11);
-      padding: 1.562px;
-    }
-
-    .cory-avatar img {
-      width: 16.807px;
-      height: 25.068px;
-      display: block;
-    }
-
-    .cory-name {
-      position: absolute;
-      left: 66px;
-      top: 25px;
-      margin: 0;
-      color: #ffffff;
-      font-size: 13px;
-      line-height: 16px;
-      font-weight: 700;
-    }
-
-    .cory-close {
-      position: absolute;
-      right: 10px;
-      top: 20px;
-      width: 24px;
-      height: 24px;
-      border: none;
-      background: transparent;
-      color: #ffffff;
-      font-family: "Inter", sans-serif;
-      font-size: 24px;
-      line-height: 1;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .cory-pointer {
-      position: absolute;
-      right: 30px;
-      bottom: -7px;
-      width: 14px;
-      height: 14px;
-      background: #ffffff;
-      transform: rotate(45deg);
-      border-right: 1px solid rgba(0, 0, 0, 0.08);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .cory-body {
-      position: relative;
-      height: 192px;
-      background: #ffffff;
-      padding: 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      overflow-y: auto;
-    }
-
-    .cory-bubble {
-      width: fit-content;
-      max-width: 254px;
-      min-height: auto;
-      border-radius: 10px;
-      background: #f3f6ff;
-      border: 1px solid #dbe7ff;
-      display: flex;
-      align-items: flex-start;
-      padding: 10px 14px;
-      align-self: flex-start;
-    }
-
-    .cory-bubble.user {
-      background: #0075de;
-      border-color: #0075de;
-      align-self: flex-end;
-    }
-
-    .cory-bubble.typing {
-      opacity: 0.85;
-    }
-
-    .cory-bubble p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 16px;
-      color: #000000;
-      font-weight: 400;
-      white-space: normal;
-    }
-
-    .cory-bubble.user p {
-      color: #ffffff;
-    }
-
-    .cory-input-row {
-      height: 53px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 12px 12px;
-      background: #ffffff;
-    }
-
-    .cory-input {
-      flex: 1;
-      height: 28px;
-      border: none;
-      border-radius: 2px;
-      background: #f3f4f2;
-      padding: 8px 12px 9px;
-      font-family: "Inter", sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      color: #111827;
-      outline: none;
-    }
-
-    .cory-input::placeholder {
-      color: #6b7280;
-      opacity: 1;
-    }
-
-    .cory-send {
-      width: 30px;
-      height: 30px;
-      border: none;
-      border-radius: 2px;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .cory-send img {
-      width: 14.25px;
-      height: 12px;
-      display: block;
-    }
 
     @media (max-width: 1280px) {
       .top-nav-inner {
@@ -2016,9 +1809,6 @@
     </section>
   </main>
 
-  <button class="floating-ai" aria-label="Cory AI">
-    <img src="../assets/corychaticon.svg" alt="" />
-  </button>
 
   <div class="vitals-history-modal" id="vitalHistoryModal" aria-hidden="true">
     <div class="vitals-history-dialog" role="dialog" aria-label="Vital history details">
@@ -2120,24 +1910,6 @@
     </div>
   </div>
 
-  <div class="cory-popup" id="coryPopup" role="dialog" aria-label="Cory chat" aria-hidden="true">
-    <div class="cory-pointer" aria-hidden="true"></div>
-    <button class="cory-close" type="button" aria-label="Close Cory chat">×</button>
-    <div class="cory-header">
-      <div class="cory-avatar">
-        <img src="../assets/9e494c12-c6a7-45f9-91ac-f474512b6048.svg" alt="" />
-      </div>
-      <p class="cory-name">Cory</p>
-    </div>
-    <div class="cory-body">
-    </div>
-    <div class="cory-input-row">
-      <input class="cory-input" type="text" placeholder="Type a message..." />
-      <button class="cory-send" type="button" aria-label="Send">
-        <img src="../assets/bb543680-485a-4fa9-b5ed-481596dd53fd.svg" alt="" />
-      </button>
-    </div>
-  </div>
 
   
 
@@ -2206,124 +1978,12 @@
   </div>
 
   <script>
-    const coryToggle = document.querySelector('.floating-ai');
-    const coryPopup = document.getElementById('coryPopup');
     const vitalHistoryTrigger = document.querySelector('.vitals-history');
     const vitalHistoryModal = document.getElementById('vitalHistoryModal');
     const vitalHistoryClose = document.querySelector('.vitals-history-close');
-    const coryBody = document.querySelector('.cory-body');
-    const coryInput = document.querySelector('.cory-input');
-    const corySend = document.querySelector('.cory-send');
-    const coryClose = document.querySelector('.cory-close');
     const isTeacherView = window.location.pathname.includes('/Teacher/');
 
-    function scrollCoryToLatest() {
-      if (coryBody) {
-        coryBody.scrollTop = coryBody.scrollHeight;
-      }
-    }
 
-    function appendCoryBubble(message, role = 'bot', isTyping = false) {
-      if (!coryBody) {
-        return null;
-      }
-
-      const bubble = document.createElement('div');
-      bubble.className = `cory-bubble${role === 'user' ? ' user' : ''}${isTyping ? ' typing' : ''}`;
-
-      const text = document.createElement('p');
-      text.textContent = message;
-      bubble.appendChild(text);
-
-      coryBody.appendChild(bubble);
-      scrollCoryToLatest();
-      return bubble;
-    }
-
-    function getCoryReply(userMessage) {
-      const message = userMessage.toLowerCase();
-
-      if (/(hi|hello|hey)/.test(message)) {
-        return 'Hey! I am Cory. Ask me about coral health, tank care, or where to find tools in this app.';
-      }
-
-      if (message.includes('ph')) {
-        return 'For most reef tanks, pH is healthiest around 8.1 to 8.4. Big swings are more stressful than small day-to-day changes.';
-      }
-
-      if (message.includes('temperature') || message.includes('temp')) {
-        return 'Coral systems usually do best around 76 to 80 degrees F. Keep temperature steady and avoid fast spikes.';
-      }
-
-      if (message.includes('salinity')) {
-        return 'Target salinity near 35 ppt. Stability matters the most, so adjust slowly if you need to correct it.';
-      }
-
-      if (message.includes('redox') || message.includes('orp')) {
-        return 'Redox (ORP) helps show overall water chemistry stability. Use it as a trend indicator, not a single-pass/fail number.';
-      }
-
-      if (message.includes('health') || message.includes('tank')) {
-        return 'A healthy tank usually means stable pH, temperature, salinity, and consistent maintenance. Small regular habits beat big corrections.';
-      }
-
-      if (message.includes('clean') || message.includes('maintenance')) {
-        return 'Try a routine: check vitals daily, clean glass as needed, and schedule water changes on a fixed cadence.';
-      }
-
-      if (message.includes('calendar')) {
-        return 'Use the Calendar to switch between Month and Day views, then click a date in Day view to jump directly to that day.';
-      }
-
-      if (message.includes('message') || message.includes('chat')) {
-        return 'You can use Messages to communicate with your class team. I can also help summarize what to ask or post.';
-      }
-
-      if (message.includes('course') || message.includes('learn') || message.includes('assignment')) {
-        return isTeacherView
-          ? 'In Teacher view, open Courses to manage lessons and due dates. Use Post Reading for reading prompts and follow-up tasks.'
-          : 'In Student view, open Learn to check assignments and due dates, then track progress from your dashboard.';
-      }
-
-      if (message.includes('profile')) {
-        return 'Open Profile to review your account and class details. You can update info from the edit control there.';
-      }
-
-      if (message.includes('help') || message.includes('what can you do')) {
-        return 'I can answer coral-care basics, explain tank metrics, and help you navigate pages like Calendar, Learn/Courses, Messages, and Profile.';
-      }
-
-      return 'I can help with coral care or app navigation. Try asking about pH, salinity, temperature, Calendar, Messages, or Learn/Courses.';
-    }
-
-    function handleCorySend() {
-      if (!coryInput) {
-        return;
-      }
-
-      const userMessage = coryInput.value.trim();
-      if (!userMessage) {
-        return;
-      }
-
-      appendCoryBubble(userMessage, 'user');
-      coryInput.value = '';
-
-      const typingBubble = appendCoryBubble('Thinking...', 'bot', true);
-      window.setTimeout(() => {
-        if (typingBubble) {
-          typingBubble.remove();
-        }
-        appendCoryBubble(getCoryReply(userMessage), 'bot');
-      }, 350);
-    }
-
-    function setPopupOpen(open) {
-      coryPopup.setAttribute('aria-hidden', open ? 'false' : 'true');
-      if (open && coryInput) {
-        coryInput.focus();
-      }
-    }
 
     function setVitalHistoryOpen(open) {
       if (!vitalHistoryModal) {
@@ -2333,14 +1993,6 @@
       document.body.style.overflow = open ? 'hidden' : '';
     }
 
-    coryToggle.addEventListener('click', () => {
-      const isOpen = coryPopup.getAttribute('aria-hidden') === 'false';
-      setPopupOpen(!isOpen);
-    });
-
-    coryClose.addEventListener('click', () => {
-      setPopupOpen(false);
-    });
 
     if (vitalHistoryTrigger && vitalHistoryClose && vitalHistoryModal) {
       vitalHistoryTrigger.addEventListener('click', () => {
@@ -2358,32 +2010,13 @@
       });
     }
 
-    document.addEventListener('click', (event) => {      if (coryPopup.getAttribute('aria-hidden') === 'true') {
-        return;
-      }
-
-      if (!coryPopup.contains(event.target) && !coryToggle.contains(event.target)) {
-        setPopupOpen(false);
-      }
-    });
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         setVitalHistoryOpen(false);
-        setPopupOpen(false);
       }
     });
 
-    if (corySend && coryInput && coryBody) {
-      corySend.addEventListener('click', handleCorySend);
-      coryInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          handleCorySend();
-        }
-      });
-      scrollCoryToLatest();
-    }
 
     const healthEl = document.querySelector('.pct');
     const deltaArrowEl = document.querySelector('.delta-arrow');
@@ -2472,6 +2105,20 @@
           temp: tempUpdate.pct,
           salinity: salinityUpdate.pct
         });
+        // Grab the Cory AI iframe
+        var coryIframe = document.getElementById('cory-iframe');
+
+        // If the iframe is loaded, send it the live metrics
+        if (coryIframe && coryIframe.contentWindow) {
+          var liveTankData = {
+            temperature: metrics.temp,
+            salinity: metrics.salinity,
+            ph: metrics.ph,
+            healthScore: metrics.health
+          };
+          coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
+        }
+
         window.setTimeout(tick, 6000 + (Math.random() * 1000));
       }
 
@@ -2577,5 +2224,7 @@
       document.addEventListener('touchend', () => { isDragging = false; });
     });
   </script>
+  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app"
+    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
 </body>
 </html>
