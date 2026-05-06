@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -115,6 +116,7 @@
     html {
       overflow-y: scroll;
     }
+
     .brand {
       width: 239px;
       height: 36.716px;
@@ -297,7 +299,7 @@
       justify-content: center;
       padding: 0;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.2s;
       z-index: 5;
       flex: 0 0 auto;
@@ -319,7 +321,7 @@
       justify-content: center;
       padding: 0;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.2s;
       z-index: 10;
       flex: 0 0 auto;
@@ -360,7 +362,7 @@
       max-height: 85%;
       object-fit: contain;
       border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       cursor: default;
     }
 
@@ -370,8 +372,8 @@
       right: 32px;
       width: 48px;
       height: 48px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       display: flex;
       align-items: center;
@@ -391,7 +393,7 @@
     }
 
     .tank-modal-close:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .sim-modal {
@@ -414,16 +416,16 @@
     .sim-modal-content {
       width: 100%;
       max-width: 1400px;
-      height: auto;
+      height: 85vh;
       max-height: 85vh;
       background: #fff;
       border-radius: 12px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.8fr 1.2fr;
       grid-template-rows: auto 1fr;
       gap: 24px;
       padding: 32px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       cursor: default;
       overflow: hidden;
     }
@@ -435,7 +437,7 @@
       justify-content: space-between;
       gap: 12px;
       padding-bottom: 16px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .sim-modal-header .sim-score-label {
@@ -476,14 +478,77 @@
       display: block;
     }
 
+    .sim-modal-metrics .metric-label {
+      font-size: 16px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sim-modal-metrics .metric-value {
+      font-size: 18px;
+      flex: 0 0 75px;
+      text-align: left;
+    }
+
+    .sim-modal-metrics .metric-row {
+      gap: 12px;
+      padding: 4px 0;
+    }
+
+    .sim-modal-metrics .sim-slider {
+      flex: 1;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .sim-modal-metrics .sim-metric {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .sim-modal-metrics {
       grid-column: 2;
       grid-row: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 8px 40px;
       overflow-y: auto;
       padding-right: 12px;
+      align-content: start;
+    }
+
+    .sim-modal-score-big {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding-bottom: 48px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .sim-modal-score-big .sim-score-label {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: #5b605f;
+    }
+
+    .sim-modal-score-big .sim-score {
+      font-size: 120px;
+      font-weight: 900;
+      color: #16a34a;
+      line-height: 1;
+      letter-spacing: -4px;
     }
 
     .sim-modal-metrics::-webkit-scrollbar {
@@ -491,12 +556,12 @@
     }
 
     .sim-modal-metrics::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
 
     .sim-modal-metrics::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 4px;
     }
 
@@ -506,8 +571,8 @@
       right: 32px;
       width: 48px;
       height: 48px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
       font-size: 40px;
       font-family: sans-serif;
@@ -529,7 +594,7 @@
     }
 
     .sim-modal-close:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .tank-image-overlay {
@@ -588,7 +653,7 @@
       height: 186.199px;
     }
 
-    .health-gauge > img:first-child {
+    .health-gauge>img:first-child {
       width: 235.664px;
       height: 186.199px;
       display: block;
@@ -1015,12 +1080,12 @@
     }
 
     .vh-readiness-strip {
-          width: 100%;
+      width: 100%;
       display: block;
       margin-top: 4px;
-          aspect-ratio: 1129.48 / 102.871;
+      aspect-ratio: 1129.48 / 102.871;
       height: auto;
-          max-width: 100%;
+      max-width: 100%;
       object-fit: contain;
     }
 
@@ -1232,7 +1297,8 @@
     .assignments {
       grid-column: 2;
       grid-row: 1;
-      min-height: 360px; /* reduced to allow larger simulation card while keeping gap */
+      min-height: 360px;
+      /* reduced to allow larger simulation card while keeping gap */
       height: auto;
       padding: 25px;
       display: flex;
@@ -1350,7 +1416,8 @@
       grid-row: 2;
       min-height: 460px;
       height: auto;
-      padding: 0; /* let the inner sim-card control padding so it fills the article */
+      padding: 0;
+      /* let the inner sim-card control padding so it fills the article */
       position: relative;
       margin-top: -12px;
     }
@@ -1359,53 +1426,164 @@
     .sim-card {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto 1fr; /* header then content; let content fill */
+      grid-template-rows: auto 1fr;
+      /* header then content; let content fill */
       gap: 18px;
       align-items: stretch;
-      padding: 25px; /* match `assignments` padding */
+      padding: 25px;
+      /* match `assignments` padding */
       height: 100%;
-      min-height: 460px; /* keep it taller to match request */
-      background: transparent; /* remove inner white box so it fills the outer card */
+      min-height: 460px;
+      /* keep it taller to match request */
+      background: transparent;
+      /* remove inner white box so it fills the outer card */
       border-radius: 0;
       box-shadow: none;
       border: none;
-      align-content: start; /* ensure header sits at the top */
+      align-content: start;
+      /* ensure header sits at the top */
     }
 
     .sim-header-row {
       grid-column: 1 / -1;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding-bottom:12px; /* more breathing room under header */
-      border-bottom: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      /* more breathing room under header */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
       margin-top: 0;
     }
 
-    .sim-title { font-size:12px; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; color:#5b605f; }
-    .sim-score-label { font-size:12px; text-transform:uppercase; letter-spacing:1.2px; font-weight:700; color:#5b605f; }
-    .sim-score { color:#16a34a; font-weight:700; font-size:14px; }
-    .sim-score-group { display:flex; align-items:center; gap:10px; }
+    .sim-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      color: #5b605f;
+    }
 
-    .sim-left { background:#111; border-radius:6px; overflow:hidden; display:flex; align-items:center; justify-content:center; grid-row:2 / span 1; position:relative; }
-    .sim-left > img { width:100%; height:100%; object-fit:cover; display:block; }
+    .sim-score-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      color: #5b605f;
+    }
 
-    .sim-right { display:flex; flex-direction:column; justify-content:flex-start; gap:24px; padding-right:6px; }
+    .sim-score {
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 14px;
+    }
 
-    .sim-metric { display:flex; flex-direction:column; }
+    .sim-score-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    .metric-row { display:flex; align-items:center; gap:12px; padding:8px 0; }
-    .metric-label { color:#2f3333; font-weight:700; font-size:13px; margin-bottom:8px; line-height:1.4; }
-    .metric-value { color:#0075de; font-weight:700; flex:0 0 64px; text-align:right; }
+    .sim-left {
+      background: #111;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-row: 2 / span 1;
+      position: relative;
+    }
 
-    .metric-track { position:relative; flex:1 1 auto; height:8px; background:#eef2f3; border-radius:999px; margin:0 12px 0 0; cursor:pointer; }
-    .metric-thumb { position:absolute; top:50%; transform:translateY(-50%); width:14px; height:14px; background:#16a34a; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.12); cursor:grab; }
-    .metric-thumb:active { cursor:grabbing; }
+    .sim-left>img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sim-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 24px;
+      padding-right: 6px;
+    }
+
+    .sim-metric {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+    }
+
+    .metric-label {
+      color: #2f3333;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .metric-label img {
+      flex: none;
+      object-fit: contain;
+    }
+
+    .metric-label img[src*="7bd8d3c0"] { width: 8px; height: 15px; }
+    .metric-label img[src*="3c41eed2"] { width: 14px; height: 14px; }
+    .metric-label img[src*="4dea0953"] { width: 12px; height: 15px; }
+    .metric-label img[src*="6267a499"] { width: 12px; height: 15px; }
+
+    .metric-value {
+      color: #0075de;
+      font-weight: 700;
+      flex: 0 0 64px;
+      text-align: right;
+    }
+
+    .metric-track {
+      position: relative;
+      flex: 1 1 auto;
+      height: 8px;
+      background: #eef2f3;
+      border-radius: 999px;
+      margin: 0 12px 0 0;
+      cursor: pointer;
+    }
+
+    .metric-thumb {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: #16a34a;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      cursor: grab;
+    }
+
+    .metric-thumb:active {
+      cursor: grabbing;
+    }
 
     @media (max-width:1000px) {
-      .sim-card { grid-template-columns: 1fr; }
-      .sim-header-row { padding-bottom:12px; }
+      .sim-card {
+        grid-template-columns: 1fr;
+      }
+
+      .sim-header-row {
+        padding-bottom: 12px;
+      }
     }
 
     .team-row {
@@ -1439,7 +1617,7 @@
       overflow: hidden;
     }
 
-    .progress > span {
+    .progress>span {
       display: block;
       height: 100%;
       width: 79.89%;
@@ -1477,9 +1655,15 @@
       }
 
     }
-    .health-title { margin: 0 0 4px; font-size: 16px; font-weight: 700; color: var(--text-dark); }
 
-  
+    .health-title {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -1490,6 +1674,7 @@
       padding: 8px;
       z-index: 40;
     }
+
     .menu-toggle span {
       display: block;
       width: 22px;
@@ -1503,6 +1688,7 @@
       .menu-toggle {
         display: flex;
       }
+
       .nav-links {
         display: flex;
         position: fixed;
@@ -1513,25 +1699,29 @@
         background: #ffffff;
         flex-direction: column;
         padding: 16px 24px;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.05);
-        border-left: 1px solid rgba(0,0,0,0.08);
+        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+        border-left: 1px solid rgba(0, 0, 0, 0.08);
         gap: 0;
         z-index: 100;
         transform: translateX(100%);
         transition: transform 0.3s ease;
       }
+
       .nav-links.open {
         transform: translateX(0);
       }
+
       .nav-link {
         width: 100%;
         padding: 16px 0;
         border-bottom: 1px solid var(--divider);
         height: auto;
       }
+
       .nav-link.active {
         border-bottom-color: var(--blue);
       }
+
       .nav-link.switch {
         margin-left: 0;
         width: 100%;
@@ -1540,14 +1730,23 @@
         margin-top: auto;
         padding-bottom: 32px;
       }
-      .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .menu-toggle.open span:nth-child(2) { opacity: 0; }
-      .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
 
       .layout {
         grid-template-columns: 1fr;
       }
-      
+
       .tank-card,
       .assignments,
       .team-score {
@@ -1556,20 +1755,21 @@
         margin-top: 0;
       }
     }
-
   </style>
 </head>
+
 <body>
   <header class="top-nav">
     <div class="top-nav-inner">
-      
-      
-      <button class="menu-toggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+
+
+      <button class="menu-toggle" aria-label="Toggle menu"
+        onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <img class="brand" src="../assets/252d1942-dc4e-47ac-a946-f47357213f7a.svg" alt="Coral Keepers" />
+      <img class="brand" src="../assets/CK word logo.svg" alt="Coral Keepers" />
       <nav class="nav-links" aria-label="Primary">
         <a class="nav-link active" href="index.html">Home</a>
         <a class="nav-link" href="learn.html">Learn</a>
@@ -1577,7 +1777,7 @@
         <a class="nav-link" href="calendar.html">Calendar</a>
         <a class="nav-link messages-tab" href="messages.html">Messages</a>
         <a class="nav-link profile-tab" href="profile.html">Profile</a>
-              <a class="nav-link switch" href="../Teacher/index.html">
+        <a class="nav-link switch" href="../Teacher/index.html">
           <span>Student View</span>
           <span class="switch-icon" aria-hidden="true">
             <img src="../assets/teacher-switch-blue.svg" alt="" width="16" height="16" />
@@ -1603,7 +1803,8 @@
 
         <div class="tank-image-wrap">
           <img class="tank-image-overlay" src="../assets/Inside tank view.webp" alt="Live tank" />
-          <button class="tank-enlarge" aria-label="Enlarge tank view" onclick="document.getElementById('tankModal').classList.add('active')">
+          <button class="tank-enlarge" aria-label="Enlarge tank view"
+            onclick="document.getElementById('tankModal').classList.add('active')">
             <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" width="16" height="16" alt="" />
           </button>
         </div>
@@ -1611,7 +1812,7 @@
         <div class="health">
           <div class="health-gauge">
             <img src="../assets/5f4cd70d-9575-4494-b354-18e91f4b5917.svg" alt="Health status" />
-            <img class="health-cory" src="../assets/fe7dcc3f-c503-47c4-a0dc-46af41071412.svg" alt="Cory" />
+            <img class="health-cory" src="../assets/corymain.svg" alt="Cory" />
           </div>
 
           <div style="display: flex; flex-direction: column; justify-content: center;">
@@ -1623,7 +1824,8 @@
                 <span class="delta-value">2.1%</span>
               </div>
             </div>
-            <p class="stat-copy">Tank is stable. Automated calcium injection was successful. Bio-filters are working.</p>
+            <p class="stat-copy">Tank is stable. Automated calcium injection was successful. Bio-filters are working.
+            </p>
             <div class="tank-status">
               <span>Tank Status</span>
               <strong>Stable</strong>
@@ -1642,7 +1844,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" width="8" height="15" alt="" />
-                    <span class="trend temp-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">0.2°</span></span>
+                    <span class="trend temp-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span
+                        class="trend-value">0.2°</span></span>
                   </div>
                   <div class="vital-title">Temperature</div>
                   <div class="vital-value">78.2°F</div>
@@ -1650,7 +1853,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your tank is at an optimal temperature! It is up 0.2° from 78°, which is nothing to worry about.</p>
+                    <p class="vital-back-copy">Your tank is at an optimal temperature! It is up 0.2° from 78°, which is
+                      nothing to worry about.</p>
                   </div>
                 </div>
               </div>
@@ -1660,7 +1864,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" width="14" height="14" alt="" />
-                    <span class="trend" style="color:#5b605f;"><img src="../assets/852cb51c-7511-403d-93b0-1ecaf982bb4a.svg" width="8" height="4" alt="" />OK</span>
+                    <span class="trend" style="color:#5b605f;"><img
+                        src="../assets/852cb51c-7511-403d-93b0-1ecaf982bb4a.svg" width="8" height="4" alt="" />OK</span>
                   </div>
                   <div class="vital-title">pH Level</div>
                   <div class="vital-value">8.4</div>
@@ -1668,7 +1873,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your tank has an optimal pH level of 8.4! Great job keeping my family healthy.</p>
+                    <p class="vital-back-copy">Your tank has an optimal pH level of 8.4! Great job keeping my family
+                      healthy.</p>
                   </div>
                 </div>
               </div>
@@ -1678,7 +1884,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" width="12" height="15" alt="" />
-                    <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span class="trend-value">1 ppt</span></span>
+                    <span class="trend sal-trend"><span class="trend-arrow" aria-hidden="true">↑</span><span
+                        class="trend-value">1 ppt</span></span>
                   </div>
                   <div class="vital-title">Salinity</div>
                   <div class="vital-value">35 ppt</div>
@@ -1686,7 +1893,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Your salinity is currently 35 ppt. Stability is key for a thriving reef, and you're nailing it!</p>
+                    <p class="vital-back-copy">Your salinity is currently 35 ppt. Stability is key for a thriving reef,
+                      and you're nailing it!</p>
                   </div>
                 </div>
               </div>
@@ -1696,7 +1904,8 @@
                 <div class="vital-face front">
                   <div class="vital-top">
                     <img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" width="12" height="15" alt="" />
-                    <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8" height="5" alt="" />NOM</span>
+                    <span class="trend"><img src="../assets/f309dbce-41bf-4d7a-be65-7449817baa5d.svg" width="8"
+                        height="5" alt="" />NOM</span>
                   </div>
                   <div class="vital-title">Redox</div>
                   <div class="vital-value">380 mV</div>
@@ -1704,7 +1913,8 @@
                 <div class="vital-face back">
                   <div class="vital-back-content">
                     <img class="vital-cory-icon" src="../assets/coryforcard.svg" alt="Cory" />
-                    <p class="vital-back-copy">Redox is looking great at 380 mV. High oxygen levels mean your corals are breathing easy!</p>
+                    <p class="vital-back-copy">Redox is looking great at 380 mV. High oxygen levels mean your corals are
+                      breathing easy!</p>
                   </div>
                 </div>
               </div>
@@ -1751,7 +1961,8 @@
           </div>
         </div>
 
-        <button class="primary-btn" type="button" onclick="window.location.href='learn.html'">View All Coursework</button>
+        <button class="primary-btn" type="button" onclick="window.location.href='learn.html'">View All
+          Coursework</button>
       </article>
 
       <article class="card team-score">
@@ -1759,48 +1970,53 @@
           <div class="sim-header-row">
             <div class="sim-title">Coral Simulation</div>
             <div class="sim-score-group">
-              <div class="sim-score">92%</div>
+              <div class="sim-score" id="health-score-display">92%</div>
               <div class="sim-score-label">AI Health Score</div>
             </div>
           </div>
 
           <div class="sim-left">
-            <img src="../assets/Inside tank view.webp" alt="Simulation preview" />
-            <button class="sim-enlarge" aria-label="Enlarge simulation" onclick="document.getElementById('simModal').classList.add('active')">
+            <img src="../assets/Inside tank view.webp" alt="Simulation preview" id="cory-avatar" />
+            <button class="sim-enlarge" aria-label="Enlarge simulation"
+              onclick="document.getElementById('simModal').classList.add('active')">
               <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" alt="" />
             </button>
           </div>
 
           <div class="sim-right">
             <div class="sim-metric">
-              <div class="metric-label">Temperature</div>
+              <div class="metric-label"><span>Temperature</span><img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" alt="" /></div>
               <div class="metric-row">
-                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:60%"></div></div>
+                <input type="range" id="temp-slider" min="60" max="100" step="1" value="78" class="sim-slider"
+                  data-type="temperature">
                 <div class="metric-value">78° F</div>
               </div>
             </div>
 
             <div class="sim-metric">
-              <div class="metric-label">Salinity</div>
+              <div class="metric-label"><span>Salinity</span><img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" alt="" /></div>
               <div class="metric-row">
-                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:86%"></div></div>
-                <div class="metric-value">43 PPT</div>
+                <input type="range" id="salinity-slider" min="20" max="50" step="1" value="35" class="sim-slider"
+                  data-type="salinity">
+                <div class="metric-value">35 PPT</div>
               </div>
             </div>
 
             <div class="sim-metric">
-              <div class="metric-label">pH Level</div>
+              <div class="metric-label"><span>pH Level</span><img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" alt="" /></div>
               <div class="metric-row">
-                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:46%"></div></div>
+                <input type="range" id="ph-slider" min="7.0" max="9.0" step="0.1" value="8.2" class="sim-slider"
+                  data-type="ph">
                 <div class="metric-value">8.20</div>
               </div>
             </div>
 
             <div class="sim-metric">
-              <div class="metric-label">Redox</div>
+              <div class="metric-label"><span>Redox</span><img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" alt="" /></div>
               <div class="metric-row">
-                <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:55%"></div></div>
-                <div class="metric-value">380 mV</div>
+                <input type="range" id="redox-slider" min="100" max="600" step="10" value="350" class="sim-slider"
+                  data-type="redox">
+                <div class="metric-value">350 mV</div>
               </div>
             </div>
           </div>
@@ -1816,7 +2032,8 @@
 
       <section class="vh-card">
         <div class="vh-head">
-          <p class="vh-title">Tank Overview: <span class="accent">Temperature</span><img class="caret" src="../assets/vital-history-b1eda2542cd4acc28315a4d4c41ebcb6e73d677b.svg" alt="" /></p>
+          <p class="vh-title">Tank Overview: <span class="accent">Temperature</span><img class="caret"
+              src="../assets/vital-history-b1eda2542cd4acc28315a4d4c41ebcb6e73d677b.svg" alt="" /></p>
           <div class="vh-range"><span class="active">Week</span><span>Month</span><span>All Time</span></div>
         </div>
         <div class="vh-chart">
@@ -1844,8 +2061,11 @@
                 <span class="vh-bar" style="height:88px"><span class="vh-bar-label">76.1º</span></span>
               </div>
             </div>
-            <img class="vh-baseline" src="../assets/vital-history-eb2d9e5867c65d7a580e3a369a38cdc79aeedeeb.svg" alt="" />
-            <div class="vh-x"><span>Mon 4/20</span><span>Tues 4/21</span><span>Wed 4/22</span><span>Thurs 4/23</span><span>Fri 4/24</span><span>Sat 4/25</span><span>Sun 4/26</span><span>Mon 4/27</span><span>Tues 4/28</span></div>
+            <img class="vh-baseline" src="../assets/vital-history-eb2d9e5867c65d7a580e3a369a38cdc79aeedeeb.svg"
+              alt="" />
+            <div class="vh-x"><span>Mon 4/20</span><span>Tues 4/21</span><span>Wed 4/22</span><span>Thurs
+                4/23</span><span>Fri 4/24</span><span>Sat 4/25</span><span>Sun 4/26</span><span>Mon
+                4/27</span><span>Tues 4/28</span></div>
           </div>
         </div>
       </section>
@@ -1891,10 +2111,12 @@
 
       <section class="vh-readiness">
         <h3 class="vh-h3">Coral Readiness Meter</h3>
-        <img class="vh-readiness-strip" src="../assets/vital-history-6a9df19e881abb09e656fdcd60cbaf2fc8d9412c.svg" alt="Coral readiness stages" />
+        <img class="vh-readiness-strip" src="../assets/vital-history-6a9df19e881abb09e656fdcd60cbaf2fc8d9412c.svg"
+          alt="Coral readiness stages" />
         <div class="vh-status">
           <div>
-            <p class="vh-status-label"><img src="../assets/vital-history-8176ea54be1274f68a8d668fd3e38fe072edc1d6.svg" alt="" />Current Status</p>
+            <p class="vh-status-label"><img src="../assets/vital-history-8176ea54be1274f68a8d668fd3e38fe072edc1d6.svg"
+                alt="" />Current Status</p>
             <h4 style="color:#2f3333;font-size:30px;line-height:32px;">Attachment Stage</h4>
             <p class="vh-status-copy">keep monitoring! Stable conditions will ensure your coral thrives!</p>
           </div>
@@ -1911,7 +2133,7 @@
   </div>
 
 
-  
+
 
   <div class="sim-modal" id="simModal" onclick="if(event.target === this) this.classList.remove('active')">
     <button class="sim-modal-close" aria-label="Close simulation" type="button">
@@ -1922,53 +2144,59 @@
     <div class="sim-modal-content">
       <div class="sim-modal-header">
         <div class="sim-title">Coral Simulation</div>
-        <div class="sim-score-group">
-          <div class="sim-score">92%</div>
-          <div class="sim-score-label">AI Health Score</div>
-        </div>
       </div>
 
       <div class="sim-modal-image">
-        <img src="../assets/Inside tank view.webp" alt="Simulation preview fullscreen" />
+        <img src="../assets/Inside tank view.webp" alt="Simulation preview fullscreen" id="cory-avatar-modal" />
       </div>
 
       <div class="sim-modal-metrics">
+        <div class="sim-modal-score-big">
+          <div class="sim-score" id="health-score-display-modal">92%</div>
+          <div class="sim-score-label">AI Health Score</div>
+        </div>
+
         <div class="sim-metric">
-          <div class="metric-label">Temperature</div>
+          <div class="metric-label"><span>Temperature</span><img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" alt="" /></div>
           <div class="metric-row">
-            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:60%"></div></div>
+            <input type="range" id="temp-slider-modal" min="60" max="100" step="1" value="78" class="sim-slider"
+              data-type="temperature">
             <div class="metric-value">78° F</div>
           </div>
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label">Salinity</div>
+          <div class="metric-label"><span>Salinity</span><img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" alt="" /></div>
           <div class="metric-row">
-            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:86%"></div></div>
-            <div class="metric-value">43 PPT</div>
+            <input type="range" id="salinity-slider-modal" min="20" max="50" step="1" value="35" class="sim-slider"
+              data-type="salinity">
+            <div class="metric-value">35 PPT</div>
           </div>
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label">pH Level</div>
+          <div class="metric-label"><span>pH Level</span><img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" alt="" /></div>
           <div class="metric-row">
-            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:46%"></div></div>
+            <input type="range" id="ph-slider-modal" min="7.0" max="9.0" step="0.1" value="8.2" class="sim-slider"
+              data-type="ph">
             <div class="metric-value">8.20</div>
           </div>
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label">Redox</div>
+          <div class="metric-label"><span>Redox</span><img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" alt="" /></div>
           <div class="metric-row">
-            <div class="metric-track" aria-hidden="true"><div class="metric-thumb" style="left:55%"></div></div>
-            <div class="metric-value">380 mV</div>
+            <input type="range" id="redox-slider-modal" min="100" max="600" step="10" value="350" class="sim-slider"
+              data-type="redox">
+            <div class="metric-value">350 mV</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="tank-modal" id="tankModal" onclick="if(event.target === this || event.target.classList.contains('tank-modal-close')) this.classList.remove('active')">
+  <div class="tank-modal" id="tankModal"
+    onclick="if(event.target === this || event.target.classList.contains('tank-modal-close')) this.classList.remove('active')">
     <button class="tank-modal-close" aria-label="Close tank view" type="button">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
@@ -2110,11 +2338,13 @@
 
         // If the iframe is loaded, send it the live metrics
         if (coryIframe && coryIframe.contentWindow) {
+          const data = calculateAIHealthScore();
           var liveTankData = {
-            temperature: metrics.temp,
-            salinity: metrics.salinity,
-            ph: metrics.ph,
-            healthScore: metrics.health
+            temperature: data.temp,
+            salinity: data.salinity,
+            ph: data.ph,
+            redox: data.redox,
+            healthScore: data.totalScore
           };
           console.log("Broadcasting to Cory:", liveTankData);
           coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
@@ -2130,10 +2360,10 @@
       });
       window.setTimeout(tick, 6000 + (Math.random() * 1000));
     }
-    
-    
+
+
     // Also handle Escape key globally
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         const tm = document.getElementById('tankModal');
         if (tm) tm.classList.remove('active');
@@ -2162,70 +2392,119 @@
     }
 
     // Make simulation sliders interactive
-    const metricTracks = document.querySelectorAll('.metric-track');
-    const metricValues = document.querySelectorAll('.metric-value');
-    const metricLabels = document.querySelectorAll('.metric-label');
+    const sliders = document.querySelectorAll('.sim-slider');
 
-    metricTracks.forEach((track, index) => {
-      const thumb = track.querySelector('.metric-thumb');
-      const valueEl = metricValues[index];
-      const labelEl = metricLabels[index];
-      if (!thumb || !valueEl) return;
+    function calculateAIHealthScore() {
+      const tempSlider = document.getElementById('temp-slider');
+      const salinitySlider = document.getElementById('salinity-slider');
+      const phSlider = document.getElementById('ph-slider');
+      const redoxSlider = document.getElementById('redox-slider');
 
-      let isDragging = false;
-
-      function updatePosition(e) {
-        if (!isDragging && e.type !== 'click') return;
-
-        const rect = track.getBoundingClientRect();
-        let x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        x = x - rect.left;
-        x = Math.max(0, Math.min(x, rect.width));
-
-        const pct = (x / rect.width) * 100;
-        thumb.style.left = pct + '%';
-
-        // Update value based on metric type
-        const label = labelEl.textContent.trim();
-        let newValue;
-        if (label === 'Temperature') {
-          newValue = Math.round(72 + (pct / 100) * 12) + '° F';
-        } else if (label === 'Salinity') {
-          newValue = Math.round(30 + (pct / 100) * 13) + ' PPT';
-        } else if (label === 'pH Level') {
-          newValue = (7.8 + (pct / 100) * 1.0).toFixed(2);
-        } else if (label === 'Redox') {
-          newValue = Math.round(300 + (pct / 100) * 150) + ' mV';
-        }
-        if (newValue) valueEl.textContent = newValue;
-
-        // Sync with corresponding slider in other location (card or modal)
-        const allTracks = document.querySelectorAll('.metric-track');
-        const allLabels = document.querySelectorAll('.metric-label');
-        allTracks.forEach((otherTrack, otherIndex) => {
-          if (otherTrack !== track && allLabels[otherIndex].textContent.trim() === label) {
-            const otherThumb = otherTrack.querySelector('.metric-thumb');
-            const otherValue = metricValues[otherIndex];
-            if (otherThumb) otherThumb.style.left = pct + '%';
-            if (otherValue) otherValue.textContent = newValue;
-          }
-        });
+      if (!tempSlider || !salinitySlider || !phSlider || !redoxSlider) {
+        return { totalScore: 94, temp: 78, salinity: 35, ph: 8.2, redox: 350 };
       }
 
-      track.addEventListener('mousedown', () => { isDragging = true; });
-      track.addEventListener('click', updatePosition);
-      thumb.addEventListener('mousedown', () => { isDragging = true; });
-      document.addEventListener('mousemove', updatePosition);
-      document.addEventListener('mouseup', () => { isDragging = false; });
+      const temp = parseFloat(tempSlider.value);
+      const salinity = parseFloat(salinitySlider.value);
+      const ph = parseFloat(phSlider.value);
+      const redox = parseFloat(redoxSlider.value);
 
-      // Touch support
-      track.addEventListener('touchstart', () => { isDragging = true; });
-      thumb.addEventListener('touchstart', () => { isDragging = true; });
-      document.addEventListener('touchmove', updatePosition);
-      document.addEventListener('touchend', () => { isDragging = false; });
+      let tempScore = 25;
+      if (temp < 76) tempScore -= (76 - temp) * 3;
+      else if (temp > 82) tempScore -= (temp - 82) * 3;
+      tempScore = Math.max(0, tempScore);
+
+      let phScore = 25;
+      if (ph < 7.9) phScore -= Math.round((7.9 - ph) / 0.1) * 4;
+      else if (ph > 8.4) phScore -= Math.round((ph - 8.4) / 0.1) * 4;
+      phScore = Math.max(0, phScore);
+
+      let salinityScore = 25;
+      if (salinity < 33) salinityScore -= (33 - salinity) * 3;
+      else if (salinity > 36) salinityScore -= (salinity - 36) * 3;
+      salinityScore = Math.max(0, salinityScore);
+
+      let redoxScore = 25;
+      if (redox < 250) redoxScore -= Math.round((250 - redox) / 10) * 1;
+      else if (redox > 450) redoxScore -= Math.round((redox - 450) / 10) * 1;
+      redoxScore = Math.max(0, redoxScore);
+
+      const totalScore = Math.round(tempScore + phScore + salinityScore + redoxScore);
+
+      // Update UI displays
+      const healthScoreDisplays = [document.getElementById('health-score-display'), document.getElementById('health-score-display-modal')];
+      
+      let scoreColor = '#dc2626'; // Red (Bad)
+      if (totalScore >= 90) scoreColor = '#2ecc71'; // Matching dashboard Green (Good)
+      else if (totalScore >= 75) scoreColor = '#84cc16'; // Green-Yellow (OK)
+      else if (totalScore >= 60) scoreColor = '#facc15'; // Yellow (Medium)
+      else if (totalScore >= 40) scoreColor = '#f97316'; // Orange / Yellow-Red (Getting Bad)
+      
+      healthScoreDisplays.forEach(el => {
+        if (el) {
+          el.textContent = totalScore + '%';
+          el.style.color = scoreColor;
+        }
+      });
+
+      // Update AI Images
+      let imgName = 'CorySimulation6.webp';
+      if (totalScore >= 90) imgName = 'CorySimulation1.webp';
+      else if (totalScore >= 75) imgName = 'CorySimulation2.webp';
+      else if (totalScore >= 60) imgName = 'CorySimulation3.webp';
+      else if (totalScore >= 40) imgName = 'CorySimulation4.webp';
+      else if (totalScore >= 20) imgName = 'CorySimulation5.webp';
+
+      const avatars = [document.getElementById('cory-avatar'), document.getElementById('cory-avatar-modal')];
+      avatars.forEach(el => {
+        if (el) el.src = '../assets/' + imgName;
+      });
+
+      return { totalScore, temp, salinity, ph, redox };
+    }
+
+    function syncSlidersAndBroadcast(e) {
+      const type = e.target.getAttribute('data-type');
+      const val = e.target.value;
+
+      document.querySelectorAll(`.sim-slider[data-type="${type}"]`).forEach(s => {
+        s.value = val;
+        let unit = '';
+        if (type === 'temperature') unit = '° F';
+        else if (type === 'salinity') unit = ' PPT';
+        else if (type === 'redox') unit = ' mV';
+        else if (type === 'ph') {
+          s.nextElementSibling.textContent = parseFloat(val).toFixed(2);
+          return;
+        }
+        s.nextElementSibling.textContent = val + unit;
+      });
+
+      const data = calculateAIHealthScore();
+
+      // Real-time broadcast
+      const coryIframe = document.getElementById('cory-iframe');
+      if (coryIframe && coryIframe.contentWindow) {
+        const liveTankData = {
+          temperature: data.temp,
+          salinity: data.salinity,
+          ph: data.ph,
+          redox: data.redox,
+          healthScore: data.totalScore
+        };
+        coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
+      }
+    }
+
+    sliders.forEach(slider => {
+      slider.addEventListener('input', syncSlidersAndBroadcast);
     });
+
+    // Run once to initialize
+    calculateAIHealthScore();
   </script>
   <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
     style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
 </body>
+
 </html>
