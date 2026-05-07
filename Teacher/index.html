@@ -261,7 +261,7 @@
     .tank-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
@@ -430,8 +430,9 @@
     .vitals-history-modal {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.48);
-      z-index: 90;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
       display: grid;
       place-items: center;
       padding: 24px;
@@ -1315,6 +1316,16 @@
         margin-top: 0;
       }
     }
+    #cory-iframe {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      height: 600px;
+      border: none;
+      z-index: 900;
+      background-color: transparent;
+    }
   </style>
 </head>
 
@@ -1821,8 +1832,7 @@
       }
     });
   </script>
-  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
-    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
+  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"></iframe>
 </body>
 
 </html>
