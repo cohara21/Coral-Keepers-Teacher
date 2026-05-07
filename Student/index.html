@@ -2338,15 +2338,13 @@
 
         // If the iframe is loaded, send it the live metrics
         if (coryIframe && coryIframe.contentWindow) {
-          const data = calculateAIHealthScore();
           var liveTankData = {
-            temperature: data.temp,
-            salinity: data.salinity,
-            ph: data.ph,
-            redox: data.redox,
-            healthScore: data.totalScore
+            temperature: metrics.temp,
+            salinity: metrics.salinity,
+            ph: metrics.ph,
+            healthScore: metrics.health
           };
-          console.log("Broadcasting to Cory:", liveTankData);
+          console.log("Broadcasting to Cory (Live Feed):", liveTankData);
           coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
         }
 
@@ -2489,7 +2487,6 @@
           temperature: data.temp,
           salinity: data.salinity,
           ph: data.ph,
-          redox: data.redox,
           healthScore: data.totalScore
         };
         coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
