@@ -469,6 +469,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none; /* Neutralize overlap */
     }
 
     .sim-modal-image img {
@@ -485,23 +486,84 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      padding-left: 10px; /* Align with slider track */
+    }
+
+    /* ── Global Row Layout (dashboard + modal) ── */
+    .metric-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      overflow: visible; /* Prevents edge clipping on small views */
+    }
+
+    /* The Base Input - Let the browser size it naturally */
+    .sim-slider {
+      -webkit-appearance: none; /* Crucial Reset */
+      appearance: none;
+      flex: 1;
+      width: 100%;
+      background: transparent; /* Crucial: Hides native track */
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .sim-slider:focus {
+      outline: none;
+    }
+
+    /* The Custom Track */
+    .sim-slider::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    /* The Custom Thumb */
+    .sim-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Crucial Reset */
+      appearance: none;
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #0075de;
+      cursor: pointer;
+      /* Formula: (Track Height / 2) - (Thumb Height / 2) */
+      margin-top: -8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Firefox Support */
+    .sim-slider::-moz-range-track {
+      width: 100%;
+      height: 8px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    .sim-slider::-moz-range-thumb {
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      background: #0075de;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     .sim-modal-metrics .metric-value {
       font-size: 18px;
-      flex: 0 0 75px;
+      font-weight: 700;
+      color: #0075de;
+      flex: 0 0 85px;
       text-align: left;
-    }
-
-    .sim-modal-metrics .metric-row {
-      gap: 12px;
-      padding: 4px 0;
-    }
-
-    .sim-modal-metrics .sim-slider {
-      flex: 1;
-      height: 32px;
-      cursor: pointer;
+      pointer-events: none;
+      user-select: none;
+      margin-left: 24px; /* Using margin instead of gap for better hit-testing */
     }
 
     .sim-modal-metrics .sim-metric {
@@ -516,9 +578,8 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: auto repeat(4, auto);
-      gap: 16px;
-      overflow-y: auto;
-      padding-right: 12px;
+      gap: 20px;
+      padding-right: 48px; /* Extra deep safe zone */
       align-content: start;
     }
 
@@ -1493,6 +1554,7 @@
       justify-content: center;
       grid-row: 2 / span 1;
       position: relative;
+      pointer-events: none; /* Neutralize overlap */
     }
 
     .sim-left>img {
@@ -1500,6 +1562,10 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .sim-enlarge {
+      pointer-events: auto; /* Restore button clickability */
     }
 
     .sim-right {
@@ -1513,13 +1579,6 @@
     .sim-metric {
       display: flex;
       flex-direction: column;
-    }
-
-    .metric-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 0;
     }
 
     .metric-label {
@@ -1543,11 +1602,16 @@
     .metric-label img[src*="4dea0953"] { width: 12px; height: 15px; }
     .metric-label img[src*="6267a499"] { width: 12px; height: 15px; }
 
+    /* .metric-row and .sim-slider styles are defined globally above */
+
     .metric-value {
       color: #0075de;
       font-weight: 700;
       flex: 0 0 64px;
-      text-align: right;
+      text-align: left;
+      pointer-events: none;
+      user-select: none;
+      margin-left: 20px; /* Spacing via margin */
     }
 
     .metric-track {
@@ -1569,11 +1633,7 @@
       background: #16a34a;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-      cursor: grab;
-    }
-
-    .metric-thumb:active {
-      cursor: grabbing;
+      transition: left 0.1s ease-out;
     }
 
     @media (max-width:1000px) {
