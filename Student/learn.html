@@ -317,45 +317,19 @@
     .game {
       height: 195px;
       border-radius: 8px;
-      padding: 24px 16px;
-      display: flex;
-      align-items: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    .game p {
-      margin: 0;
-      font-family: "Koulen", sans-serif;
-      font-size: 56px;
-      line-height: 80px;
-      width: 292px;
-      text-transform: uppercase;
+    .game:hover {
+      transform: scale(1.02);
     }
 
-    .game.blue {
-      background: #005eb4;
-    }
-
-    .game.blue p {
-      color: transparent;
-      background-image: linear-gradient(to top, #0075de, #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-
-    .game.orange {
-      background: #ffa56d;
-    }
-
-    .game.orange p {
-      color: #ec6f41;
-    }
-
-    .game.pink {
-      background: #ff8bc5;
-    }
-
-    .game.pink p {
-      color: #8727ba;
+    .game-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
 
@@ -621,9 +595,9 @@
       <section class="games">
         <h2 class="section-title" style="padding-bottom:0;">Games</h2>
         <div class="game-grid">
-          <article class="game blue"><p>Coral Catastrophe</p></article>
-          <article class="game orange"><p>The Anatomy Game</p></article>
-          <article class="game pink"><p>No More Bleaching</p></article>
+          <article class="game"><img src="../assets/GameStudent1.webp" alt="Coral Catastrophe" class="game-img" /></article>
+          <article class="game"><img src="../assets/GameStudent2.webp" alt="The Anatomy Game" class="game-img" /></article>
+          <article class="game"><img src="../assets/GameStudent3.webp" alt="No More Bleaching" class="game-img" /></article>
         </div>
       </section>
     </section>
