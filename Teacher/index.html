@@ -152,6 +152,22 @@
       padding-bottom: 32px;
     }
 
+    .demo-stress-hitbox {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      opacity: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: auto;
+      cursor: default;
+      background: transparent;
+    }
+
     .tank-header {
       height: 53px;
       border-bottom: 1px solid var(--divider);
@@ -300,11 +316,22 @@
     }
 
     .health {
-      margin: 34px 21px 0;
+      margin: 34px 2px 0 40px;
       display: grid;
-      grid-template-columns: minmax(180px, 236px) 1fr;
+      grid-template-columns: minmax(200px, 258px) 1fr;
       column-gap: 24px;
-      align-items: center;
+      align-items: start;
+      justify-items: start;
+    }
+
+    .health-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-left: 0;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .health-title {
@@ -322,19 +349,44 @@
       height: 186.199px;
     }
 
-    .health-gauge>img:first-child {
-      width: 235.664px;
-      height: 186.199px;
-      display: block;
+    .meter-wrapper {
+      max-width: 500px;
+      position: relative;
+      transform: translateY(18px);
+      width: 100%;
+      z-index: 2;
+    }
+
+    .gauge-svg {
+      cursor: default;
+      height: auto;
+      overflow: visible;
+      width: 100%;
+    }
+
+    .gauge-base {
+      fill: none;
+      stroke: url(#healthGaugeGradient);
+      stroke-linecap: round;
+      stroke-width: 16;
+    }
+
+    .knob-pill {
+      cursor: default;
+      fill: #fff;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+      transition: transform 0.1s ease-out;
     }
 
     .health-cory {
       position: absolute;
       left: 77px;
-      top: 47px;
+      top: 34px;
       width: 73.735px;
       height: 132.3px;
       display: block;
+      z-index: 3;
+      pointer-events: none;
     }
 
     .stat-main {
@@ -346,7 +398,7 @@
     .stat-main .pct {
       font-size: 48px;
       line-height: 48px;
-      color: #2ecc71;
+      color: #34c96b;
       font-weight: 700;
     }
 
@@ -378,10 +430,9 @@
 
     .tank-status {
       margin-top: 6px;
+      margin-bottom: 0;
       width: 100%;
       max-width: 249px;
-      display: flex;
-      justify-content: space-between;
       font-size: 10px;
       line-height: 15px;
       text-transform: uppercase;
@@ -390,7 +441,7 @@
     }
 
     .tank-status strong {
-      color: var(--green);
+      color: #34c96b;
     }
 
     .core-vitals {
@@ -399,9 +450,6 @@
 
     .core-vitals-head {
       margin: 0 0 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
     .core-vitals h3 {
@@ -1224,6 +1272,23 @@
       color: var(--text-dark);
     }
 
+    .health .health-copy .health-title {
+      margin-top: 13px;
+      margin-bottom: 0;
+    }
+
+    .health .health-copy .stat-main {
+      margin-top: 4px;
+    }
+
+    .health .health-copy .stat-copy {
+      margin-top: 4px;
+    }
+
+    .health .health-copy .tank-status {
+      margin-top: 0;
+    }
+
 
     .menu-toggle {
       display: none;
@@ -1362,12 +1427,14 @@
 
     <section class="layout">
       <article class="card tank-card">
+        <button type="button" class="demo-stress-hitbox" aria-hidden="true" tabindex="-1"></button>
         <div class="tank-header">
           <div class="tank-title">
             <span class="dot"></span>
             <span>Live Tank Feed</span>
           </div>
           <div class="tank-actions">
+            <button class="vitals-history" type="button">View Vital History</button>
           </div>
         </div>
 
@@ -1381,11 +1448,27 @@
 
         <div class="health">
           <div class="health-gauge">
-            <img src="../assets/5f4cd70d-9575-4494-b354-18e91f4b5917.svg" alt="Health status" />
+            <div class="meter-wrapper">
+              <svg id="healthMeterSvg" class="gauge-svg" viewBox="0 0 260 160" aria-label="AI health score arc gauge"
+                role="img">
+                <defs>
+                  <linearGradient id="healthGaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#ff5c69;" />
+                    <stop offset="35%" style="stop-color:#ffb020;" />
+                    <stop offset="65%" style="stop-color:#c7dd19;" />
+                    <stop offset="100%" style="stop-color:#34c96b;" />
+                  </linearGradient>
+                </defs>
+                <path class="gauge-base" d="M 8 134 A 114 134 0 0 1 252 134" />
+                <g id="healthKnobGroup">
+                  <rect class="knob-pill" x="-10" y="-20" width="20" height="40" rx="10" />
+                </g>
+              </svg>
+            </div>
             <img class="health-cory" src="../assets/corymain.svg" alt="Cory" />
           </div>
 
-          <div style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="health-copy">
             <h3 class="health-title">AI Health Score</h3>
             <div class="stat-main">
               <div class="pct">94%</div>
@@ -1396,17 +1479,13 @@
             </div>
             <p class="stat-copy">PH levels stabilized after yesterday's automated calcium injection cycle. Bio-filters
               performing optimally.</p>
-            <div class="tank-status">
-              <span>Tank Status</span>
-              <strong>Stable</strong>
-            </div>
+            <p class="tank-status"><span>Tank Status: </span><strong>Stable</strong></p>
           </div>
         </div>
 
         <div class="core-vitals">
           <div class="core-vitals-head">
             <h3>Core Vitals</h3>
-            <button class="vitals-history" type="button">View Vital History</button>
           </div>
           <div class="vitals-grid">
             <div class="vital vital-flip">
@@ -1710,6 +1789,23 @@
       }
     });
 
+    function coryMoodImageForScore(score) {
+      var s = Math.round(Number(score));
+      var n = 6;
+      if (s >= 90) {
+        n = 1;
+      } else if (s >= 75) {
+        n = 2;
+      } else if (s >= 60) {
+        n = 3;
+      } else if (s >= 40) {
+        n = 4;
+      } else if (s >= 20) {
+        n = 5;
+      }
+      return '../assets/Cory ' + n + '.svg';
+    }
+
     const healthEl = document.querySelector('.pct');
     const deltaArrowEl = document.querySelector('.delta-arrow');
     const deltaValueEl = document.querySelector('.delta-value');
@@ -1719,10 +1815,13 @@
     const salTrendValueEl = document.querySelector('.sal-trend .trend-value');
     const vitalValueEls = document.querySelectorAll('.vital .vital-value');
     const vitalBackCopyEls = document.querySelectorAll('.vital .vital-back-copy');
+    const tankStatusStrongEl = document.querySelector('.health-copy .tank-status strong');
+    const healthCoryEl = document.querySelector('.health-cory');
+    const statCopyEl = document.querySelector('.health-copy .stat-copy');
 
     if (healthEl && deltaArrowEl && deltaValueEl && tempTrendArrowEl && tempTrendValueEl && salTrendArrowEl && salTrendValueEl && vitalValueEls.length >= 4) {
       const metrics = {
-        health: 94,
+        health: 85,
         temp: 78.2,
         ph: 8.4,
         salinity: 35,
@@ -1737,8 +1836,172 @@
         redox: [300, 450]
       };
 
+      const stressBounds = {
+        health: [15, 50],
+        temp: [71.2, 76.8],
+        ph: [7.2, 7.72],
+        salinity: [28.2, 32.8],
+        redox: [175, 268]
+      };
+
+      const STRESS_STAT_COPY =
+        'Tank chemistry and vitals are trending in the wrong direction. The reef is under real stress—prioritize the health score and core vitals before conditions worsen.';
+
+      var demoStressActive = false;
+      var metricsSnapshot = null;
+      var statCopySnapshot = null;
+      var tickTimerId = null;
+
       function clamp(value, min, max) {
         return Math.min(max, Math.max(min, value));
+      }
+
+      function hexToRgb(hex) {
+        var h = String(hex).replace('#', '');
+        return {
+          r: parseInt(h.slice(0, 2), 16),
+          g: parseInt(h.slice(2, 4), 16),
+          b: parseInt(h.slice(4, 6), 16)
+        };
+      }
+
+      function rgbToHex(r, g, b) {
+        function x(n) {
+          var s = Math.round(Math.max(0, Math.min(255, n))).toString(16);
+          return s.length === 1 ? '0' + s : s;
+        }
+        return '#' + x(r) + x(g) + x(b);
+      }
+
+      function lerpHex(hexA, hexB, t) {
+        var a = hexToRgb(hexA);
+        var b = hexToRgb(hexB);
+        var u = Math.max(0, Math.min(1, t));
+        return rgbToHex(a.r + (b.r - a.r) * u, a.g + (b.g - a.g) * u, a.b + (b.b - a.b) * u);
+      }
+
+      /** Same stops as #healthGaugeGradient — color at this health (0–100) matches the arc at the knob. */
+      function healthGaugeGradientColor(health) {
+        var t = clamp(Number(health) / 100, 0, 1);
+        var stops = [
+          { pos: 0, color: '#ff5c69' },
+          { pos: 0.35, color: '#ffb020' },
+          { pos: 0.65, color: '#c7dd19' },
+          { pos: 1, color: '#34c96b' }
+        ];
+        if (t <= stops[0].pos) {
+          return stops[0].color;
+        }
+        for (var i = 0; i < stops.length - 1; i++) {
+          if (t <= stops[i + 1].pos) {
+            var p0 = stops[i].pos;
+            var p1 = stops[i + 1].pos;
+            var localT = (t - p0) / (p1 - p0);
+            return lerpHex(stops[i].color, stops[i + 1].color, localT);
+          }
+        }
+        return stops[stops.length - 1].color;
+      }
+
+      function setHealthPercentColor(el, health) {
+        if (!el) {
+          return;
+        }
+        el.style.color = healthGaugeGradientColor(health);
+      }
+
+      function updateTankStatusStrongColor(health) {
+        if (!tankStatusStrongEl) {
+          return;
+        }
+        tankStatusStrongEl.style.color = healthGaugeGradientColor(health);
+      }
+
+      function updateArcCoryMascot(health) {
+        if (healthCoryEl) {
+          healthCoryEl.src = coryMoodImageForScore(health);
+        }
+      }
+
+      function clearTickTimer() {
+        if (tickTimerId != null) {
+          window.clearTimeout(tickTimerId);
+          tickTimerId = null;
+        }
+      }
+
+      function scheduleNextTick() {
+        clearTickTimer();
+        tickTimerId = window.setTimeout(tick, 6000 + (Math.random() * 1000));
+      }
+
+      function activeBounds() {
+        return demoStressActive ? stressBounds : bounds;
+      }
+
+      function seedStressMetrics() {
+        var b = stressBounds;
+        metrics.health = clamp(35, b.health[0], b.health[1]);
+        metrics.temp = b.temp[0] + Math.random() * (b.temp[1] - b.temp[0]);
+        metrics.ph = b.ph[0] + Math.random() * (b.ph[1] - b.ph[0]);
+        metrics.salinity = b.salinity[0] + Math.random() * (b.salinity[1] - b.salinity[0]);
+        metrics.redox = b.redox[0] + Math.random() * (b.redox[1] - b.redox[0]);
+      }
+
+      function broadcastTankToCory() {
+        var coryIframe = document.getElementById('cory-iframe');
+        if (coryIframe && coryIframe.contentWindow) {
+          var liveTankData = {
+            temperature: metrics.temp,
+            salinity: metrics.salinity,
+            ph: metrics.ph,
+            healthScore: metrics.health
+          };
+          coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, '*');
+        }
+      }
+
+      function applyTankStatusStressUI(on) {
+        if (!tankStatusStrongEl) {
+          return;
+        }
+        if (on) {
+          tankStatusStrongEl.textContent = 'Needs attention — review health score';
+        } else {
+          tankStatusStrongEl.textContent = 'Stable';
+        }
+      }
+
+      const RADIUS_X = 114;
+      const RADIUS_Y = 134;
+      const CX = 130;
+      const CY = 134;
+      const INDICATOR_OFFSET = 2.5;
+      const KNOB_SHIFT_X = 5;
+      const healthKnobGroup = document.getElementById('healthKnobGroup');
+
+      function updateHealthKnob(value) {
+        if (!healthKnobGroup) {
+          return;
+        }
+        const v = clamp(value, 0, 100);
+        const percentage = v / 100;
+        const angleRad = Math.PI - (percentage * Math.PI);
+        const x = CX + RADIUS_X * Math.cos(angleRad);
+        const y = CY - RADIUS_Y * Math.sin(angleRad);
+        const dx = -RADIUS_X * Math.sin(angleRad);
+        const dy = -RADIUS_Y * Math.cos(angleRad);
+        const rotation = (Math.atan2(dy, dx) * 180) / Math.PI;
+        const normalX = (x - CX) / (RADIUS_X * RADIUS_X);
+        const normalY = (y - CY) / (RADIUS_Y * RADIUS_Y);
+        const normalLength = Math.hypot(normalX, normalY) || 1;
+        const offsetX = (normalX / normalLength) * INDICATOR_OFFSET;
+        const offsetY = (normalY / normalLength) * INDICATOR_OFFSET;
+
+        healthKnobGroup.setAttribute(
+          'transform',
+          'translate(' + (x + offsetX + KNOB_SHIFT_X) + ', ' + (y + offsetY) + ') rotate(' + rotation + ')'
+        );
       }
 
       function jitterByPercent(value) {
@@ -1761,6 +2024,10 @@
 
       function render(deltas) {
         healthEl.textContent = `${Math.round(metrics.health)}%`;
+        setHealthPercentColor(healthEl, metrics.health);
+        updateTankStatusStrongColor(metrics.health);
+        updateArcCoryMascot(metrics.health);
+        updateHealthKnob(metrics.health);
         deltaArrowEl.textContent = arrowFor(deltas.health);
         deltaValueEl.textContent = `${Math.abs(deltas.health).toFixed(1)}%`;
 
@@ -1775,44 +2042,122 @@
         vitalValueEls[2].textContent = `${Math.round(metrics.salinity)} ppt`;
         vitalValueEls[3].textContent = `${Math.round(metrics.redox)} mV`;
 
-        if (vitalBackCopyEls.length >= 4) {
-          vitalBackCopyEls[2].textContent = `Your salinity is currently ${Math.round(metrics.salinity)} ppt. Stability is key for a thriving reef, and you're nailing it!`;
-          vitalBackCopyEls[3].textContent = `Redox is looking great at ${Math.round(metrics.redox)} mV. High oxygen levels mean your corals are breathing easy!`;
+        updateVitalBackCopies();
+      }
+
+      function updateVitalBackCopies() {
+        if (vitalBackCopyEls.length < 4) {
+          return;
+        }
+        if (demoStressActive) {
+          vitalBackCopyEls[0].textContent =
+            `At ${metrics.temp.toFixed(1)}°F, the tank is running cool. Corals need steady warmth—check heating and the room around the tank.`;
+          vitalBackCopyEls[1].textContent =
+            `pH ${metrics.ph.toFixed(2)} is low for a reef tank. That can stress corals—check alkalinity and correct slowly.`;
+          vitalBackCopyEls[2].textContent =
+            `Salinity is ${Math.round(metrics.salinity)} ppt—below where most reefs thrive. Adjust gradually and keep retesting.`;
+          vitalBackCopyEls[3].textContent =
+            `Redox near ${Math.round(metrics.redox)} mV suggests weak oxidative conditions. Review filtration, flow, and organic load.`;
+        } else {
+          vitalBackCopyEls[0].textContent =
+            `Your tank is at ${metrics.temp.toFixed(1)}°F—within a comfortable range when it stays steady.`;
+          vitalBackCopyEls[1].textContent =
+            `pH at ${metrics.ph.toFixed(2)} supports healthy coral. Keep testing so small drift does not become a problem.`;
+          vitalBackCopyEls[2].textContent =
+            `Your salinity is currently ${Math.round(metrics.salinity)} ppt. Stability is key for a thriving reef, and you're nailing it!`;
+          vitalBackCopyEls[3].textContent =
+            `Redox is looking great at ${Math.round(metrics.redox)} mV. High oxygen levels mean your corals are breathing easy!`;
         }
       }
 
       function tick() {
+        var b = activeBounds();
         const healthUpdate = jitterByPercent(metrics.health);
-        metrics.health = clamp(healthUpdate.value, bounds.health[0], bounds.health[1]);
+        metrics.health = clamp(healthUpdate.value, b.health[0], b.health[1]);
 
         const tempUpdate = jitterByPercent(metrics.temp);
-        metrics.temp = clamp(tempUpdate.value, bounds.temp[0], bounds.temp[1]);
-        metrics.ph = clamp(jitterByPercent(metrics.ph).value, bounds.ph[0], bounds.ph[1]);
+        metrics.temp = clamp(tempUpdate.value, b.temp[0], b.temp[1]);
+        metrics.ph = clamp(jitterByPercent(metrics.ph).value, b.ph[0], b.ph[1]);
         const salinityUpdate = jitterByPercent(metrics.salinity);
-        metrics.salinity = clamp(salinityUpdate.value, bounds.salinity[0], bounds.salinity[1]);
-        metrics.redox = clamp(jitterByPercent(metrics.redox).value, bounds.redox[0], bounds.redox[1]);
+        metrics.salinity = clamp(salinityUpdate.value, b.salinity[0], b.salinity[1]);
+        metrics.redox = clamp(jitterByPercent(metrics.redox).value, b.redox[0], b.redox[1]);
 
         render({
           health: healthUpdate.pct,
           temp: tempUpdate.pct,
           salinity: salinityUpdate.pct
         });
-        // Grab the Cory AI iframe
-        var coryIframe = document.getElementById('cory-iframe');
+        broadcastTankToCory();
+        scheduleNextTick();
+      }
 
-        // If the iframe is loaded, send it the live metrics
-        if (coryIframe && coryIframe.contentWindow) {
-          var liveTankData = {
-            temperature: metrics.temp,
-            salinity: metrics.salinity,
+      function toggleDemoStress() {
+        if (demoStressActive) {
+          demoStressActive = false;
+          Object.assign(metrics, metricsSnapshot);
+          metricsSnapshot = null;
+          if (statCopyEl && statCopySnapshot != null) {
+            statCopyEl.textContent = statCopySnapshot;
+            statCopySnapshot = null;
+          }
+          applyTankStatusStressUI(false);
+          render({
+            health: 0,
+            temp: 0,
+            salinity: 0
+          });
+          broadcastTankToCory();
+          scheduleNextTick();
+        } else {
+          demoStressActive = true;
+          metricsSnapshot = {
+            health: metrics.health,
+            temp: metrics.temp,
             ph: metrics.ph,
-            healthScore: metrics.health
+            salinity: metrics.salinity,
+            redox: metrics.redox
           };
-          console.log("Broadcasting to Cory:", liveTankData);
-          coryIframe.contentWindow.postMessage({ type: 'UPDATE_TANK_DATA', data: liveTankData }, "*");
+          if (statCopyEl) {
+            statCopySnapshot = statCopyEl.textContent;
+            statCopyEl.textContent = STRESS_STAT_COPY;
+          }
+          seedStressMetrics();
+          applyTankStatusStressUI(true);
+          render({
+            health: -8,
+            temp: -6,
+            salinity: -10
+          });
+          broadcastTankToCory();
+          scheduleNextTick();
         }
+      }
 
-        window.setTimeout(tick, 6000 + (Math.random() * 1000));
+      function isTypingTarget(el) {
+        if (!el || !el.tagName) {
+          return false;
+        }
+        var t = el.tagName.toLowerCase();
+        if (t === 'input' || t === 'textarea' || t === 'select') {
+          return true;
+        }
+        return el.isContentEditable;
+      }
+
+      document.addEventListener('keydown', function demoStressKeydown(e) {
+        if (!e.ctrlKey || !e.shiftKey || (e.key !== 'v' && e.key !== 'V')) {
+          return;
+        }
+        if (isTypingTarget(e.target)) {
+          return;
+        }
+        e.preventDefault();
+        toggleDemoStress();
+      });
+
+      var demoStressHitbox = document.querySelector('.demo-stress-hitbox');
+      if (demoStressHitbox) {
+        demoStressHitbox.addEventListener('click', toggleDemoStress);
       }
 
       render({
@@ -1820,7 +2165,7 @@
         temp: 0,
         salinity: 0
       });
-      window.setTimeout(tick, 6000 + (Math.random() * 1000));
+      scheduleNextTick();
     }
 
 
