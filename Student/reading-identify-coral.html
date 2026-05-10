@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coral Keepers - Is Coral an Animal?</title>
+  <title>Coral Keepers - How to Identify Coral</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -85,9 +85,6 @@
       width: 190px;
       justify-content: flex-end;
       padding-right: 16px;
-    }
-
-    .nav-link.switch {
       color: var(--blue);
       font-weight: 700;
       border-bottom-color: transparent;
@@ -100,7 +97,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
       flex: none;
     }
 
@@ -127,7 +123,7 @@
       justify-content: center;
     }
 
-    .video-page {
+    .reading-page {
       padding-top: 88px;
       padding-bottom: 48px;
       position: relative;
@@ -204,74 +200,61 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     }
 
-    .video-frame {
-      width: 100%;
-      max-width: 100%;
-      aspect-ratio: 16 / 9;
-      height: auto;
-      min-height: 0;
-      position: relative;
-      display: block;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    .video-frame iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
     .lesson-title {
-      margin: 16px 0 0;
+      margin: 0;
       font-size: 24px;
-      line-height: 20.106px;
+      line-height: 1.25;
       font-weight: 500;
       color: #000;
       text-align: center;
       width: 100%;
     }
 
-    .tabs {
-      display: flex;
-      gap: 26px;
-      margin-top: 24px;
-      align-items: flex-end;
-      justify-content: center;
+    .reading-meta {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      text-align: center;
       width: 100%;
-    }
-
-    .tab {
-      position: relative;
-      padding-bottom: 10px;
-      font-size: 14px;
-      line-height: 20px;
-      font-weight: 600;
-      color: #000;
-    }
-
-    .tab.active::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 39px;
-      height: 2px;
-      background: var(--blue);
-    }
-
-    .description {
-      margin: 10px auto 0;
       max-width: 42rem;
-      font-size: 14px;
-      line-height: 20px;
-      color: #000;
-      text-align: left;
+    }
+
+    .reading-body {
+      margin-top: 28px;
       width: 100%;
+      max-width: 42rem;
+      text-align: left;
+    }
+
+    .reading-body h3 {
+      margin: 22px 0 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .reading-body h3:first-child {
+      margin-top: 0;
+    }
+
+    .reading-body p {
+      margin: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+
+    .reading-body ul {
+      margin: 0 0 14px;
+      padding-left: 1.25rem;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+
+    .reading-body li {
+      margin-bottom: 6px;
     }
 
     @media (max-width: 1280px) {
@@ -287,12 +270,7 @@
       .main {
         padding: 28px 16px 40px;
       }
-
-      .video-frame {
-        aspect-ratio: 16 / 9;
-      }
     }
-
 
     .menu-toggle {
       display: none;
@@ -380,8 +358,6 @@
   <header class="top-nav">
     <div class="top-nav-inner">
       <a href="index.html" aria-label="Go to Home">
-
-
         <button class="menu-toggle" aria-label="Toggle menu"
           onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
           <span></span>
@@ -407,9 +383,9 @@
     </div>
   </header>
 
-  <main class="video-page">
+  <main class="reading-page">
     <section class="hero">
-      <img class="banner" src="../assets/a9085155-b3f0-4b39-b064-caa0ffdb5836.webp" alt="Coral reef" />
+      <img class="banner" src="../assets/a058b39e-6249-44df-8dee-6af03698bf83.webp" alt="Coral reef" />
     </section>
 
     <h1 class="course-title">Introduction to Marine Biology</h1>
@@ -417,22 +393,22 @@
     <section class="content-wrap">
       <section class="main">
         <a class="back-link" id="lesson-back-link" href="learn.html">Back to Learn</a>
-        <!-- Video: https://youtu.be/rcV7rJfDor4 — swap embed URL to change clip -->
-        <div class="video-frame">
-          <iframe src="https://www.youtube.com/embed/rcV7rJfDor4?rel=0"
-            title="Is Coral an Animal? — lesson video"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <h2 class="lesson-title">How to Identify Coral</h2>
+        <p class="reading-meta">Due April 14, 2026 at 9:00 AM · Sample reading for class discussion</p>
+        <div class="reading-body">
+          <h3>Start with growth form</h3>
+          <p>Branching, massive (boulder-shaped), plating, and encrusting types respond differently to waves and light. Sketching the outline before naming a species helps you avoid mixing up look-alikes.</p>
+          <h3>Use polyp clues</h3>
+          <p>Day vs. night feeders often show different textures: some keep tentacles tucked until dark; others show fuzzy crowns in sunlight. Note mouth size, spacing, and whether polyps share walls.</p>
+          <h3>Color is a hint, not proof</h3>
+          <p>Bleaching and algae film change apparent color fast. Pair what you see with structure—ridge spacing, corallite shape, and tip taper—before relying on hue alone.</p>
+          <ul>
+            <li>Photograph with a scale object when permitted.</li>
+            <li>Record depth and light direction for context.</li>
+            <li>Cross-check with Coral Anatomy terms from the companion reading.</li>
+          </ul>
+          <p><em>This page is placeholder course content for navigation demos.</em></p>
         </div>
-        <h2 class="lesson-title">Is Coral an Animal?</h2>
-        <div class="tabs" aria-label="Lesson content tabs">
-          <div class="tab active">About</div>
-          <div class="tab">Transcript</div>
-        </div>
-        <p class="description">Explore the fascinating world of coral, its unique characteristics, and how it fits into
-          the animal kingdom's classification system.</p>
       </section>
     </section>
   </main>
@@ -448,9 +424,6 @@
       } else if (from === 'videos') {
         el.setAttribute('href', 'videos.html');
         el.textContent = 'Back to All Videos';
-      } else if (from === 'index') {
-        el.setAttribute('href', 'index.html');
-        el.textContent = 'Back to Home';
       } else {
         el.setAttribute('href', 'learn.html');
         el.textContent = 'Back to Learn';

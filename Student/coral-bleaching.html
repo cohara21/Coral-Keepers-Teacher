@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coral Keepers - Is Coral an Animal?</title>
+  <title>Coral Keepers - What is Coral Bleaching?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
@@ -293,7 +293,6 @@
       }
     }
 
-
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -380,8 +379,6 @@
   <header class="top-nav">
     <div class="top-nav-inner">
       <a href="index.html" aria-label="Go to Home">
-
-
         <button class="menu-toggle" aria-label="Toggle menu"
           onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
           <span></span>
@@ -417,22 +414,22 @@
     <section class="content-wrap">
       <section class="main">
         <a class="back-link" id="lesson-back-link" href="learn.html">Back to Learn</a>
-        <!-- Video: https://youtu.be/rcV7rJfDor4 — swap embed URL to change clip -->
+        <!-- Source: https://youtu.be/fA6mpexcyN4?si=Avbi-9xAgVlJetNp -->
         <div class="video-frame">
-          <iframe src="https://www.youtube.com/embed/rcV7rJfDor4?rel=0"
-            title="Is Coral an Animal? — lesson video"
+          <iframe src="https://www.youtube.com/embed/fA6mpexcyN4?rel=0"
+            title="What is Coral Bleaching? — lesson video"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <h2 class="lesson-title">Is Coral an Animal?</h2>
+        <h2 class="lesson-title">What is Coral Bleaching?</h2>
         <div class="tabs" aria-label="Lesson content tabs">
           <div class="tab active">About</div>
           <div class="tab">Transcript</div>
         </div>
-        <p class="description">Explore the fascinating world of coral, its unique characteristics, and how it fits into
-          the animal kingdom's classification system.</p>
+        <p class="description">Learn why coral loses its color under stress, how bleaching affects reef ecosystems,
+          and what warmer oceans mean for recovery.</p>
       </section>
     </section>
   </main>
@@ -448,9 +445,6 @@
       } else if (from === 'videos') {
         el.setAttribute('href', 'videos.html');
         el.textContent = 'Back to All Videos';
-      } else if (from === 'index') {
-        el.setAttribute('href', 'index.html');
-        el.textContent = 'Back to Home';
       } else {
         el.setAttribute('href', 'learn.html');
         el.textContent = 'Back to Learn';

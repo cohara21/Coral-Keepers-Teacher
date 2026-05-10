@@ -137,7 +137,7 @@
       min-height: 200px;
       max-height: 200px;
       position: relative;
-      overflow: visible;
+      overflow: hidden;
     }
 
     .hero img.banner {
@@ -149,32 +149,11 @@
       object-position: center;
     }
 
-    .fish {
-      position: absolute;
-      right: 44px;
-      top: 13px;
-      width: 133px;
-      opacity: 0.95;
-      filter: saturate(1.1);
-    }
-
-    .profile-avatar {
-      position: absolute;
-      left: 50%;
-      bottom: -100px;
-      transform: translateX(-50%);
-      width: 201px;
-      height: 201px;
-      border-radius: 50%;
-      display: block;
-      z-index: 3;
-    }
-
     .course-title {
       text-align: center;
-      margin: 131px 0 36px;
+      margin: 28px 24px 36px;
       font-size: 36px;
-      line-height: 20.106px;
+      line-height: 1.2;
       font-weight: 500;
       color: #000;
     }
@@ -431,14 +410,8 @@
         grid-template-columns: 1fr;
       }
 
-      .profile-avatar {
-        width: 140px;
-        height: 140px;
-        bottom: -70px;
-      }
-
       .course-title {
-        margin-top: 100px;
+        margin: 20px 16px 28px;
         font-size: 24px;
         line-height: 1.2;
       }
@@ -479,116 +452,112 @@
   <main class="learn-page">
     <section class="hero">
       <img class="banner" src="../assets/a058b39e-6249-44df-8dee-6af03698bf83.webp" alt="Coral reef" />
-      <svg class="fish" viewBox="0 0 133 86" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8.858 30.955c6.272-8.58 16.785-14.727 31.287-17.618 20.682-4.12 37.24.178 53.358 9.812 6.525 3.901 13.126 8.006 21.335 8.361 1.612.07 3.228-.021 5.248-.04-1.142.978-1.93 1.681-2.746 2.352-5.665 4.666-12.074 7.648-19.65 8.373-4.197.402-8.007 1.523-11.83 3.29-8.69 4.016-17.913 6.242-27.562 6.316-5.31.04-10.624-.367-15.936-.612-7.653-.353-14.91.981-21.57 4.865-2.896 1.688-5.449 3.876-7.571 6.53-.281.352-.579.69-.926.98-.784.658-1.62.636-2.292-.094-1.705-1.853-3.448-3.68-5.005-5.653-6.746-8.55-7.347-17.72-2.14-27.061z" fill="#77E290"/>
-        <path d="M56.695 24.432c8.854-7.422 17.394-7.374 24.249-.058 6.737 7.191 5.672 18.954-2.19 24.988-8.556 6.565-20.136 5.12-26.17-3.266-5.783-8.036-4.157-17.347 4.111-21.664z" fill="#F8F8F8"/>
-        <path d="M66.458 27.728c1.96.22 3.47 1.26 4.431 3.047 2.206 4.102.166 9.25-4.183 10.367-2.986.767-6.018-.829-7.205-3.792-1.68-4.19 1.767-9.952 6.957-9.622z" fill="#3B3B3B"/>
-        <path d="M58.918 40.186c2.9 4.95 7.755 6.808 13.186 6.372.308-.025.59-.236 1.08-.444-1.218 1.567-2.687 2.212-4.249 2.652-4.752 1.338-8.883-.343-12.523-3.195-4.917-3.853-8.338-8.933-10.93-14.535-.252-.545-.363-1.154-.635-2.045 1.51 1.536 2.756 2.787 3.985 4.056 1.32 1.362 2.713 2.665 3.905 4.132.667.821 1.137 1.927 1.384 2.978.426 1.814 1.418 2.789 3.158 3.124.64.123 1.255.377 2.005.608.268-1.113-.324-1.751-.754-2.474-.212-.355-.477-.684-.612-1.066z" fill="#FBD69A"/>
-        <path d="M64.286 45.312c1.002-.278 1.794-.016 2.06.67.283.729-.203 1.7-1.061 2.121-.756.37-1.602.05-1.901-.721-.312-.804.126-1.764.902-2.07z" fill="#FC8183"/>
-      </svg>
-      <img class="profile-avatar" src="../assets/jeanneprofile.webp" alt="Professor Harran" />
     </section>
 
-    <h1 class="course-title">Professor Harran's Courses</h1>
+    <h1 class="course-title">Your Assignments</h1>
 
     <section class="content">
       <div class="grid-two">
         <article class="card">
           <h2 class="section-title">Reading</h2>
           <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/dfe759dd-714d-4ac4-a678-cd940994a534.svg" alt="" />
+            <a class="lesson-item lesson-link" href="reading-coral-101.html?from=learn" aria-label="Open Coral 101 reading">
+              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Coral 101</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">A basic guide for taking care of coral</p>
               </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/dfe759dd-714d-4ac4-a678-cd940994a534.svg" alt="" />
+            </a>
+            <a class="lesson-item lesson-link" href="reading-identify-coral.html?from=learn" aria-label="Open How to Identify Coral reading">
+              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">How to Identify Coral</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">Tips and tricks to help you identify different...</p>
               </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/dfe759dd-714d-4ac4-a678-cd940994a534.svg" alt="" />
+            </a>
+            <a class="lesson-item lesson-link" href="reading-coral-anatomy.html?from=learn" aria-label="Open Coral Anatomy reading">
+              <img class="lesson-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Coral Anatomy</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">Learn the ins and outs of coral</p>
               </div>
-            </div>
+            </a>
           </div>
-          <button class="card-btn btn-blue">View All Reading</button>
+          <a class="card-btn btn-blue" href="readings.html"
+            style="display:flex;align-items:center;justify-content:center;text-decoration:none;">View All Reading</a>
         </article>
 
         <article class="card">
           <h2 class="section-title">Videos</h2>
           <div class="lesson-list">
-            <a class="lesson-item lesson-link" href="is-coral-animal.html" aria-label="Open Is Coral an Animal">
+            <a class="lesson-item lesson-link" href="is-coral-animal.html?from=learn" aria-label="Open Is Coral an Animal">
               <img class="lesson-icon" src="../assets/395f9af5-9efc-478e-8d7d-8982f4180639.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Is Coral an Animal?</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">Learn the truth about what coral really is</p>
               </div>
             </a>
-            <div class="lesson-item">
+            <a class="lesson-item lesson-link" href="coral-bleaching.html?from=learn" aria-label="Open What is Coral Bleaching">
               <img class="lesson-icon" src="../assets/c2b5c1fd-86dc-403c-95bd-37c0616cb8f5.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">What is Coral Bleaching?</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
-                <p class="lesson-copy">A basic guide for taking care of coral</p>
+                <p class="lesson-copy">Why reefs lose color under stress—and what it means for the ocean.</p>
               </div>
-            </div>
+            </a>
           </div>
-          <button class="card-btn btn-orange">View All Videos</button>
+          <a class="card-btn btn-orange" href="videos.html"
+            style="display:flex;align-items:center;justify-content:center;text-decoration:none;">View All Videos</a>
         </article>
 
         <article class="card">
           <h2 class="section-title">Quizzes</h2>
           <div class="lesson-list">
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/a5ae2ed5-d8b3-4251-bad8-4b20cb07b556.svg" alt="" />
+            <a class="lesson-item lesson-link" href="quiz-coral-101.html?from=learn" aria-label="Open Coral 101 quiz">
+              <img class="lesson-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Coral 101 QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">A quiz on the Coral 101 reading assignment</p>
               </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/2e5f1ada-ad2f-48ae-aba6-0951caade0cd.svg" alt="" />
+            </a>
+            <a class="lesson-item lesson-link" href="quiz-identify-coral.html?from=learn" aria-label="Open How to Identify Coral quiz">
+              <img class="lesson-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">How to Identify Coral QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">A quiz on the Coral Identification reading...</p>
               </div>
-            </div>
-            <div class="lesson-item">
-              <img class="lesson-icon" src="../assets/2e5f1ada-ad2f-48ae-aba6-0951caade0cd.svg" alt="" />
+            </a>
+            <a class="lesson-item lesson-link" href="quiz-coral-bleaching.html?from=learn" aria-label="Open What is Coral Bleaching quiz">
+              <img class="lesson-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">What is Coral Bleaching QUIZ</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">A quiz on the Coral Bleaching video</p>
               </div>
-            </div>
+            </a>
           </div>
-          <button class="card-btn btn-purple">View All Quizzes</button>
+          <a class="card-btn btn-purple" href="quizzes.html"
+            style="display:flex;align-items:center;justify-content:center;text-decoration:none;">View All Quizzes</a>
         </article>
 
         <article class="card">
           <h2 class="section-title">Submissions</h2>
           <div class="lesson-list">
-            <div class="lesson-item">
+            <a class="lesson-item lesson-link" href="submission-coral-essay.html?from=learn" aria-label="Open Why I Care About Coral Essay submission">
               <img class="lesson-icon" src="../assets/352462c7-bfc9-40dc-ad35-b9434e8e256c.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Why I Care About Coral Essay</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">Write a 5 page essay about why you care about...</p>
               </div>
-            </div>
-            <div class="lesson-item">
+            </a>
+            <a class="lesson-item lesson-link" href="submission-class-participation.html?from=learn" aria-label="Open Class Participation Submission">
               <img class="lesson-icon" src="../assets/352462c7-bfc9-40dc-ad35-b9434e8e256c.svg" alt="" />
               <div>
                 <div class="lesson-row"><h3 class="lesson-name">Class Participation Submission</h3><span class="lesson-due">Due April 14, 2026 at 9:00 AM</span></div>
                 <p class="lesson-copy">Please submit a reflection about what you...</p>
               </div>
-            </div>
+            </a>
           </div>
-          <button class="card-btn btn-green">View All Submissions</button>
+          <a class="card-btn btn-green" href="submissions.html"
+            style="display:flex;align-items:center;justify-content:center;text-decoration:none;">View All Submissions</a>
         </article>
       </div>
 

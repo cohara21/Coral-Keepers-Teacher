@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coral Keepers - Why I Care About Coral Essay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f8;
+      --text-dark: #2f3333;
+      --text-muted: #5b605f;
+      --blue: #0075de;
+      --card-border: rgba(0, 0, 0, 0.1);
+      --divider: rgba(0, 0, 0, 0.11);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --radius-card: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text-dark);
+      font-family: "Inter", sans-serif;
+    }
+
+    .top-nav {
+      position: fixed;
+      z-index: 30;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 64px;
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-nav-inner {
+      width: min(1328px, calc(100% - 48px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand {
+      width: 239px;
+      height: 36.716px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      align-items: stretch;
+      height: 48px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 16px;
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+    }
+
+    .nav-link.switch {
+      gap: 8px;
+      margin-left: auto;
+      width: 190px;
+      justify-content: flex-end;
+      padding-right: 16px;
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: transparent;
+      padding-bottom: 0;
+    }
+
+    .switch-icon {
+      width: 16px;
+      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+
+    .nav-link.active {
+      color: var(--blue);
+      font-weight: 700;
+      border-bottom-color: var(--blue);
+      padding-bottom: 2px;
+    }
+
+    .nav-link.messages-tab {
+      width: 98px;
+      min-width: 98px;
+      max-width: 98px;
+      flex: 0 0 98px;
+      justify-content: center;
+    }
+
+    .nav-link.profile-tab {
+      width: 78px;
+      min-width: 78px;
+      max-width: 78px;
+      flex: 0 0 78px;
+      justify-content: center;
+    }
+
+    .submission-page {
+      padding-top: 88px;
+      padding-bottom: 48px;
+      position: relative;
+    }
+
+    .hero {
+      height: 200px;
+      min-height: 200px;
+      max-height: 200px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero .banner {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .course-title {
+      text-align: center;
+      margin: 28px 24px 32px;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .content-wrap {
+      width: min(1140px, calc(100% - 48px));
+      margin: 0 auto;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-card);
+      background: #fff;
+      box-shadow: var(--shadow);
+      position: relative;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px clamp(20px, 4vw, 48px) 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main .back-link {
+      align-self: flex-start;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 14px;
+      margin: 0 0 16px;
+      border-radius: 4px;
+      background: #0075de;
+      color: #fff;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .lesson-title {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 500;
+      color: #000;
+      text-align: center;
+      width: 100%;
+    }
+
+    .reading-meta {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      text-align: center;
+      width: 100%;
+      max-width: 42rem;
+    }
+
+    .submission-work {
+      margin-top: 28px;
+      width: 100%;
+      max-width: 42rem;
+      text-align: left;
+    }
+
+    .submit-instructions {
+      margin: 0 0 18px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+
+    .submit-field {
+      margin-bottom: 22px;
+    }
+
+    .submit-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .submit-textarea {
+      width: 100%;
+      min-height: 240px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+      resize: vertical;
+      background: #fff;
+    }
+
+    .submit-textarea:focus-visible {
+      outline: 2px solid rgba(46, 204, 113, 0.45);
+      outline-offset: 1px;
+    }
+
+    .submit-drop {
+      position: relative;
+      border: 2px dashed rgba(0, 0, 0, 0.18);
+      border-radius: 10px;
+      padding: 28px 20px;
+      text-align: center;
+      background: rgba(46, 204, 113, 0.06);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .submit-drop:hover,
+    .submit-drop:focus-visible {
+      border-color: rgba(46, 204, 113, 0.55);
+      background: rgba(46, 204, 113, 0.1);
+      outline: none;
+    }
+
+    .submit-drop.drag-over {
+      border-color: #2ecc71;
+      background: rgba(46, 204, 113, 0.16);
+    }
+
+    .submit-drop-input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .submit-drop-title {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .submit-drop-sub {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .submit-file-list {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .submit-file-list strong {
+      color: var(--text-dark);
+    }
+
+    .submit-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .submit-send {
+      height: 44px;
+      padding: 0 22px;
+      border: none;
+      border-radius: 4px;
+      background: #2ecc71;
+      color: #f6fff9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .submit-send:hover,
+    .submit-send:focus-visible {
+      filter: brightness(1.05);
+      outline: none;
+    }
+
+    .submit-send:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      filter: none;
+    }
+
+    .submit-error {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: #c0392b;
+      font-weight: 600;
+    }
+
+    .submit-error[hidden] {
+      display: none;
+    }
+
+    .submission-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10050;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .submission-modal.is-open {
+      display: flex;
+    }
+
+    .submission-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 18, 18, 0.5);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .submission-modal__panel {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-radius: var(--radius-card);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
+      border: 1px solid var(--card-border);
+      padding: 24px 24px 20px;
+      text-align: left;
+    }
+
+    .submission-modal__title {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .submission-modal__body {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+
+    .submission-modal__footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .submission-modal__close {
+      width: 100%;
+      height: 44px;
+      border: none;
+      border-radius: 4px;
+      background: #2ecc71;
+      color: #f6fff9;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .submission-modal__close:hover,
+    .submission-modal__close:focus-visible {
+      filter: brightness(1.05);
+      outline: none;
+    }
+
+    @media (max-width: 1280px) {
+      .top-nav-inner {
+        width: 100%;
+        padding: 0 12px;
+      }
+
+      .content-wrap {
+        width: calc(100% - 24px);
+      }
+
+      .main {
+        padding: 28px 16px 40px;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 40;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 1000px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: flex;
+        position: fixed;
+        top: 64px;
+        right: 0;
+        width: 280px;
+        height: calc(100vh - 64px);
+        background: #ffffff;
+        flex-direction: column;
+        padding: 16px 24px;
+        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.05);
+        border-left: 1px solid rgba(0, 0, 0, 0.08);
+        gap: 0;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-link {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--divider);
+        height: auto;
+      }
+
+      .nav-link.active {
+        border-bottom-color: var(--blue);
+      }
+
+      .nav-link.switch {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+        padding-right: 0;
+        margin-top: auto;
+        padding-bottom: 32px;
+      }
+
+      .menu-toggle.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top-nav">
+    <div class="top-nav-inner">
+      <a href="index.html" aria-label="Go to Home">
+        <button class="menu-toggle" aria-label="Toggle menu"
+          onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <img class="brand" src="../assets/CK word logo.svg" alt="Coral Keepers" />
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="learn.html">Learn</a>
+        <a class="nav-link" href="announcements.html">Announcements</a>
+        <a class="nav-link" href="calendar.html">Calendar</a>
+        <a class="nav-link messages-tab" href="messages.html">Messages</a>
+        <a class="nav-link profile-tab" href="profile.html">Profile</a>
+        <a class="nav-link switch" href="../Teacher/index.html">
+          <span>Student View</span>
+          <span class="switch-icon" aria-hidden="true">
+            <img src="../assets/teacher-switch-blue.svg" alt="" width="16" height="16" />
+          </span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="submission-page">
+    <section class="hero">
+      <img class="banner" src="../assets/a058b39e-6249-44df-8dee-6af03698bf83.webp" alt="Coral reef" />
+    </section>
+
+    <h1 class="course-title">Introduction to Marine Biology</h1>
+
+    <section class="content-wrap">
+      <section class="main">
+        <a class="back-link" id="lesson-back-link" href="learn.html">Back to Learn</a>
+        <h2 class="lesson-title">Why I Care About Coral Essay</h2>
+        <p class="reading-meta">Due April 14, 2026 at 9:00 AM · Submit typed text, attach a document, or both</p>
+        <form id="submission-form" class="submission-work" novalidate>
+          <p class="submit-instructions">Draft about five pages on why coral reefs matter to you—personal stories, science you’ve learned, or threats you’re worried about are all fair. You can write directly below or upload a file you created in Word, Google Docs (exported as PDF or DOCX), or similar.</p>
+          <div class="submit-field">
+            <label class="submit-label" for="submission-text">Type your essay here</label>
+            <textarea id="submission-text" name="text" class="submit-textarea"
+              placeholder="Paste your draft or start typing…"></textarea>
+          </div>
+          <div class="submit-field">
+            <span id="drop-label" class="submit-label">Or attach a file</span>
+            <div id="submit-drop" class="submit-drop" tabindex="0" role="button"
+              aria-labelledby="drop-label" aria-describedby="drop-help">
+              <input id="submission-files" class="submit-drop-input" type="file"
+                accept=".pdf,.doc,.docx,.txt,.rtf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" multiple />
+              <p class="submit-drop-title">Drag and drop a file here</p>
+              <p id="drop-help" class="submit-drop-sub">or click to browse · PDF, Word, or plain text</p>
+            </div>
+            <div id="submission-file-list" class="submit-file-list" hidden></div>
+          </div>
+          <p id="submit-error" class="submit-error" hidden role="alert"></p>
+          <div class="submit-actions">
+            <button type="submit" class="submit-send">Submit assignment</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <div id="submission-modal" class="submission-modal" aria-hidden="true">
+    <button type="button" class="submission-modal__backdrop" aria-label="Close dialog"></button>
+    <div class="submission-modal__panel" role="dialog" aria-modal="true" aria-labelledby="submission-modal-title">
+      <h3 id="submission-modal-title" class="submission-modal__title">Submission received</h3>
+      <p id="submission-modal-body" class="submission-modal__body"></p>
+      <div class="submission-modal__footer">
+        <button type="button" class="submission-modal__close" id="submission-modal-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var modalBodyHtml = 'Thanks—your response is recorded for this demo. Nothing is uploaded to a real server; in class your teacher would collect work through your school’s system. You can keep editing until you refresh the page.';
+
+      function escapeHtml(s) {
+        var d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      var back = document.getElementById('lesson-back-link');
+      if (back) {
+        var from = new URLSearchParams(window.location.search).get('from');
+        if (from === 'submissions') {
+          back.setAttribute('href', 'submissions.html');
+          back.textContent = 'Back to All Submissions';
+        } else {
+          back.setAttribute('href', 'learn.html');
+          back.textContent = 'Back to Learn';
+        }
+      }
+
+      var form = document.getElementById('submission-form');
+      var textEl = document.getElementById('submission-text');
+      var fileInput = document.getElementById('submission-files');
+      var drop = document.getElementById('submit-drop');
+      var fileList = document.getElementById('submission-file-list');
+      var err = document.getElementById('submit-error');
+      var modal = document.getElementById('submission-modal');
+      var modalText = document.getElementById('submission-modal-body');
+      var modalClose = document.getElementById('submission-modal-close');
+      var backdrop = modal ? modal.querySelector('.submission-modal__backdrop') : null;
+
+      if (!form || !textEl || !fileInput || !drop || !fileList || !err || !modal || !modalText) return;
+
+      function showErr(msg) {
+        err.textContent = msg;
+        err.hidden = false;
+      }
+
+      function hideErr() {
+        err.hidden = true;
+        err.textContent = '';
+      }
+
+      function renderFiles() {
+        if (!fileInput.files || fileInput.files.length === 0) {
+          fileList.hidden = true;
+          fileList.innerHTML = '';
+          return;
+        }
+        fileList.hidden = false;
+        var parts = [];
+        for (var i = 0; i < fileInput.files.length; i++) {
+          var f = fileInput.files[i];
+          parts.push(escapeHtml(f.name) + ' (' + Math.round(f.size / 1024) + ' KB)');
+        }
+        fileList.innerHTML = '<strong>Selected:</strong> ' + parts.join(', ');
+      }
+
+      function openModal() {
+        modalText.textContent = modalBodyHtml;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        if (modalClose) modalClose.focus();
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (backdrop) backdrop.addEventListener('click', closeModal);
+      if (modalClose) modalClose.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+
+      drop.addEventListener('click', function () {
+        fileInput.click();
+      });
+
+      drop.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          fileInput.click();
+        }
+      });
+
+      ['dragenter', 'dragover'].forEach(function (evt) {
+        drop.addEventListener(evt, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          drop.classList.add('drag-over');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(function (evt) {
+        drop.addEventListener(evt, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (evt !== 'drop') drop.classList.remove('drag-over');
+        });
+      });
+
+      drop.addEventListener('drop', function (e) {
+        drop.classList.remove('drag-over');
+        var dt = e.dataTransfer;
+        if (!dt || !dt.files || !dt.files.length) return;
+        fileInput.files = dt.files;
+        renderFiles();
+        hideErr();
+      });
+
+      fileInput.addEventListener('change', function () {
+        renderFiles();
+        hideErr();
+      });
+
+      textEl.addEventListener('input', hideErr);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideErr();
+        var hasText = textEl.value.trim().length > 0;
+        var hasFiles = fileInput.files && fileInput.files.length > 0;
+        if (!hasText && !hasFiles) {
+          showErr('Please type something in the box or attach at least one file before submitting.');
+          return;
+        }
+        openModal();
+      });
+    })();
+  </script>
+
+  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
+    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
+</body>
+
+</html>

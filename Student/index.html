@@ -321,38 +321,6 @@
       flex: 0 0 auto;
     }
 
-    .sim-enlarge {
-      position: absolute;
-      right: 16px;
-      top: 16px;
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      min-height: 36px;
-      background: #fff;
-      border-radius: 50%;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s;
-      z-index: 10;
-      flex: 0 0 auto;
-    }
-
-    .sim-enlarge:hover {
-      transform: scale(1.1);
-    }
-
-    .sim-enlarge img {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
-
     .tank-enlarge:hover {
       transform: scale(1.1);
     }
@@ -430,6 +398,7 @@
     }
 
     .sim-modal-content {
+      position: relative;
       width: 100%;
       max-width: 1400px;
       height: 85vh;
@@ -502,9 +471,14 @@
       letter-spacing: 0.5px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding-left: 10px;
-      /* Align with slider track */
+      gap: 10px;
+      padding-left: 0;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .sim-modal-metrics .metric-label img {
+      flex-shrink: 0;
     }
 
     /* ── Global Row Layout (dashboard + modal) ── */
@@ -585,14 +559,21 @@
       text-align: left;
       pointer-events: none;
       user-select: none;
-      margin-left: 24px;
-      /* Using margin instead of gap for better hit-testing */
+      margin-left: 16px;
     }
 
     .sim-modal-metrics .sim-metric {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .sim-modal-metrics .metric-row {
+      width: 100%;
+      padding-left: 0;
+      box-sizing: border-box;
     }
 
     .sim-modal-metrics {
@@ -602,9 +583,10 @@
       grid-template-columns: 1fr;
       grid-template-rows: auto repeat(4, auto);
       gap: 20px;
-      padding-right: 48px;
-      /* Extra deep safe zone */
+      padding-right: 16px;
+      padding-left: 0;
       align-content: start;
+      justify-items: stretch;
     }
 
     .sim-modal-score-big {
@@ -614,11 +596,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding-bottom: 48px;
+      padding-bottom: 40px;
       margin-bottom: 32px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
     }
+
 
     .sim-modal-score-big .sim-score-label {
       font-size: 18px;
@@ -651,35 +634,39 @@
     }
 
     .sim-modal-close {
-      position: absolute;
-      top: 32px;
-      right: 32px;
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      font-size: 40px;
-      font-family: sans-serif;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 1001;
-      border-radius: 50%;
-      transition: background 0.2s;
-      padding: 0;
+      border-radius: 0;
+      transition: color 0.15s ease, opacity 0.15s ease;
+      padding: 10px;
+      margin: 0;
       line-height: 1;
+      flex-shrink: 0;
+      background: transparent;
+      border: none;
+      color: #2f3333;
+    }
+
+    .sim-modal-content > .sim-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 20;
+    }
+
+    .sim-modal-content > .sim-modal-close:hover,
+    .sim-modal-content > .sim-modal-close:focus-visible {
+      color: #000;
+      opacity: 0.85;
+      outline: none;
     }
 
     .sim-modal-close svg {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       display: block;
-    }
-
-    .sim-modal-close:hover {
-      background: rgba(255, 255, 255, 0.2);
     }
 
     .tank-image-overlay {
@@ -1447,9 +1434,34 @@
       gap: 16px;
     }
 
+    a.assignment {
+      text-decoration: none;
+      color: inherit;
+      border-radius: 8px;
+      margin: 0 -6px;
+      padding: 8px 6px;
+      transition: background 0.15s ease;
+    }
+
+    a.assignment:hover,
+    a.assignment:focus-visible {
+      background: rgba(0, 117, 222, 0.06);
+      outline: none;
+    }
+
+    a.assignment:hover .assignment-title,
+    a.assignment:focus-visible .assignment-title {
+      color: var(--blue);
+    }
+
     .assignment.bordered {
       padding-bottom: 6px;
       border-bottom: 1px solid var(--divider);
+    }
+
+    a.assignment.bordered {
+      margin-bottom: 0;
+      border-radius: 8px 8px 0 0;
     }
 
     .assignment-icon {
@@ -1529,6 +1541,53 @@
       transform: translateY(0);
     }
 
+    /* Coral Simulation — match View All Coursework primary; small reset = live tank enlarge */
+    .sim-header-row .primary-btn {
+      margin-top: 0;
+      flex-shrink: 0;
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .sim-modal-score-big .primary-btn {
+      margin-top: 12px;
+    }
+
+    .sim-reset-fab {
+      flex: none;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      background: #fff;
+      border-radius: 50%;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      pointer-events: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sim-reset-fab:hover,
+    .sim-reset-fab:focus-visible {
+      transform: scale(1.1);
+      outline: none;
+    }
+
+    .sim-reset-fab img {
+      width: 16px;
+      height: 16px;
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
     .team-score {
       grid-column: 2;
       grid-row: 2;
@@ -1538,6 +1597,8 @@
       /* let the inner sim-card control padding so it fills the article */
       position: relative;
       margin-top: -12px;
+      /* Above #cory-iframe (900) so simulation controls stay clickable */
+      z-index: 950;
     }
 
     /* Simulation card placed in the Team Score slot for Student view */
@@ -1602,6 +1663,23 @@
       gap: 10px;
     }
 
+    .sim-score-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      pointer-events: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sim-score-row .sim-score-group {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
     .sim-left {
       background: #111;
       border-radius: 6px;
@@ -1620,11 +1698,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .sim-enlarge {
-      pointer-events: auto;
-      /* Restore button clickability */
     }
 
     .sim-right {
@@ -2105,38 +2178,38 @@
         <h2 class="section-title">My Assignments</h2>
 
         <div class="assignment-list">
-          <div class="assignment bordered">
-            <img class="assignment-icon" src="../assets/teacher-assignment-video.svg" alt="" />
+          <a class="assignment bordered" href="is-coral-animal.html?from=index" aria-label="Open video: Is Coral an Animal?">
+            <img class="assignment-icon" src="../assets/395f9af5-9efc-478e-8d7d-8982f4180639.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title">Coral Calcification Series</h3>
-                <span class="badge warn">Due Tomorrow</span>
+                <h3 class="assignment-title">Is Coral an Animal?</h3>
+                <span class="badge warn">Due April 14, 2026</span>
               </div>
-              <p class="assignment-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
+              <p class="assignment-copy">Learn the truth about what coral really is</p>
             </div>
-          </div>
+          </a>
 
-          <div class="assignment bordered">
-            <img class="assignment-icon" src="../assets/teacher-assignment-bio201.svg" alt="" />
+          <a class="assignment bordered" href="reading-coral-101.html?from=index" aria-label="Open reading: Coral 101">
+            <img class="assignment-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title">Symbiosis Reading Guide</h3>
-                <span class="badge muted">Due Friday</span>
+                <h3 class="assignment-title">Coral 101</h3>
+                <span class="badge muted">Due April 14, 2026</span>
               </div>
-              <p class="assignment-copy">Read the PDF guide and highlight key symbiotic partners.</p>
+              <p class="assignment-copy">A basic guide for taking care of coral</p>
             </div>
-          </div>
+          </a>
 
-          <div class="assignment">
+          <a class="assignment" href="quiz-coral-101.html?from=index" aria-label="Open quiz: Coral 101 QUIZ">
             <img class="assignment-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
             <div>
               <div class="assignment-head">
-                <h3 class="assignment-title">Weekly Reef Knowledge Check</h3>
-                <span class="badge muted">Due Sunday</span>
+                <h3 class="assignment-title">Coral 101 QUIZ</h3>
+                <span class="badge muted">Due April 14, 2026</span>
               </div>
-              <p class="assignment-copy">12 Questions covering this week's tank chemistry.</p>
+              <p class="assignment-copy">A quiz on the Coral 101 reading assignment</p>
             </div>
-          </div>
+          </a>
         </div>
 
         <button class="primary-btn" type="button" onclick="window.location.href='learn.html'">View All
@@ -2147,21 +2220,24 @@
         <div class="sim-card" role="region" aria-label="Coral Simulation">
           <div class="sim-header-row">
             <div class="sim-title">Coral Simulation</div>
-            <div class="sim-score-group">
-              <div class="sim-score" id="health-score-display">92%</div>
-              <div class="sim-score-label">AI Health Score</div>
-            </div>
+            <button type="button" id="btn-enlarge-sim" class="primary-btn">Expand Simulation</button>
           </div>
 
           <div class="sim-left">
             <img src="../assets/Inside tank view.webp" alt="Simulation preview" id="cory-avatar" />
-            <button class="sim-enlarge" aria-label="Enlarge simulation"
-              onclick="document.getElementById('simModal').classList.add('active')">
-              <img src="../assets/fcbee645-242b-4d85-89dc-af627b54c189.svg" alt="" />
-            </button>
           </div>
 
           <div class="sim-right">
+            <div class="sim-score-row">
+              <div class="sim-score-group">
+                <div class="sim-score" id="health-score-display">92%</div>
+                <div class="sim-score-label">AI Health Score</div>
+              </div>
+              <button type="button" id="btn-reset-small" class="sim-reset-fab" title="Reset to Ideal Parameters"
+                aria-label="Reset to ideal parameters">
+                <img src="../assets/refresh.svg" alt="">
+              </button>
+            </div>
             <div class="sim-metric">
               <div class="metric-label"><span>Temperature</span><img
                   src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" alt="" /></div>
@@ -2318,12 +2394,12 @@
 
 
   <div class="sim-modal" id="simModal" onclick="if(event.target === this) this.classList.remove('active')">
-    <button class="sim-modal-close" aria-label="Close simulation" type="button">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      </svg>
-    </button>
-    <div class="sim-modal-content">
+    <div class="sim-modal-content" onclick="event.stopPropagation()">
+      <button class="sim-modal-close" aria-label="Close simulation" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 7L17 17M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </button>
       <div class="sim-modal-header">
         <div class="sim-title">Coral Simulation</div>
       </div>
@@ -2336,11 +2412,11 @@
         <div class="sim-modal-score-big">
           <div class="sim-score" id="health-score-display-modal">92%</div>
           <div class="sim-score-label">AI Health Score</div>
+          <button type="button" id="btn-reset-large" class="primary-btn">Reset Parameters</button>
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label"><span>Temperature</span><img
-              src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" alt="" /></div>
+          <div class="metric-label"><img src="../assets/7bd8d3c0-7663-4246-86b1-265d54c9882a.svg" alt="" /><span>Temperature</span></div>
           <div class="metric-row">
             <input type="range" id="temp-slider-modal" min="60" max="100" step="1" value="78" class="sim-slider"
               data-type="temperature">
@@ -2349,8 +2425,7 @@
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label"><span>Salinity</span><img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg"
-              alt="" /></div>
+          <div class="metric-label"><img src="../assets/4dea0953-907d-4052-ab20-9cca83cda85c.svg" alt="" /><span>Salinity</span></div>
           <div class="metric-row">
             <input type="range" id="salinity-slider-modal" min="20" max="50" step="1" value="35" class="sim-slider"
               data-type="salinity">
@@ -2359,8 +2434,7 @@
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label"><span>pH Level</span><img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg"
-              alt="" /></div>
+          <div class="metric-label"><img src="../assets/3c41eed2-862f-4820-83ce-73a8f4e7e1d3.svg" alt="" /><span>pH Level</span></div>
           <div class="metric-row">
             <input type="range" id="ph-slider-modal" min="7.0" max="9.0" step="0.1" value="8.2" class="sim-slider"
               data-type="ph">
@@ -2369,8 +2443,7 @@
         </div>
 
         <div class="sim-metric">
-          <div class="metric-label"><span>Redox</span><img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg"
-              alt="" /></div>
+          <div class="metric-label"><img src="../assets/6267a499-28d2-4255-857c-746abb06886c.svg" alt="" /><span>Redox</span></div>
           <div class="metric-row">
             <input type="range" id="redox-slider-modal" min="100" max="600" step="10" value="350" class="sim-slider"
               data-type="redox">
@@ -2824,7 +2897,7 @@
 
     // Handle sim modal open/close
     const simModalEl = document.getElementById('simModal');
-    const simEnlargeBtn = document.querySelector('.sim-enlarge');
+    const simEnlargeBtn = document.getElementById('btn-enlarge-sim');
     const simModalCloseBtn = document.querySelector('.sim-modal-close');
 
     if (simEnlargeBtn && simModalEl) {
@@ -2947,6 +3020,53 @@
     sliders.forEach(slider => {
       slider.addEventListener('input', syncSlidersAndBroadcast);
     });
+
+    function resetSimulationParameters() {
+      const defaults = [
+        ['temperature', '78', '° F'],
+        ['salinity', '35', ' PPT'],
+        ['ph', '8.2', null],
+        ['redox', '350', ' mV']
+      ];
+      defaults.forEach(function (row) {
+        var type = row[0];
+        var val = row[1];
+        var unit = row[2];
+        document.querySelectorAll('.sim-slider[data-type="' + type + '"]').forEach(function (s) {
+          s.value = val;
+          var next = s.nextElementSibling;
+          if (next) {
+            if (type === 'ph') {
+              next.textContent = parseFloat(val).toFixed(2);
+            } else {
+              next.textContent = val + unit;
+            }
+          }
+        });
+      });
+      var data = calculateAIHealthScore();
+      var coryIframe = document.getElementById('cory-iframe');
+      if (coryIframe && coryIframe.contentWindow) {
+        coryIframe.contentWindow.postMessage({
+          type: 'UPDATE_TANK_DATA',
+          data: {
+            temperature: data.temp,
+            salinity: data.salinity,
+            ph: data.ph,
+            healthScore: data.totalScore
+          }
+        }, '*');
+      }
+    }
+
+    var btnResetSmall = document.getElementById('btn-reset-small');
+    var btnResetLarge = document.getElementById('btn-reset-large');
+    if (btnResetSmall) {
+      btnResetSmall.addEventListener('click', resetSimulationParameters);
+    }
+    if (btnResetLarge) {
+      btnResetLarge.addEventListener('click', resetSimulationParameters);
+    }
 
     // Run once to initialize
     calculateAIHealthScore();

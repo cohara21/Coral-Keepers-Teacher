@@ -129,6 +129,8 @@
       gap: 14px;
       margin-bottom: 10px;
       color: #727272;
+      position: relative;
+      z-index: 28;
     }
 
     .search-bar {
@@ -198,6 +200,7 @@
       border-radius: 8px;
       box-shadow: var(--shadow);
       position: relative;
+      z-index: 26;
       padding: 24px 24px 32px;
     }
 
@@ -868,7 +871,8 @@
 
   </script>
   <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
-    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
+    title="Cory assistant"
+    style="position: fixed; bottom: 0; right: 0; width: 400px; height: 600px; max-height: min(600px, 85vh); border: none; z-index: 24; background-color: transparent;"></iframe>
 </body>
 
 </html>

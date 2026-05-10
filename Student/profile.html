@@ -247,9 +247,36 @@
       padding: 0;
     }
 
-    .grade-icon {
+    /* Icon wells match Learn tab assignment-type accents (Reading / Videos / Quizzes / Submissions cards) */
+    .grade-icon-slot {
       width: 40.667px;
       height: 40.667px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+
+    .grade-icon-slot--reading {
+      background: rgba(0, 117, 222, 0.12);
+    }
+
+    .grade-icon-slot--video {
+      background: rgba(255, 144, 76, 0.2);
+    }
+
+    .grade-icon-slot--quiz {
+      background: rgba(184, 128, 255, 0.16);
+    }
+
+    .grade-icon-slot--submission {
+      background: rgba(46, 204, 113, 0.14);
+    }
+
+    .grade-icon {
+      width: 26px;
+      height: 26px;
       display: block;
       object-fit: contain;
     }
@@ -610,7 +637,7 @@
 
   <main class="profile-page">
     <section class="hero">
-      <img class="banner" src="../assets/2c5c51ab-84f0-47b2-8e2b-b68eb9b87357.webp" alt="Coral reef" />
+      <img class="banner" src="../assets/ProfileBannerStudent.webp" alt="Coral reef" />
       <img class="avatar" src="../assets/Pink%20Guy%20Icon.png" alt="Sierra Winters" />
       <button class="edit-profile-btn" type="button" aria-label="Edit profile">
         <img src="../assets/pencil.svg" alt="" aria-hidden="true" />
@@ -625,7 +652,9 @@
 
         <div class="grade-list">
           <div class="grade-row">
-            <img class="grade-icon" src="../assets/ed8acb8f-ca50-4822-8dd8-0e2b78104a7b.svg" alt="" />
+            <div class="grade-icon-slot grade-icon-slot--video" aria-hidden="true">
+              <img class="grade-icon" src="../assets/395f9af5-9efc-478e-8d7d-8982f4180639.svg" alt="" />
+            </div>
             <div>
               <p class="grade-name">Coral Calcification Series</p>
               <p class="grade-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
@@ -634,7 +663,9 @@
           </div>
 
           <div class="grade-row">
-            <img class="grade-icon" src="../assets/e8eea9e0-86cb-4379-95e2-012ae86dffed.svg" alt="" />
+            <div class="grade-icon-slot grade-icon-slot--reading" aria-hidden="true">
+              <img class="grade-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
+            </div>
             <div>
               <p class="grade-name">Symbiosis Reading Guide</p>
               <p class="grade-copy">Read the PDF guide and highlight key symbiotic partners.</p>
@@ -643,7 +674,9 @@
           </div>
 
           <div class="grade-row">
-            <img class="grade-icon" src="../assets/2c285560-8872-49f3-aae4-d154afde5407.svg" alt="" />
+            <div class="grade-icon-slot grade-icon-slot--quiz" aria-hidden="true">
+              <img class="grade-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
+            </div>
             <div>
               <p class="grade-name">Weekly Reef Knowledge Check</p>
               <p class="grade-copy">12 Questions covering this week's tank chemistry.</p>
@@ -652,7 +685,9 @@
           </div>
 
           <div class="grade-row">
-            <img class="grade-icon" src="../assets/e8eea9e0-86cb-4379-95e2-012ae86dffed.svg" alt="" />
+            <div class="grade-icon-slot grade-icon-slot--submission" aria-hidden="true">
+              <img class="grade-icon" src="../assets/352462c7-bfc9-40dc-ad35-b9434e8e256c.svg" alt="" />
+            </div>
             <div>
               <p class="grade-name">Bleaching Essay</p>
               <p class="grade-copy">Write a 500-word essay on the causes of coral bleaching.</p>

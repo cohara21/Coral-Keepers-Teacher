@@ -146,6 +146,8 @@
       gap: 14px;
       margin-bottom: 10px;
       color: #727272;
+      position: relative;
+      z-index: 28;
     }
 
     .search-bar {
@@ -207,6 +209,73 @@
       border-color: rgba(0, 0, 0, 0.1);
     }
 
+    .filter-wrap {
+      position: relative;
+    }
+
+    .filter-btn[aria-expanded="true"] {
+      border-color: rgba(0, 117, 222, 0.35);
+      background: rgba(0, 117, 222, 0.06);
+    }
+
+    .filter-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 220px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+      padding: 6px;
+      z-index: 60;
+      display: none;
+    }
+
+    .filter-popover.is-open {
+      display: block;
+    }
+
+    .filter-option {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--text-dark);
+      cursor: pointer;
+      line-height: 1.35;
+    }
+
+    .filter-option:hover {
+      background: #f4f4f3;
+    }
+
+    .filter-option[aria-checked="true"] {
+      background: rgba(0, 117, 222, 0.1);
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .filter-section-label {
+      font-size: 11px;
+      line-height: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 8px 12px 4px;
+    }
+
+    .filter-divider {
+      height: 1px;
+      background: var(--divider);
+      margin: 6px 8px;
+    }
+
     .board {
       min-height: 464px;
       height: auto;
@@ -216,12 +285,221 @@
       box-shadow: var(--shadow);
       padding: 24px 24px 32px;
       position: relative;
+      z-index: 26;
       display: flex;
       flex-direction: column;
     }
 
     .board.is-compose {
       height: clamp(620px, calc(100vh - 140px), 760px);
+    }
+
+    .board.is-thread {
+      min-height: clamp(480px, calc(100vh - 200px), 720px);
+    }
+
+    .board.is-thread.is-compose {
+      height: clamp(620px, calc(100vh - 140px), 760px);
+    }
+
+    .messages-list-view {
+      display: block;
+    }
+
+    .board.is-thread .messages-list-view {
+      display: none;
+    }
+
+    .thread-panel {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      margin-top: 8px;
+    }
+
+    .board.is-thread .thread-panel {
+      display: flex;
+    }
+
+    .thread-toolbar {
+      margin-bottom: 16px;
+    }
+
+    .thread-back {
+      border: none;
+      background: none;
+      padding: 4px 0;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .thread-back:hover {
+      text-decoration: underline;
+    }
+
+    .thread-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--divider);
+      margin-bottom: 16px;
+    }
+
+    .thread-peer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 47px;
+      border: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+
+    .thread-peer-avatar img {
+      width: 16px;
+      height: auto;
+      max-height: 16px;
+    }
+
+    .thread-peer-avatar.blue {
+      background: rgba(213, 227, 255, 0.3);
+    }
+
+    .thread-peer-avatar.pink {
+      background: rgba(254, 213, 255, 0.3);
+    }
+
+    .thread-peer-avatar.green {
+      background: rgba(184, 222, 176, 0.3);
+    }
+
+    .thread-peer-name {
+      margin: 0;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .thread-scroll {
+      flex: 1;
+      min-height: 200px;
+      max-height: min(420px, 42vh);
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-bottom: 16px;
+    }
+
+    .thread-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .thread-bubble-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      margin-bottom: 8px;
+    }
+
+    .thread-bubble-wrap.is-self {
+      align-items: flex-end;
+    }
+
+    .thread-bubble-wrap.is-peer {
+      align-items: flex-start;
+    }
+
+    .thread-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      padding: 0 4px;
+    }
+
+    .thread-bubble {
+      max-width: min(400px, 85%);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .thread-bubble.is-peer {
+      background: #f4f4f3;
+      color: var(--text-dark);
+      border-bottom-left-radius: 4px;
+    }
+
+    .thread-bubble.is-self {
+      background: rgba(0, 117, 222, 0.14);
+      color: var(--text-dark);
+      border-bottom-right-radius: 4px;
+    }
+
+    .thread-reply-form {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      padding-top: 12px;
+      border-top: 1px solid var(--divider);
+      flex-wrap: wrap;
+    }
+
+    .thread-reply-input {
+      flex: 1;
+      min-width: 160px;
+      min-height: 44px;
+      max-height: 120px;
+      border: 1px solid #d4d4d4;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-dark);
+      resize: vertical;
+      outline: none;
+    }
+
+    .thread-reply-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px rgba(0, 117, 222, 0.15);
+    }
+
+    .thread-send-btn {
+      height: 44px;
+      padding: 0 20px;
+      border: none;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      flex: none;
+    }
+
+    .thread-send-btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .board-shell.is-thread .page-tools {
+      visibility: hidden;
+      pointer-events: none;
     }
 
     .section-title {
@@ -247,12 +525,42 @@
       align-items: center;
       gap: 10px;
       padding: 12px 0;
+      cursor: pointer;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .contact {
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
+    }
+
+    .read-indicator {
+      width: 10px;
+      flex: none;
+      align-self: center;
+    }
+
+    .read-indicator.is-unread::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #2ecc71;
     }
 
     .avatar {
@@ -708,19 +1016,40 @@
           <img class="search-icon" src="../assets/Search.svg" alt="" />
           <input class="search-input" type="search" placeholder="Search messages..." aria-label="Search messages" />
         </div>
-        <button class="tool-btn filter-btn" type="button" aria-label="Filter messages">
-          <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
-          </svg>
-        </button>
+        <div class="filter-wrap">
+          <button class="tool-btn filter-btn" id="messagesFilterBtn" type="button" aria-label="Filter and sort messages"
+            aria-expanded="false" aria-haspopup="true" aria-controls="messagesFilterMenu">
+            <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
+            </svg>
+          </button>
+          <div id="messagesFilterMenu" class="filter-popover" aria-label="Filter and sort conversations">
+            <div class="filter-section" role="radiogroup" aria-label="Show conversations">
+              <div class="filter-section-label">Show</div>
+              <button type="button" class="filter-option" role="radio" data-read-filter="all" aria-checked="true">All</button>
+              <button type="button" class="filter-option" role="radio" data-read-filter="unread" aria-checked="false">Unread only</button>
+              <button type="button" class="filter-option" role="radio" data-read-filter="read" aria-checked="false">Read only</button>
+            </div>
+            <div class="filter-divider" aria-hidden="true"></div>
+            <div class="filter-section" role="radiogroup" aria-label="Sort conversations">
+              <div class="filter-section-label">Sort</div>
+              <button type="button" class="filter-option" role="radio" data-sort-value="newest" aria-checked="true">Newest first</button>
+              <button type="button" class="filter-option" role="radio" data-sort-value="oldest" aria-checked="false">Oldest first</button>
+              <button type="button" class="filter-option" role="radio" data-sort-value="name-asc" aria-checked="false">Name A–Z</button>
+              <button type="button" class="filter-option" role="radio" data-sort-value="name-desc" aria-checked="false">Name Z–A</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <section class="board">
-        <h1 class="section-title">Messages</h1>
+        <div class="messages-list-view">
+          <h1 class="section-title">Messages</h1>
 
-        <div class="list">
-          <div class="row">
+          <div class="list">
+          <div class="row" data-last-at="2026-04-06T15:05:00" data-read-state="unread">
             <div class="contact">
+              <span class="read-indicator is-unread" aria-hidden="true"></span>
               <div class="avatar blue"><img src="../assets/6cfa3752-8668-45dd-840a-04566340856c.svg" alt="" /></div>
               <p class="name">Emmaline Kim</p>
             </div>
@@ -728,8 +1057,9 @@
             <p class="preview">Hey Jessica! I was just wondering if you need a study partner for Mr. Smith’s Coral...</p>
           </div>
 
-          <div class="row">
+          <div class="row" data-last-at="2026-04-06T15:15:00" data-read-state="read">
             <div class="contact">
+              <span class="read-indicator" aria-hidden="true"></span>
               <div class="avatar pink"><img src="../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg" alt="" /></div>
               <p class="name">Michael Chen</p>
             </div>
@@ -737,17 +1067,79 @@
             <p class="preview">Hi Michael! Are you interested in joining our weekend study group for the exam?</p>
           </div>
 
-          <div class="row">
+          <div class="row" data-last-at="2026-04-06T15:20:00" data-read-state="unread">
             <div class="contact">
+              <span class="read-indicator is-unread" aria-hidden="true"></span>
               <div class="avatar green"><img src="../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg" alt="" /></div>
               <p class="name">Aisha Patel</p>
             </div>
             <p class="date">4/6/26, 3:20 PM</p>
             <p class="preview">Hello Aisha, would you like to collaborate on the project due next week?</p>
           </div>
+
+          <div class="row" data-last-at="2026-04-14T11:30:00" data-read-state="unread">
+            <div class="contact">
+              <span class="read-indicator is-unread" aria-hidden="true"></span>
+              <div class="avatar pink"><img src="../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg" alt="" /></div>
+              <p class="name">Jessica Flores</p>
+            </div>
+            <p class="date">4/14/26, 11:30 AM</p>
+            <p class="preview">Did you see the new readings on symbiotic algae? Want to compare notes before lab?</p>
+          </div>
+
+          <div class="row" data-last-at="2026-04-12T16:45:00" data-read-state="read">
+            <div class="contact">
+              <span class="read-indicator" aria-hidden="true"></span>
+              <div class="avatar blue"><img src="../assets/6cfa3752-8668-45dd-840a-04566340856c.svg" alt="" /></div>
+              <p class="name">Sofia Reyes</p>
+            </div>
+            <p class="date">4/12/26, 4:45 PM</p>
+            <p class="preview">Thanks for sending the reef vocabulary sheet — saved my quiz prep.</p>
+          </div>
+
+          <div class="row" data-last-at="2026-04-09T09:10:00" data-read-state="read">
+            <div class="contact">
+              <span class="read-indicator" aria-hidden="true"></span>
+              <div class="avatar green"><img src="../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg" alt="" /></div>
+              <p class="name">Mr. Smith</p>
+            </div>
+            <p class="date">4/9/26, 9:10 AM</p>
+            <p class="preview">Reminder: field trip permission slips are due Thursday. Bring water bottles.</p>
+          </div>
+
+          <div class="row" data-last-at="2026-04-08T18:22:00" data-read-state="unread">
+            <div class="contact">
+              <span class="read-indicator is-unread" aria-hidden="true"></span>
+              <div class="avatar pink"><img src="../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg" alt="" /></div>
+              <p class="name">Devon Walsh</p>
+            </div>
+            <p class="date">4/8/26, 6:22 PM</p>
+            <p class="preview">Can you send me the link to that coral bleaching documentary from class?</p>
+          </div>
         </div>
 
-        <button class="new-btn">New Message</button>
+          <button type="button" class="new-btn">New Message</button>
+        </div>
+
+        <section class="thread-panel" id="threadPanel" aria-hidden="true">
+          <div class="thread-toolbar">
+            <button type="button" class="thread-back" id="threadBackBtn">← Back to messages</button>
+          </div>
+          <div class="thread-header">
+            <div class="thread-peer-avatar blue" id="threadPeerAvatar" aria-hidden="true">
+              <img id="threadPeerAvatarImg" src="../assets/6cfa3752-8668-45dd-840a-04566340856c.svg" alt="" />
+            </div>
+            <h2 class="thread-peer-name" id="threadPeerName"></h2>
+          </div>
+          <div class="thread-scroll" id="threadScroll">
+            <div class="thread-messages" id="threadMessages"></div>
+          </div>
+          <form class="thread-reply-form" id="threadReplyForm">
+            <label class="visually-hidden" for="threadReplyInput">Reply</label>
+            <textarea id="threadReplyInput" class="thread-reply-input" placeholder="Write a message…" rows="2"></textarea>
+            <button type="submit" class="thread-send-btn" id="threadSendBtn" disabled title="Type a message above, then tap Send">Send</button>
+          </form>
+        </section>
 
         <section class="compose-panel" id="composePanel" aria-hidden="true">
           <button class="compose-close" type="button" aria-label="Close compose">×</button>
@@ -784,6 +1176,7 @@
 
   <script>
     const board = document.querySelector('.board');
+    const boardShell = document.querySelector('.board-shell');
     const newBtn = document.querySelector('.new-btn');
     const composePanel = document.getElementById('composePanel');
     const composeClose = document.querySelector('.compose-close');
@@ -793,6 +1186,226 @@
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
     const messageList = document.querySelector('.list');
+    const messagesSearchInput = document.querySelector('.page-tools .search-input');
+    const messagesFilterBtn = document.getElementById('messagesFilterBtn');
+    const messagesFilterMenu = document.getElementById('messagesFilterMenu');
+    const messagesSortOptions = messagesFilterMenu ? messagesFilterMenu.querySelectorAll('[data-sort-value]') : [];
+    const messagesReadFilterOptions = messagesFilterMenu ? messagesFilterMenu.querySelectorAll('[data-read-filter]') : [];
+
+    let messagesSortOrder = 'newest';
+    let messagesReadFilter = 'all';
+
+    const threadPanel = document.getElementById('threadPanel');
+    const threadBackBtn = document.getElementById('threadBackBtn');
+    const threadPeerAvatar = document.getElementById('threadPeerAvatar');
+    const threadPeerAvatarImg = document.getElementById('threadPeerAvatarImg');
+    const threadPeerNameEl = document.getElementById('threadPeerName');
+    const threadMessagesEl = document.getElementById('threadMessages');
+    const threadScroll = document.getElementById('threadScroll');
+    const threadReplyForm = document.getElementById('threadReplyForm');
+    const threadReplyInput = document.getElementById('threadReplyInput');
+    const threadSendBtn = document.getElementById('threadSendBtn');
+
+    let activeThreadPeerName = '';
+    const threadMessagesByPeer = {};
+    const MESSAGES_STORAGE_KEY = 'ck_student_messages_v1';
+
+    const listAvatarMap = {
+      'Emmaline Kim': { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' },
+      'Michael Chen': { tone: 'pink', icon: '../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg' },
+      'Aisha Patel': { tone: 'green', icon: '../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg' },
+      'Jessica Flores': { tone: 'pink', icon: '../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg' },
+      'Sofia Reyes': { tone: 'green', icon: '../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg' },
+      'Mr. Smith': { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' },
+      'Devon Walsh': { tone: 'pink', icon: '../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg' },
+      'Ian Breen': { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' },
+      'Emilio Hernandez': { tone: 'green', icon: '../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg' },
+    };
+
+    function closeMessagesFilterMenu() {
+      if (!messagesFilterMenu || !messagesFilterBtn) return;
+      messagesFilterMenu.classList.remove('is-open');
+      messagesFilterBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function rowLastTime(row) {
+      const iso = row.dataset.lastAt;
+      if (iso) {
+        const t = new Date(iso).getTime();
+        if (!Number.isNaN(t)) return t;
+      }
+      const dateEl = row.querySelector('.date');
+      if (!dateEl || !dateEl.textContent) return 0;
+      const parsed = Date.parse(dateEl.textContent.trim());
+      return Number.isNaN(parsed) ? 0 : parsed;
+    }
+
+    function sortMessageRows() {
+      if (!messageList) return;
+      const rows = [...messageList.querySelectorAll('.row')];
+      rows.sort((a, b) => {
+        if (messagesSortOrder === 'name-asc' || messagesSortOrder === 'name-desc') {
+          const na = (a.querySelector('.name')?.textContent || '').toLowerCase();
+          const nb = (b.querySelector('.name')?.textContent || '').toLowerCase();
+          const cmp = na.localeCompare(nb, undefined, { sensitivity: 'base' });
+          return messagesSortOrder === 'name-asc' ? cmp : -cmp;
+        }
+        const ta = rowLastTime(a);
+        const tb = rowLastTime(b);
+        return messagesSortOrder === 'oldest' ? ta - tb : tb - ta;
+      });
+      rows.forEach((r) => messageList.appendChild(r));
+    }
+
+    function applyMessageListFilters() {
+      const query = (messagesSearchInput && messagesSearchInput.value ? messagesSearchInput.value : '').trim().toLowerCase();
+      messageList.querySelectorAll('.row').forEach((row) => {
+        const name = (row.querySelector('.name')?.textContent || '').toLowerCase();
+        const preview = (row.querySelector('.preview')?.textContent || '').toLowerCase();
+        const dateStr = (row.querySelector('.date')?.textContent || '').toLowerCase();
+        const matchesSearch =
+          !query || name.includes(query) || preview.includes(query) || dateStr.includes(query);
+        const readState = row.getAttribute('data-read-state') || 'read';
+        const matchesRead =
+          messagesReadFilter === 'all' || messagesReadFilter === readState;
+        row.style.display = matchesSearch && matchesRead ? 'grid' : 'none';
+      });
+    }
+
+    function shiftIsoHours(baseIso, hoursDelta) {
+      const d = new Date(baseIso);
+      d.setHours(d.getHours() + hoursDelta);
+      return d.toISOString();
+    }
+
+    function findRowByPeerName(name) {
+      return [...messageList.querySelectorAll('.row')].find((row) => {
+        const n = row.querySelector('.name');
+        return n && n.textContent.trim() === name;
+      });
+    }
+
+    function ensureThreadLog(peerName) {
+      if (threadMessagesByPeer[peerName]) return;
+      const row = findRowByPeerName(peerName);
+      const preview = row?.querySelector('.preview')?.textContent?.trim() || '';
+      const lastIso = row?.dataset.lastAt || new Date().toISOString();
+
+      const presets = {
+        'Emmaline Kim': [
+          { role: 'peer', body: 'Hope you’re doing okay after last unit!', iso: shiftIsoHours(lastIso, -96) },
+          { role: 'self', body: 'Same to you — that taxonomy chart took forever.', iso: shiftIsoHours(lastIso, -95) },
+          { role: 'peer', body: preview, iso: lastIso },
+        ],
+        'Michael Chen': [
+          { role: 'peer', body: 'Still down for weekend study group?', iso: shiftIsoHours(lastIso, -28) },
+          { role: 'self', body: preview, iso: lastIso },
+        ],
+        'Aisha Patel': [
+          { role: 'peer', body: 'Did Mr. Smith post the rubric yet?', iso: shiftIsoHours(lastIso, -52) },
+          { role: 'self', body: preview, iso: lastIso },
+        ],
+        'Jessica Flores': [
+          { role: 'peer', body: 'Random question — do you have the lab checklist?', iso: shiftIsoHours(lastIso, -60) },
+          { role: 'self', body: 'Yep, I’ll send it over.', iso: shiftIsoHours(lastIso, -58) },
+          { role: 'peer', body: preview, iso: lastIso },
+        ],
+        'Sofia Reyes': [
+          { role: 'self', body: 'Happy to share the vocab sheet anytime!', iso: shiftIsoHours(lastIso, -40) },
+          { role: 'peer', body: preview, iso: lastIso },
+        ],
+        'Mr. Smith': [
+          { role: 'peer', body: 'Nice work on today’s reef discussion.', iso: shiftIsoHours(lastIso, -72) },
+          { role: 'peer', body: preview, iso: lastIso },
+        ],
+        'Devon Walsh': [
+          { role: 'peer', body: 'Did you finish the bleaching reflection yet?', iso: shiftIsoHours(lastIso, -18) },
+          { role: 'peer', body: preview, iso: lastIso },
+        ],
+      };
+
+      threadMessagesByPeer[peerName] =
+        presets[peerName] || [
+          { role: 'peer', body: 'Hey!', iso: shiftIsoHours(lastIso, -36) },
+          { role: 'self', body: 'Hey — what’s up?', iso: shiftIsoHours(lastIso, -35) },
+          { role: 'peer', body: preview || '…', iso: lastIso },
+        ];
+    }
+
+    function renderThreadMessages(peerName) {
+      ensureThreadLog(peerName);
+      threadMessagesEl.textContent = '';
+      const log = threadMessagesByPeer[peerName];
+      const displayPeer = threadPeerNameEl.textContent.trim();
+
+      log.forEach((msg) => {
+        const wrap = document.createElement('div');
+        wrap.className = `thread-bubble-wrap ${msg.role === 'self' ? 'is-self' : 'is-peer'}`;
+        const meta = document.createElement('div');
+        meta.className = 'thread-meta';
+        const labelWho = msg.role === 'self' ? 'You' : displayPeer;
+        meta.textContent = `${labelWho} · ${formatTimestamp(new Date(msg.iso))}`;
+        const bubble = document.createElement('div');
+        bubble.className = `thread-bubble ${msg.role === 'self' ? 'is-self' : 'is-peer'}`;
+        bubble.textContent = msg.body;
+        wrap.appendChild(meta);
+        wrap.appendChild(bubble);
+        threadMessagesEl.appendChild(wrap);
+      });
+
+      threadScroll.scrollTop = threadScroll.scrollHeight;
+    }
+
+    function syncListRowFromThread(peerName) {
+      const row = findRowByPeerName(peerName);
+      const log = threadMessagesByPeer[peerName];
+      if (!row || !log?.length) return;
+      const last = log[log.length - 1];
+      row.querySelector('.preview').textContent = last.body;
+      row.dataset.lastAt = last.iso;
+      row.querySelector('.date').textContent = formatTimestamp(new Date(last.iso));
+      sortMessageRows();
+      applyMessageListFilters();
+      persistMessagesState();
+    }
+
+    function closeThread() {
+      persistMessagesState();
+      activeThreadPeerName = '';
+      board.classList.remove('is-thread');
+      boardShell?.classList.remove('is-thread');
+      threadPanel.setAttribute('aria-hidden', 'true');
+    }
+
+    function openThread(row) {
+      closeCompose();
+      closeMessagesFilterMenu();
+      const nameEl = row.querySelector('.name');
+      if (!nameEl) return;
+      const peerName = nameEl.textContent.trim();
+      setRowReadState(row, 'read');
+      persistMessagesState();
+      activeThreadPeerName = peerName;
+
+      const avatarImg = row.querySelector('.avatar img');
+      const tone = listAvatarMap[peerName]?.tone || 'blue';
+      threadPeerNameEl.textContent = peerName;
+      threadPeerAvatar.className = `thread-peer-avatar ${tone}`;
+      threadPeerAvatarImg.src = avatarImg?.src || listAvatarMap[peerName]?.icon || threadPeerAvatarImg.src;
+
+      board.classList.add('is-thread');
+      boardShell?.classList.add('is-thread');
+      threadPanel.setAttribute('aria-hidden', 'false');
+
+      renderThreadMessages(peerName);
+      threadReplyInput.value = '';
+      threadSendBtn.disabled = true;
+      threadReplyInput.focus();
+    }
+
+    function updateThreadSendEnabled() {
+      threadSendBtn.disabled = !threadReplyInput.value.trim();
+    }
 
     const recipients = [
       { name: 'Jessica Flores', role: 'Student', avatar: '../assets/dbc4f08e-3a4f-4cd2-bdae-bcc4e54b3a9f.jpg' },
@@ -802,14 +1415,6 @@
 
     let selectedRecipient = '';
     let sentTimer = null;
-
-    const listAvatarMap = {
-      'Emmaline Kim': { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' },
-      'Michael Chen': { tone: 'pink', icon: '../assets/0690951b-a0a0-42be-9f09-ca2e496b3780.svg' },
-      'Aisha Patel': { tone: 'green', icon: '../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg' },
-      'Ian Breen': { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' },
-      'Emilio Hernandez': { tone: 'green', icon: '../assets/8a1d99b7-8234-48b5-a3e9-a5a144998c48.svg' }
-    };
 
     function formatTimestamp(date) {
       const month = date.getMonth() + 1;
@@ -822,12 +1427,16 @@
       return `${month}/${day}/${year}, ${hours12}:${minutes} ${suffix}`;
     }
 
-    function buildMessageRow(name, previewText, timestampText) {
+    function buildMessageRow(name, previewText, timestampText, lastAtIso, readState = 'read') {
       const avatar = listAvatarMap[name] || { tone: 'blue', icon: '../assets/6cfa3752-8668-45dd-840a-04566340856c.svg' };
       const row = document.createElement('div');
       row.className = 'row';
+      row.dataset.lastAt = lastAtIso || new Date().toISOString();
+      row.setAttribute('data-read-state', readState);
+      const unreadClass = readState === 'unread' ? ' is-unread' : '';
       row.innerHTML = `
         <div class="contact">
+          <span class="read-indicator${unreadClass}" aria-hidden="true"></span>
           <div class="avatar ${avatar.tone}"><img src="${avatar.icon}" alt="" /></div>
           <p class="name">${name}</p>
         </div>
@@ -837,8 +1446,120 @@
       return row;
     }
 
+    function setRowReadState(row, state) {
+      row.setAttribute('data-read-state', state);
+      const dot = row.querySelector('.read-indicator');
+      if (dot) {
+        dot.classList.toggle('is-unread', state === 'unread');
+      }
+    }
+
+    function persistMessagesState() {
+      try {
+        const readStateByPeer = {};
+        const rows = [...messageList.querySelectorAll('.row')]
+          .map((row) => {
+            const name = row.querySelector('.name')?.textContent?.trim();
+            if (!name) return null;
+            readStateByPeer[name] = row.getAttribute('data-read-state') || 'read';
+            return {
+              name,
+              preview: row.querySelector('.preview')?.textContent ?? '',
+              lastAt: row.dataset.lastAt || new Date().toISOString(),
+            };
+          })
+          .filter(Boolean);
+
+        localStorage.setItem(
+          MESSAGES_STORAGE_KEY,
+          JSON.stringify({
+            v: 1,
+            threads: threadMessagesByPeer,
+            readStateByPeer,
+            rows,
+          })
+        );
+      } catch (e) {
+        /* quota or private mode */
+      }
+    }
+
+    function loadMessagesState() {
+      try {
+        const raw = localStorage.getItem(MESSAGES_STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (!data || data.v !== 1) return;
+
+        if (data.threads && typeof data.threads === 'object') {
+          Object.keys(threadMessagesByPeer).forEach((k) => delete threadMessagesByPeer[k]);
+          Object.assign(threadMessagesByPeer, data.threads);
+        }
+
+        if (Array.isArray(data.rows)) {
+          data.rows.forEach((snap) => {
+            if (!snap.name) return;
+            const row = findRowByPeerName(snap.name);
+            const lastAt = snap.lastAt || new Date().toISOString();
+            const preview = snap.preview ?? '';
+            if (row) {
+              row.querySelector('.preview').textContent = preview;
+              row.dataset.lastAt = lastAt;
+              row.querySelector('.date').textContent = formatTimestamp(new Date(lastAt));
+            } else {
+              messageList.prepend(
+                buildMessageRow(
+                  snap.name,
+                  preview,
+                  formatTimestamp(new Date(lastAt)),
+                  lastAt,
+                  'read'
+                )
+              );
+            }
+          });
+        }
+
+        Object.keys(threadMessagesByPeer).forEach((peerName) => {
+          const log = threadMessagesByPeer[peerName];
+          if (!log?.length) return;
+          const last = log[log.length - 1];
+          const threadTime = new Date(last.iso).getTime();
+          let row = findRowByPeerName(peerName);
+          if (!row) {
+            messageList.prepend(
+              buildMessageRow(
+                peerName,
+                last.body,
+                formatTimestamp(new Date(last.iso)),
+                last.iso,
+                'read'
+              )
+            );
+            return;
+          }
+          const rowTime = new Date(row.dataset.lastAt || 0).getTime();
+          if (threadTime >= rowTime) {
+            row.querySelector('.preview').textContent = last.body;
+            row.dataset.lastAt = last.iso;
+            row.querySelector('.date').textContent = formatTimestamp(new Date(last.iso));
+          }
+        });
+
+        Object.entries(data.readStateByPeer || {}).forEach(([name, state]) => {
+          const row = findRowByPeerName(name);
+          if (!row) return;
+          setRowReadState(row, state === 'unread' ? 'unread' : 'read');
+        });
+      } catch (e) {
+        /* ignore corrupt storage */
+      }
+    }
+
     function upsertMessageRow(name, previewText) {
-      const timestampText = formatTimestamp(new Date());
+      const now = new Date();
+      const timestampText = formatTimestamp(now);
+      const lastAtIso = now.toISOString();
       const rows = [...messageList.querySelectorAll('.row')];
       const existingRow = rows.find((row) => {
         const rowName = row.querySelector('.name');
@@ -848,11 +1569,27 @@
       if (existingRow) {
         existingRow.querySelector('.date').textContent = timestampText;
         existingRow.querySelector('.preview').textContent = previewText;
+        existingRow.dataset.lastAt = lastAtIso;
+        setRowReadState(existingRow, 'read');
         messageList.prepend(existingRow);
+        if (threadMessagesByPeer[name]) {
+          threadMessagesByPeer[name].push({ role: 'self', body: previewText, iso: lastAtIso });
+          if (activeThreadPeerName === name) renderThreadMessages(name);
+        }
+        sortMessageRows();
+        applyMessageListFilters();
+        persistMessagesState();
         return;
       }
 
-      messageList.prepend(buildMessageRow(name, previewText, timestampText));
+      messageList.prepend(buildMessageRow(name, previewText, timestampText, lastAtIso, 'read'));
+      if (threadMessagesByPeer[name]) {
+        threadMessagesByPeer[name].push({ role: 'self', body: previewText, iso: lastAtIso });
+        if (activeThreadPeerName === name) renderThreadMessages(name);
+      }
+      sortMessageRows();
+      applyMessageListFilters();
+      persistMessagesState();
     }
 
     function updateSendEnabled() {
@@ -862,6 +1599,7 @@
     }
 
     function openCompose() {
+      closeThread();
       board.classList.add('is-compose');
       newBtn.hidden = true;
       composePanel.setAttribute('aria-hidden', 'false');
@@ -899,6 +1637,29 @@
 
     newBtn.addEventListener('click', () => {
       openCompose();
+    });
+
+    messageList.addEventListener('click', (event) => {
+      const row = event.target.closest('.row');
+      if (!row || !messageList.contains(row)) return;
+      openThread(row);
+    });
+
+    threadBackBtn.addEventListener('click', () => closeThread());
+
+    threadReplyInput.addEventListener('input', updateThreadSendEnabled);
+
+    threadReplyForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const text = threadReplyInput.value.trim();
+      if (!text || !activeThreadPeerName) return;
+      ensureThreadLog(activeThreadPeerName);
+      const iso = new Date().toISOString();
+      threadMessagesByPeer[activeThreadPeerName].push({ role: 'self', body: text, iso });
+      renderThreadMessages(activeThreadPeerName);
+      syncListRowFromThread(activeThreadPeerName);
+      threadReplyInput.value = '';
+      threadSendBtn.disabled = true;
     });
 
     composeClose.addEventListener('click', closeCompose);
@@ -949,11 +1710,71 @@
       if (!composePanel.contains(event.target) && event.target !== newBtn) {
         recipientList.classList.remove('show');
       }
+      closeMessagesFilterMenu();
     });
 
+    if (messagesFilterBtn && messagesFilterMenu) {
+      messagesFilterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = !messagesFilterMenu.classList.contains('is-open');
+        messagesFilterMenu.classList.toggle('is-open', open);
+        messagesFilterBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      messagesFilterMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      messagesReadFilterOptions.forEach((opt) => {
+        opt.addEventListener('click', () => {
+          messagesReadFilter = opt.getAttribute('data-read-filter') || 'all';
+          messagesReadFilterOptions.forEach((b) => {
+            b.setAttribute('aria-checked', b === opt ? 'true' : 'false');
+          });
+          closeMessagesFilterMenu();
+          applyMessageListFilters();
+        });
+      });
+
+      messagesSortOptions.forEach((opt) => {
+        opt.addEventListener('click', () => {
+          messagesSortOrder = opt.getAttribute('data-sort-value') || 'newest';
+          messagesSortOptions.forEach((b) => {
+            b.setAttribute('aria-checked', b === opt ? 'true' : 'false');
+          });
+          sortMessageRows();
+          closeMessagesFilterMenu();
+          applyMessageListFilters();
+        });
+      });
+    }
+
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && messagesFilterMenu?.classList.contains('is-open')) {
+        closeMessagesFilterMenu();
+        return;
+      }
+      if (
+        ev.key === 'Escape' &&
+        board.classList.contains('is-thread') &&
+        !board.classList.contains('is-compose')
+      ) {
+        closeThread();
+      }
+    });
+
+    if (messagesSearchInput) {
+      messagesSearchInput.addEventListener('input', applyMessageListFilters);
+      messagesSearchInput.addEventListener('search', applyMessageListFilters);
+    }
+
+    loadMessagesState();
+    sortMessageRows();
+    applyMessageListFilters();
 
   </script>
   <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
-    style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>
+    title="Cory assistant"
+    style="position: fixed; bottom: 0; right: 0; width: 400px; height: 600px; max-height: min(600px, 85vh); border: none; z-index: 24; background-color: transparent;"></iframe>
 </body>
 </html>

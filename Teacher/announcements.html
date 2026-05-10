@@ -257,6 +257,57 @@
       border-color: rgba(0,0,0,0.1);
     }
 
+    .filter-wrap {
+      position: relative;
+    }
+
+    .filter-btn[aria-expanded="true"] {
+      border-color: rgba(0, 117, 222, 0.35);
+      background: rgba(0, 117, 222, 0.06);
+    }
+
+    .filter-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 200px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+      padding: 6px;
+      z-index: 55;
+      display: none;
+    }
+
+    .filter-popover.is-open {
+      display: block;
+    }
+
+    .filter-option {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--text-dark);
+      cursor: pointer;
+      line-height: 1.35;
+    }
+
+    .filter-option:hover {
+      background: #f4f4f3;
+    }
+
+    .filter-option[aria-checked="true"] {
+      background: rgba(0, 117, 222, 0.1);
+      color: var(--blue);
+      font-weight: 600;
+    }
+
     .filter-icon {
       width: 16px;
       height: 16px;
@@ -683,11 +734,20 @@
             <img class="search-icon" src="../assets/Search.svg" alt="" />
             <input class="search-input" type="search" placeholder="Search announcements..." aria-label="Search announcements" />
           </div>
-          <button class="tool-btn filter-btn" type="button" aria-label="Filter announcements">
-            <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
-            </svg>
-          </button>
+          <div class="filter-wrap">
+            <button class="tool-btn filter-btn" id="teacherAnnouncementsFilterBtn" type="button" aria-label="Filter announcements"
+              aria-expanded="false" aria-haspopup="true" aria-controls="teacherAnnouncementsFilterMenu">
+              <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
+              </svg>
+            </button>
+            <div id="teacherAnnouncementsFilterMenu" class="filter-popover" role="menu" aria-label="Filter by status">
+              <button type="button" class="filter-option" role="menuitemradio" data-filter-value="all" aria-checked="true">All</button>
+              <button type="button" class="filter-option" role="menuitemradio" data-filter-value="posted" aria-checked="false">Posted</button>
+              <button type="button" class="filter-option" role="menuitemradio" data-filter-value="scheduled" aria-checked="false">Scheduled</button>
+              <button type="button" class="filter-option" role="menuitemradio" data-filter-value="draft" aria-checked="false">Drafts</button>
+            </div>
+          </div>
           <button class="btn primary pill" id="openComposer" type="button" aria-label="Add new announcement">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 1.5V12.5M1.5 7H12.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -707,7 +767,7 @@
 
         <div id="announcementList">
           <!-- POSTED 1 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="posted">
             <span class="status-icon posted" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="fill" src="../assets/teacher-ann-circle-fill.svg" alt="" />
@@ -725,7 +785,7 @@
           </div>
 
           <!-- POSTED 2 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="posted">
             <span class="status-icon posted" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="fill" src="../assets/teacher-ann-circle-fill.svg" alt="" />
@@ -743,7 +803,7 @@
           </div>
 
           <!-- POSTED 3 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="posted">
             <span class="status-icon posted" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="fill" src="../assets/teacher-ann-circle-fill.svg" alt="" />
@@ -761,7 +821,7 @@
           </div>
 
           <!-- POSTED 4 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="posted">
             <span class="status-icon posted" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="fill" src="../assets/teacher-ann-circle-fill.svg" alt="" />
@@ -779,7 +839,7 @@
           </div>
 
           <!-- SCHEDULED 1 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="scheduled">
             <span class="status-icon" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="hand" src="../assets/teacher-ann-clock-hand-b.svg" alt="" />
@@ -797,7 +857,7 @@
           </div>
 
           <!-- SCHEDULED 2 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="scheduled">
             <span class="status-icon" aria-hidden="true">
               <img class="outline" src="../assets/teacher-ann-circle-outline.svg" alt="" />
               <img class="hand" src="../assets/teacher-ann-clock-hand-b.svg" alt="" />
@@ -815,7 +875,7 @@
           </div>
 
           <!-- DRAFT 1 -->
-          <div class="announcement-row">
+          <div class="announcement-row" data-status="draft">
             <div style="width: 19px; display: flex; justify-content: center;">
               <img class="pencil" src="../assets/teacher-ann-draft-pencil.svg" alt="" style="width: 18px; height: 18px;">
             </div>
@@ -888,6 +948,32 @@
     const postedCount = document.getElementById("postedCount");
     const scheduledCount = document.getElementById("scheduledCount");
     const draftCount = document.getElementById("draftCount");
+    const searchInput = document.querySelector(".search-input");
+    const teacherFilterBtn = document.getElementById("teacherAnnouncementsFilterBtn");
+    const teacherFilterMenu = document.getElementById("teacherAnnouncementsFilterMenu");
+    let teacherActiveFilter = "all";
+
+    function closeTeacherFilterMenu() {
+      if (!teacherFilterMenu || !teacherFilterBtn) return;
+      teacherFilterMenu.classList.remove("is-open");
+      teacherFilterBtn.setAttribute("aria-expanded", "false");
+    }
+
+    function applyTeacherAnnouncementFilters() {
+      const query = (searchInput?.value || "").trim().toLowerCase();
+      document.querySelectorAll(".announcement-row").forEach((row) => {
+        const title = (row.querySelector(".row-title")?.textContent || "").toLowerCase();
+        const copy = (row.querySelector(".row-copy")?.textContent || "").toLowerCase();
+        const matchesSearch = !query || title.includes(query) || copy.includes(query);
+        const status =
+          row.dataset.status ||
+          row.querySelector(".status-label")?.textContent.trim().toLowerCase() ||
+          "";
+        const matchesFilter =
+          teacherActiveFilter === "all" || status === teacherActiveFilter;
+        row.style.display = matchesSearch && matchesFilter ? "grid" : "none";
+      });
+    }
 
     function setComposerOpen(open) {
       composeBackdrop.setAttribute("aria-hidden", open ? "false" : "true");
@@ -978,6 +1064,7 @@
     function addAnnouncementRow({ title, body, date, status }) {
       const row = document.createElement("div");
       row.className = "announcement-row";
+      row.dataset.status = status;
 
       const iconContainer = document.createElement("div");
       iconContainer.style.width = "19px";
@@ -1029,6 +1116,7 @@
 
       announcementList.prepend(row);
       updateSummaryCounts();
+      applyTeacherAnnouncementFilters();
     }
 
     announcementList.addEventListener("click", (event) => {
@@ -1083,7 +1171,34 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && composeBackdrop.getAttribute("aria-hidden") === "false") {
         setComposerOpen(false);
+        return;
       }
+      if (event.key === "Escape" && teacherFilterMenu?.classList.contains("is-open")) {
+        closeTeacherFilterMenu();
+      }
+    });
+
+    document.addEventListener("click", () => {
+      closeTeacherFilterMenu();
+    });
+
+    teacherFilterBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = teacherFilterMenu.classList.toggle("is-open");
+      teacherFilterBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    teacherFilterMenu?.querySelectorAll(".filter-option").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const value = btn.dataset.filterValue || "all";
+        teacherActiveFilter = value;
+        teacherFilterMenu.querySelectorAll(".filter-option").forEach((opt) => {
+          opt.setAttribute("aria-checked", opt === btn ? "true" : "false");
+        });
+        applyTeacherAnnouncementFilters();
+        closeTeacherFilterMenu();
+      });
     });
 
     announcementForm.addEventListener("submit", (event) => {
@@ -1111,24 +1226,10 @@
       }
     });
 
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('.announcement-row');
-        rows.forEach(row => {
-          const title = row.querySelector('.row-title').textContent.toLowerCase();
-          const copy = row.querySelector('.row-copy').textContent.toLowerCase();
-          if (title.includes(query) || copy.includes(query)) {
-            row.style.display = 'grid';
-          } else {
-            row.style.display = 'none';
-          }
-        });
-      });
-    }
+    searchInput?.addEventListener("input", () => applyTeacherAnnouncementFilters());
 
     updateSummaryCounts();
+    applyTeacherAnnouncementFilters();
   </script>
   <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
     style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>

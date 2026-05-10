@@ -153,6 +153,7 @@
       position: absolute;
       top: -6px;
       right: 0;
+      z-index: 2;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -216,6 +217,73 @@
     .tool-btn:hover {
       background: #f8f9f7;
       border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-wrap {
+      position: relative;
+    }
+
+    .filter-btn[aria-expanded="true"] {
+      border-color: rgba(0, 117, 222, 0.35);
+      background: rgba(0, 117, 222, 0.06);
+    }
+
+    .filter-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 216px;
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+      padding: 6px;
+      z-index: 50;
+      display: none;
+    }
+
+    .filter-popover.is-open {
+      display: block;
+    }
+
+    .filter-option {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--text-dark);
+      cursor: pointer;
+      line-height: 1.35;
+    }
+
+    .filter-option:hover {
+      background: #f4f4f3;
+    }
+
+    .filter-option[aria-checked="true"] {
+      background: rgba(0, 117, 222, 0.1);
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .filter-section-label {
+      font-size: 11px;
+      line-height: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 8px 12px 4px;
+    }
+
+    .filter-divider {
+      height: 1px;
+      background: var(--divider);
+      margin: 6px 8px;
     }
 
     .board-header {
@@ -438,12 +506,29 @@
           <input class="search-input" type="search" placeholder="Search announcements..."
             aria-label="Search announcements" />
         </div>
-        <button class="tool-btn filter-btn" type="button" aria-label="Filter announcements">
-          <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
-          </svg>
-        </button>
+        <div class="filter-wrap">
+          <button class="tool-btn filter-btn" id="announcementsFilterBtn" type="button" aria-label="Filter announcements"
+            aria-expanded="false" aria-haspopup="true" aria-controls="announcementsFilterMenu">
+            <svg width="16" height="16" viewBox="0 0 3200 3200" fill="#2f3333" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1000,300c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm1200,700c-186.3,0 -342.889,127.503 -387.305,300l-1512.69,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l1512.69,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l312.695,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-312.695,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Zm-1200,700c-186.3,0 -342.889,127.503 -387.305,300l-312.695,0c-55.2,0 -100,44.8 -100,100c0,55.2 44.8,100 100,100l312.695,0c44.416,172.497 201.005,300 387.305,300c186.3,0 342.889,-127.503 387.305,-300l1512.69,0c55.2,0 100,-44.8 100,-100c0,-55.2 -44.8,-100 -100,-100l-1512.69,0c-44.416,-172.497 -201.005,-300 -387.305,-300Zm0,200c110.4,0 200,89.6 200,200c0,110.4 -89.6,200 -200,200c-110.4,0 -200,-89.6 -200,-200c0,-110.4 89.6,-200 200,-200Z" />
+            </svg>
+          </button>
+          <div id="announcementsFilterMenu" class="filter-popover" aria-label="Filter and sort announcements">
+            <div class="filter-section" role="radiogroup" aria-label="Show announcements">
+              <div class="filter-section-label">Show</div>
+              <button type="button" class="filter-option" role="radio" data-read-filter="all" aria-checked="true">All announcements</button>
+              <button type="button" class="filter-option" role="radio" data-read-filter="unread" aria-checked="false">Unread only</button>
+              <button type="button" class="filter-option" role="radio" data-read-filter="read" aria-checked="false">Read only</button>
+            </div>
+            <div class="filter-divider" aria-hidden="true"></div>
+            <div class="filter-section" role="radiogroup" aria-label="Sort by date posted">
+              <div class="filter-section-label">Sort by date</div>
+              <button type="button" class="filter-option" role="radio" data-sort-value="newest" aria-checked="true">Newest first</button>
+              <button type="button" class="filter-option" role="radio" data-sort-value="oldest" aria-checked="false">Oldest first</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <section class="board">
@@ -453,7 +538,7 @@
         </div>
 
         <div class="list">
-          <div class="row">
+          <div class="row" data-read-state="unread" data-posted-at="2026-04-15T09:00:00">
             <div class="dot"></div>
             <div>
               <p class="announcement-title">Project Guidelines</p>
@@ -463,7 +548,7 @@
             <div class="date">4/15/2026, 9:00 AM</div>
           </div>
 
-          <div class="row">
+          <div class="row" data-read-state="unread" data-posted-at="2026-04-10T13:15:00">
             <div class="dot"></div>
             <div>
               <p class="announcement-title">Guest Speaker Tomorrow</p>
@@ -473,7 +558,7 @@
             <div class="date">4/10/2026, 1:15 PM</div>
           </div>
 
-          <div class="row">
+          <div class="row" data-read-state="read" data-posted-at="2026-04-06T15:05:00">
             <div class="dot empty"></div>
             <div>
               <p class="announcement-title">Extra Credit Opportunity</p>
@@ -483,7 +568,7 @@
             <div class="date">4/6/2026, 3:05 PM</div>
           </div>
 
-          <div class="row">
+          <div class="row" data-read-state="read" data-posted-at="2026-03-12T10:22:00">
             <div class="dot empty"></div>
             <div>
               <p class="announcement-title">Don’t forget!</p>
@@ -499,23 +584,114 @@
 
 
   <script>
+    (function () {
+      var searchInput = document.querySelector('.search-input');
+      var filterBtn = document.getElementById('announcementsFilterBtn');
+      var filterMenu = document.getElementById('announcementsFilterMenu');
+      var listEl = document.querySelector('.list');
+      var readFilterOptions = filterMenu ? filterMenu.querySelectorAll('[data-read-filter]') : [];
+      var sortOptions = filterMenu ? filterMenu.querySelectorAll('[data-sort-value]') : [];
+      var activeReadFilter = 'all';
+      var activeSort = 'newest';
 
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('.row');
-        rows.forEach(row => {
-          const title = row.querySelector('.announcement-title').textContent.toLowerCase();
-          const copy = row.querySelector('.announcement-copy').textContent.toLowerCase();
-          if (title.includes(query) || copy.includes(query)) {
-            row.style.display = 'grid';
-          } else {
-            row.style.display = 'none';
-          }
+      function closeFilterMenu() {
+        if (!filterMenu || !filterBtn) return;
+        filterMenu.classList.remove('is-open');
+        filterBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function rowPostedTime(row) {
+        var iso = row.getAttribute('data-posted-at');
+        if (iso) {
+          var t = new Date(iso).getTime();
+          if (!Number.isNaN(t)) return t;
+        }
+        var dateEl = row.querySelector('.date');
+        if (!dateEl || !dateEl.textContent) return 0;
+        var parsed = Date.parse(dateEl.textContent.trim());
+        return Number.isNaN(parsed) ? 0 : parsed;
+      }
+
+      function sortAnnouncementRows() {
+        if (!listEl) return;
+        var rows = Array.prototype.slice.call(listEl.querySelectorAll('.row'));
+        rows.sort(function (a, b) {
+          var ta = rowPostedTime(a);
+          var tb = rowPostedTime(b);
+          if (activeSort === 'oldest') return ta - tb;
+          return tb - ta;
         });
-      });
-    }
+        rows.forEach(function (r) {
+          listEl.appendChild(r);
+        });
+      }
+
+      function applyAnnouncementFilters() {
+        var query = (searchInput && searchInput.value ? searchInput.value : '').toLowerCase().trim();
+        document.querySelectorAll('.list .row').forEach(function (row) {
+          var titleEl = row.querySelector('.announcement-title');
+          var copyEl = row.querySelector('.announcement-copy');
+          var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+          var copy = copyEl ? copyEl.textContent.toLowerCase() : '';
+          var matchesSearch = !query || title.includes(query) || copy.includes(query);
+          var state = row.getAttribute('data-read-state') || 'read';
+          var matchesFilter = activeReadFilter === 'all' || activeReadFilter === state;
+          row.style.display = matchesSearch && matchesFilter ? 'grid' : 'none';
+        });
+      }
+
+      if (filterBtn && filterMenu) {
+        filterBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = !filterMenu.classList.contains('is-open');
+          filterMenu.classList.toggle('is-open', open);
+          filterBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        filterMenu.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+
+        readFilterOptions.forEach(function (opt) {
+          opt.addEventListener('click', function () {
+            activeReadFilter = opt.getAttribute('data-read-filter') || 'all';
+            readFilterOptions.forEach(function (b) {
+              b.setAttribute('aria-checked', b === opt ? 'true' : 'false');
+            });
+            closeFilterMenu();
+            applyAnnouncementFilters();
+          });
+        });
+
+        sortOptions.forEach(function (opt) {
+          opt.addEventListener('click', function () {
+            activeSort = opt.getAttribute('data-sort-value') || 'newest';
+            sortOptions.forEach(function (b) {
+              b.setAttribute('aria-checked', b === opt ? 'true' : 'false');
+            });
+            sortAnnouncementRows();
+            closeFilterMenu();
+            applyAnnouncementFilters();
+          });
+        });
+
+        document.addEventListener('click', function () {
+          closeFilterMenu();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape') closeFilterMenu();
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', applyAnnouncementFilters);
+        searchInput.addEventListener('search', applyAnnouncementFilters);
+      }
+
+      sortAnnouncementRows();
+      applyAnnouncementFilters();
+    })();
   </script>
   <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"
     style="position: fixed; bottom: 0px; right: 0px; width: 400px; height: 600px; border: none; z-index: 9999; background-color: transparent;"></iframe>

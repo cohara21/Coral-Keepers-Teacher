@@ -150,28 +150,11 @@
       display: block;
     }
 
-    .hero-avatar {
-      position: absolute;
-      left: 539px;
-      top: 108px;
-      width: 170px;
-      height: 170px;
-      z-index: 2;
-    }
-
-    .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
     .course-title {
       position: absolute;
       left: 0;
       right: 0;
-      top: 316px;
+      top: 232px;
       transform: translateY(-50%);
       margin: 0;
       text-align: center;
@@ -184,7 +167,7 @@
     .courses {
       position: absolute;
       left: 0;
-      top: 352px;
+      top: 276px;
       width: 1280px;
       height: 276.265px;
     }
@@ -340,7 +323,7 @@
 
       .courses {
         position: relative;
-        top: 352px;
+        top: 276px;
         width: calc(100% - 48px);
         margin: 0 24px;
         display: grid;
@@ -365,11 +348,6 @@
         height: 100%;
       }
 
-      .hero-avatar {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 108px;
-      }
     }
 
 
@@ -452,21 +430,15 @@
         transform: translateY(-7px) rotate(-45deg);
       }
 
-      .hero-avatar {
-        top: 80px;
-        width: 140px;
-        height: 140px;
-      }
-
       .course-title {
-        top: 260px;
+        top: 228px;
         font-size: 20px;
         padding: 0 20px;
       }
 
       .courses {
         grid-template-columns: 1fr;
-        top: 280px;
+        top: 264px;
       }
       
       .learn-shell {
@@ -507,15 +479,10 @@
   <main class="learn-page">
     <section class="learn-shell">
       <div class="hero-banner">
-        <img src="../assets/teacher-course-hero-base.webp" alt="Coral reef" />
-        <img src="../assets/teacher-course-hero-overlay.webp" alt="" style="z-index: 1; pointer-events: none;" />
+        <img src="../assets/CoursesBanner.webp" alt="Courses banner" />
       </div>
 
-      <div class="hero-avatar">
-        <img src="../assets/jeanneprofile.webp" alt="Professor Harran" />
-      </div>
-
-      <h1 class="course-title">Professor Harran's Courses</h1>
+      <h1 class="course-title">Your Courses</h1>
 
       <section class="courses" aria-label="Courses">
         <a class="course-card" href="course-details.html" aria-label="Introduction to Marine Biology">
