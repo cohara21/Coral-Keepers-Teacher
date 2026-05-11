@@ -247,38 +247,13 @@
       padding: 0;
     }
 
-    /* Icon wells match Learn tab assignment-type accents (Reading / Videos / Quizzes / Submissions cards) */
-    .grade-icon-slot {
+    /* Same icon treatment as Student index “My Assignments” and learn lesson rows */
+    .grade-row .assignment-icon {
       width: 40.667px;
       height: 40.667px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: none;
-    }
-
-    .grade-icon-slot--reading {
-      background: rgba(0, 117, 222, 0.12);
-    }
-
-    .grade-icon-slot--video {
-      background: rgba(255, 144, 76, 0.2);
-    }
-
-    .grade-icon-slot--quiz {
-      background: rgba(184, 128, 255, 0.16);
-    }
-
-    .grade-icon-slot--submission {
-      background: rgba(46, 204, 113, 0.14);
-    }
-
-    .grade-icon {
-      width: 26px;
-      height: 26px;
-      display: block;
       object-fit: contain;
+      display: block;
+      flex: none;
     }
 
     .grade-name {
@@ -652,9 +627,8 @@
 
         <div class="grade-list">
           <div class="grade-row">
-            <div class="grade-icon-slot grade-icon-slot--video" aria-hidden="true">
-              <img class="grade-icon" src="../assets/395f9af5-9efc-478e-8d7d-8982f4180639.svg" alt="" />
-            </div>
+            <img class="assignment-icon" src="../assets/395f9af5-9efc-478e-8d7d-8982f4180639.svg" alt=""
+              aria-hidden="true" />
             <div>
               <p class="grade-name">Coral Calcification Series</p>
               <p class="grade-copy">Watch Part 3 &amp; 4 and complete the lab reflection.</p>
@@ -663,9 +637,8 @@
           </div>
 
           <div class="grade-row">
-            <div class="grade-icon-slot grade-icon-slot--reading" aria-hidden="true">
-              <img class="grade-icon" src="../assets/teacher-course-icon-reading.svg" alt="" />
-            </div>
+            <img class="assignment-icon" src="../assets/teacher-course-icon-reading.svg" alt=""
+              aria-hidden="true" />
             <div>
               <p class="grade-name">Symbiosis Reading Guide</p>
               <p class="grade-copy">Read the PDF guide and highlight key symbiotic partners.</p>
@@ -674,9 +647,8 @@
           </div>
 
           <div class="grade-row">
-            <div class="grade-icon-slot grade-icon-slot--quiz" aria-hidden="true">
-              <img class="grade-icon" src="../assets/teacher-assignment-bio348.svg" alt="" />
-            </div>
+            <img class="assignment-icon" src="../assets/teacher-assignment-bio348.svg" alt=""
+              aria-hidden="true" />
             <div>
               <p class="grade-name">Weekly Reef Knowledge Check</p>
               <p class="grade-copy">12 Questions covering this week's tank chemistry.</p>
@@ -685,9 +657,8 @@
           </div>
 
           <div class="grade-row">
-            <div class="grade-icon-slot grade-icon-slot--submission" aria-hidden="true">
-              <img class="grade-icon" src="../assets/352462c7-bfc9-40dc-ad35-b9434e8e256c.svg" alt="" />
-            </div>
+            <img class="assignment-icon" src="../assets/352462c7-bfc9-40dc-ad35-b9434e8e256c.svg" alt=""
+              aria-hidden="true" />
             <div>
               <p class="grade-name">Bleaching Essay</p>
               <p class="grade-copy">Write a 500-word essay on the causes of coral bleaching.</p>
