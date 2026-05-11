@@ -1597,8 +1597,6 @@
       /* let the inner sim-card control padding so it fills the article */
       position: relative;
       margin-top: -12px;
-      /* Above #cory-iframe (900) so simulation controls stay clickable */
-      z-index: 950;
     }
 
     /* Simulation card placed in the Team Score slot for Student view */
@@ -1621,6 +1619,16 @@
       border: none;
       align-content: start;
       /* ensure header sits at the top */
+      position: relative;
+      /* Cory can sit above simulation text; only actual controls opt back into pointer events. */
+      pointer-events: none;
+    }
+
+    .team-score .sim-card input,
+    .team-score .sim-card button {
+      position: relative;
+      z-index: 999;
+      pointer-events: auto;
     }
 
     .sim-header-row {
@@ -1670,7 +1678,6 @@
       gap: 12px;
       margin-bottom: 4px;
       flex-wrap: wrap;
-      pointer-events: auto;
       position: relative;
       z-index: 2;
     }
@@ -1979,18 +1986,45 @@
         grid-row: auto;
         margin-top: 0;
       }
+
+      .page {
+        padding-bottom: max(120px, min(220px, 28vh));
+      }
+
+      .cory-dock #cory-iframe {
+        --cory-open-width: min(400px, calc(100vw - 16px));
+        --cory-open-height: min(600px, 55vh);
+      }
     }
 
-    #cory-iframe {
+    /* Below sim controls while closed; rises over them while the assistant is open. */
+    .cory-dock {
       position: fixed;
       bottom: 0;
       right: 0;
-      width: 400px;
-      height: 600px;
+      z-index: 998;
+      pointer-events: none;
+    }
+
+    .cory-dock #cory-iframe {
+      --cory-open-width: 400px;
+      --cory-open-height: 600px;
+      display: block;
+      width: 112px;
+      height: 112px;
       border: none;
-      z-index: 900;
-      /* Pushed below modals (1000) to be darkened by their backdrops */
+      pointer-events: auto;
       background-color: transparent;
+      transition: width 0.18s ease, height 0.18s ease;
+    }
+
+    .cory-dock:hover {
+      z-index: 999;
+    }
+
+    .cory-dock:hover #cory-iframe {
+      width: var(--cory-open-width);
+      height: var(--cory-open-height);
     }
   </style>
 </head>
@@ -3071,7 +3105,9 @@
     // Run once to initialize
     calculateAIHealthScore();
   </script>
-  <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/"></iframe>
+  <div class="cory-dock">
+    <iframe id="cory-iframe" src="https://cory-ai-brain.vercel.app/" title="Cory assistant"></iframe>
+  </div>
 </body>
 
 </html>
