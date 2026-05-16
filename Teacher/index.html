@@ -343,6 +343,95 @@
       color: var(--text-muted);
     }
 
+    .health-title.health-title--with-help {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .health-title-label {
+      margin: 0;
+    }
+
+    .ai-health-info {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+    }
+
+    .ai-health-info-btn {
+      box-sizing: border-box;
+      width: 18px;
+      height: 18px;
+      padding: 0;
+      margin: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background: #fff;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1;
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ai-health-info-btn:hover,
+    .ai-health-info-btn:focus-visible {
+      border-color: var(--blue);
+      color: var(--blue);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 117, 222, 0.25);
+    }
+
+    .ai-health-info-popover {
+      position: absolute;
+      z-index: 10001;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: calc(100% + 8px);
+      width: min(280px, 70vw);
+      padding: 12px 14px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 400;
+      font-style: normal;
+      color: var(--text-dark);
+      text-align: left;
+      text-transform: none;
+      letter-spacing: normal;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.12s ease, visibility 0.12s ease;
+    }
+
+    .ai-health-info.is-open .ai-health-info-popover,
+    .ai-health-info:hover .ai-health-info-popover,
+    .ai-health-info:focus-within .ai-health-info-popover {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .sim-card .ai-health-info-popover,
+    .sim-modal .ai-health-info-popover {
+      bottom: auto;
+      top: calc(100% + 8px);
+    }
+
     .health-gauge {
       position: relative;
       width: 235.664px;
@@ -1641,7 +1730,20 @@
           </div>
 
           <div class="health-copy">
-            <h3 class="health-title">AI Health Score</h3>
+            <h3 class="health-title health-title--with-help">
+              <span class="health-title-label">AI Health Score</span>
+              <span class="ai-health-info" data-ai-health-info>
+                <button type="button" class="ai-health-info-btn" id="ai-health-info-btn-dash-teacher"
+                  aria-label="About AI Health Score" aria-expanded="false" aria-controls="ai-health-tip-dash-teacher">
+                  <span aria-hidden="true">i</span>
+                </button>
+                <div id="ai-health-tip-dash-teacher" class="ai-health-info-popover" role="tooltip" aria-hidden="true">
+                  <p style="margin:0;">Our AI calculates this score from your tank’s live conditions—temperature, pH,
+                    salinity, redox, and more—together with your tank camera, including still images and timelapses. It
+                    combines these inputs and turns them into a single health score.</p>
+                </div>
+              </span>
+            </h3>
             <div class="stat-main">
               <div class="pct">94%</div>
               <div class="delta">
@@ -1930,6 +2032,83 @@
     const vitalHistoryTrigger = document.querySelector('.vitals-history');
     const vitalHistoryModal = document.getElementById('vitalHistoryModal');
     const vitalHistoryClose = document.querySelector('.vitals-history-close');
+
+    (function initAiHealthInfoTips() {
+      const roots = document.querySelectorAll('[data-ai-health-info]');
+      if (!roots.length) {
+        return;
+      }
+
+      function syncPinnedAria() {
+        roots.forEach(function (wrap) {
+          const btn = wrap.querySelector('.ai-health-info-btn');
+          const tip = wrap.querySelector('.ai-health-info-popover');
+          if (!btn || !tip) {
+            return;
+          }
+          const open = wrap.classList.contains('is-open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          tip.setAttribute('aria-hidden', open ? 'false' : 'true');
+        });
+      }
+
+      var pinnedWrap = null;
+
+      function setPinned(wrap) {
+        roots.forEach(function (r) {
+          r.classList.remove('is-open');
+        });
+        pinnedWrap = wrap || null;
+        if (pinnedWrap) {
+          pinnedWrap.classList.add('is-open');
+        }
+        syncPinnedAria();
+      }
+
+      roots.forEach(function (wrap) {
+        const btn = wrap.querySelector('.ai-health-info-btn');
+        const tip = wrap.querySelector('.ai-health-info-popover');
+        if (!btn || !tip) {
+          return;
+        }
+        var tid = tip.id;
+        if (!tid) {
+          tid = 'ai-health-tip-' + Math.random().toString(36).slice(2, 9);
+          tip.id = tid;
+        }
+        if (!btn.getAttribute('aria-controls')) {
+          btn.setAttribute('aria-controls', tid);
+        }
+
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (pinnedWrap === wrap && wrap.classList.contains('is-open')) {
+            setPinned(null);
+          } else {
+            setPinned(wrap);
+          }
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!pinnedWrap) {
+          return;
+        }
+        var t = e.target;
+        if (t instanceof Node && !pinnedWrap.contains(t)) {
+          setPinned(null);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape' || !pinnedWrap) {
+          return;
+        }
+        setPinned(null);
+      });
+
+      syncPinnedAria();
+    })();
 
     function setVitalHistoryOpen(open) {
       if (!vitalHistoryModal) {
