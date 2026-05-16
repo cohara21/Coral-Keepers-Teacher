@@ -865,8 +865,7 @@
     .vitals-history-modal {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.88);
       z-index: 1000;
       display: grid;
       place-items: center;
@@ -1059,6 +1058,7 @@
       gap: 8px;
       align-items: flex-end;
       justify-content: stretch;
+      contain: layout style;
     }
 
     .vh-bars .vh-bar {
@@ -2850,32 +2850,62 @@
           }
         });
 
-        barsEl.innerHTML = '';
-        values.forEach(function (v, i) {
-          const h = valueToHeightPx(v, spec.min, spec.max);
+        const n = values.length;
+        while (barsEl.children.length < n) {
           const bar = document.createElement('span');
           bar.className = 'vh-bar';
-          if (range === 'week' && i === todayIdx) {
-            bar.classList.add('vh-bar--today');
-            bar.title = 'Today';
-          }
-          bar.style.height = h + 'px';
           const lab = document.createElement('span');
           lab.className = 'vh-bar-label';
-          lab.textContent = spec.formatBar(v);
           bar.appendChild(lab);
           barsEl.appendChild(bar);
+        }
+        Array.from(barsEl.children).forEach((bar, i) => {
+          if (!(bar instanceof HTMLElement)) {
+            return;
+          }
+          if (i >= n) {
+            bar.style.display = 'none';
+            return;
+          }
+          bar.style.display = '';
+          const v = values[i];
+          const h = valueToHeightPx(v, spec.min, spec.max);
+          bar.style.height = h + 'px';
+          const isToday = range === 'week' && i === todayIdx;
+          bar.classList.toggle('vh-bar--today', isToday);
+          if (isToday) {
+            bar.title = 'Today';
+          } else {
+            bar.removeAttribute('title');
+          }
+          const lab = bar.querySelector('.vh-bar-label');
+          if (lab) {
+            lab.textContent = spec.formatBar(v);
+          }
         });
 
-        xEl.innerHTML = '';
-        labels.forEach(function (text, i) {
-          const s = document.createElement('span');
-          s.textContent = text;
-          if (range === 'week' && i === todayIdx) {
-            s.classList.add('vh-x-label--today');
-            s.setAttribute('aria-current', 'date');
+        while (xEl.children.length < n) {
+          xEl.appendChild(document.createElement('span'));
+        }
+        Array.from(xEl.children).forEach((sRaw, i) => {
+          const s = sRaw;
+          if (!(s instanceof HTMLElement)) {
+            return;
           }
-          xEl.appendChild(s);
+          if (i >= n) {
+            s.style.display = 'none';
+            s.textContent = '';
+            return;
+          }
+          s.style.display = '';
+          s.textContent = labels[i] || '';
+          const isToday = range === 'week' && i === todayIdx;
+          s.classList.toggle('vh-x-label--today', isToday);
+          if (isToday) {
+            s.setAttribute('aria-current', 'date');
+          } else {
+            s.removeAttribute('aria-current');
+          }
         });
       }
 
